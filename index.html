@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Kolor by Justineo</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/Justineo/kolor">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/Justineo/kolor/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/Justineo/kolor/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Kolor</h1>
+          <p>A color manipulation tool with sexy syntax.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/Justineo">Justineo</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>kolor</h1>
+
+<p><em>kolor</em> is a useful color manipulating tool in JavaScript.</p>
+
+<p>It provides color string parsing, format converting and basic color adjusting methods.</p>
+
+<p>Supported color formats:</p>
+
+<ul>
+<li>  RGB(A)</li>
+<li>  HSL(A)</li>
+<li>  HSV(A)</li>
+</ul><h2>Usage</h2>
+
+<p>Just include <code>kolor.js</code> in your HTML document:</p>
+
+<pre><code>&lt;script src="kolor.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Core functionalities are provided by the <code>kolor</code> object in global scope.</p>
+
+<h3>Creating a color object</h3>
+
+<p>Colors may be created in the following ways:</p>
+
+<ol>
+<li>
+<p>By parsing a given string value</p>
+
+<pre><code>var red = kolor('red'), //color name
+    green = kolor('rgb(0, 255, 0)'), //valid CSS expressions
+    blue = kolor('rgba(0%, 0%, 100%, 1)'), //more valid CSS expressions
+    cyan = kolor('hsv(180, 1, 1)'), //not supported by CSS but has a similar syntax
+    magenta = kolor('#ff00ff'), //hex RGB value
+    yellow = kolor('ff00ff'); //hex RGB value without '#'
+</code></pre>
+
+<p>Color names are defined by <a href="http://www.w3.org/TR/css3-color/#svg-color">W3C SVG color names used in CSS3</a>.</p>
+
+<p>Names or hex values will generate RGB colors.</p>
+</li>
+<li>
+<p>By specifying a color format</p>
+
+<pre><code>var red = kolor.rgb(255, 0, '0%'), //can use either number or percent string
+    green = kolor.rgb([0, 255, 0]), //using array
+    blue = kolor.rgb({ r: 0, g: 0, b: 255 }); //using object
+</code></pre>
+</li>
+<li>
+<p>By cloning another color object</p>
+
+<pre><code>var red = kolor('red'),
+    newRed = kolor(red);
+</code></pre>
+</li>
+</ol><p><em>Created colors are in certain formats and can be converted to other formats.</em></p>
+
+<h3>Accessors</h3>
+
+<p><em>kolor</em> provides jQuery-like accessors for color objects.</p>
+
+<pre><code>color.red(128); //altering 'red' channel
+color.r(255); //shorthand method is also available
+
+console.log(color.r()); //255
+</code></pre>
+
+<p>Setters return color object itself so we can do a bit of chaining:</p>
+
+<pre><code>color.r(255).g(128).b(128); //making it lighter
+</code></pre>
+
+<h3>Value restriction</h3>
+
+<p>When setting a value of a channel, the specified value will be automatically restricted within a valid range according to the channel configuration.</p>
+
+<pre><code>console.log(rgbColor.r(300).r()); //255
+console.log(hslColor.h(-10).h()); //350
+console.log(hsvColor.s('200%').s()); //1
+</code></pre>
+
+<h3>Format conversion</h3>
+
+<p>Once a color object is created, it can be easily converted to other formats. After each conversion, a new color object will be produced and returned.</p>
+
+<pre><code>var hsvColor = rgbColor.hsv().h(120); //converts and sets
+</code></pre>
+
+<h3>String output</h3>
+
+<pre><code>console.log(red.hex()); //'#ff0000'
+console.log(red.css()); //'rgb(255, 0, 0)'
+</code></pre>
+
+<h3>Color transformation</h3>
+
+<p>A color can be transformed into another in many ways. After each transformation, a new color object is produced and returned.</p>
+
+<pre><code>color = red.spin(180); //spins the color wheel for 180 degrees
+color = red.mix(blue, 0.3); //mixes two colors with a given proportion.
+color = red.lighten(0.2); //gets a lighter color
+</code></pre>
+
+<p>For full features and API documentation, please read <a href="http://justineo.github.com/kolor/doc.html">this documentation</a> generated by <a href="http://jashkenas.github.com/docco/">Docco</a>.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
