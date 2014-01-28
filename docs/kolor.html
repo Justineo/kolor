@@ -1914,7 +1914,7 @@ Otherwise, returns an array such colors.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-65">&#182;</a>
               </div>
-              <p>Everything is ready, expose to outer scope</p>
+              <p>Everything is ready, export the whole module</p>
 
             </div>
             
@@ -1922,7 +1922,22 @@ Otherwise, returns an array such colors.</p>
         module.exports = kolor;
     });
 
-}(<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">'function'</span> &amp;&amp; define.amd ? define : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(id, factory)</span> {</span>
+}(<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">'function'</span> &amp;&amp; define.amd ? define : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(id, factory)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-66">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-66">&#182;</a>
+              </div>
+              <p>Define it the UMD way</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> exports !== <span class="hljs-string">'undefined'</span>) {
         factory(<span class="hljs-built_in">require</span>, exports, module);
     } <span class="hljs-keyword">else</span> {
@@ -1938,11 +1953,11 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-66">
+        <li id="section-67">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-66">&#182;</a>
+                <a class="pilcrow" href="#section-67">&#182;</a>
               </div>
               <p>Defining output using <code>module.exports</code></p>
 
@@ -1954,11 +1969,11 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-67">
+        <li id="section-68">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-68">&#182;</a>
               </div>
               <p>Defining output using <code>exports.*</code></p>
 
