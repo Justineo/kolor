@@ -1174,12 +1174,16 @@
         return colors;
     };
 
-    // Everything is ready, expose to outer scope
+    // Everything is ready, export the whole module
     define("kolor", function(require, exports, module) {
         module.exports = kolor;
     });
 
 }(typeof define === 'function' && define.amd ? define : function (id, factory) {
+
+    //
+    // Define it the UMD way
+
     if (typeof exports !== 'undefined') {
         factory(require, exports, module);
     } else {
