@@ -1,6 +1,6 @@
 # kolor
 
-*kolor* is a useful color manipulating tool in JavaScript.
+*kolor* is a useful color manipulation tool in JavaScript.
 
 It provides color string parsing, format converting and basic color adjusting methods.
 
@@ -13,11 +13,26 @@ Supported color formats:
 
 ## Usage
 
-Just include `kolor.js` in your HTML document:
+* [Vanilla JS](http://vanilla-js.com/)
 
-    <script src="kolor.js"></script>
+    Just include `kolor.js` in your HTML document:
 
-Core functionalities are provided by the `kolor` object in global scope.
+        <script src="kolor.js"></script>
+
+    Core functionalities are provided by the `kolor` object in global scope.
+
+* Working with [RequireJS](http://requirejs.org/) (or other AMD compatible loaders)
+
+    Just require the named module `kolor`:
+
+        require(['kolor'], function(kolor) {
+            // Starts here
+        });
+
+* Working with [npm](https://npmjs.org/)
+
+        npm install kolor
+
 
 ### Creating a color object
 

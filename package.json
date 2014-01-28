@@ -1,0 +1,16 @@
+{
+    "name": "kolor",
+    "version": "1.0.0",
+    "contributors": [
+        {
+            "name": "justineo",
+            "email": "justice360@gmail.com"
+        }
+    ],
+    "repository": {
+        "type" : "git",
+        "url" : "https://github.com/Justineo/kolor.git"
+    },
+    "description": "Color manipulation in sexy syntax.",
+    "homepage": "http://justineo.github.io/kolor/"
+}

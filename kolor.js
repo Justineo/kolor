@@ -1,4 +1,4 @@
-(function(scope) {
+(function(define) {
     // ## Utilities
 
     var utils = {
@@ -291,7 +291,7 @@
                             value = Math.round(value);
                             break;
                         case 'String':
-                            if (value.match(/^[-+]?\d+$/i)) {
+                            if (value.match(/^[\-+]?\d+$/i)) {
                                 value = parseInt(value, 10);
                             } else {
                                 value = false;
@@ -313,7 +313,7 @@
                         case 'Number':
                             break;
                         case 'String':
-                            if (value.match(/^[-+]?\d+(?:\.\d+)?$|^[-+]?\.\d+$/i)) {
+                            if (value.match(/^[\-+]?\d+(?:\.\d+)?$|^[\-+]?\.\d+$/i)) {
                                 value = parseFloat(value);
                             } else {
                                 value = false;
@@ -333,7 +333,7 @@
                 parse: function(value) {
                     switch (utils.typeOf(value)) {
                         case 'String':
-                            if (value.match(/^[-+]?\d+(?:\.\d+)?%$|^[-+]?\.\d+%$/i)) {
+                            if (value.match(/^[\-+]?\d+(?:\.\d+)?%$|^[\-+]?\.\d+%$/i)) {
                                 value = parseFloat(value) / 100;
                             } else {
                                 value = false;
@@ -578,12 +578,14 @@
         t.g = hk;
         t.b = hk - 1 / 3;
 
-        for (var c in t) {
+        var c;
+
+        for (c in t) {
             t[c] < 0 && t[c] ++;
             t[c] > 1 && t[c] --;
         }
 
-        for (var c in t) {
+        for (c in t) {
             if (t[c] < 1 / 6) {
                 rgb[c] = p + ((q - p) * 6 * t[c]);
             } else if (1 / 6 <= t[c] && t[c] < 0.5) {
@@ -597,7 +599,7 @@
         }
 
         return kolor.rgba(rgb.r, rgb.g, rgb.b, a);
-    };
+    }
 
     // Converts HSVA color to RGBA.
     function HSVA_TO_RGBA() {
@@ -634,7 +636,7 @@
         }
 
         return kolor.rgba(rgba);
-    };
+    }
 
     // Filters input value according to data type definitions and color format configurations.
     function filterValue(value, channel) {
@@ -652,7 +654,7 @@
             }
         }
         return channel.initial;
-    };
+    }
 
 
     // ## kolor API
@@ -712,37 +714,35 @@
         return false;
     };
 
+    for (var key in FORMATS) {
 
-    // ### Factory methods for each color format
+        // ### Factory methods for each color format
 
-    // #### kolor.*format*(*values*)
-    //
-    // Creates a color object using a format name defined in `FORMATS`.
-    //
-    // ##### Parameters
-    //
-    // * *values* - the expression carries channel values of the color. It can be separate values,
-    // an array or an object containing specific key-value pairs.
-    //
-    //        For example,
-    //
-    //        * kolor.rgb(255, 0, 0)
-    //        * kolor.rgb([255, 0, 0])
-    //        * kolor.rgb({ r: 255, g: 0, b: 0 })
-    for (var format in FORMATS) {
-        kolor[format.toLowerCase()] = function(format) {
+        // #### kolor.*format*(*values*)
+        //
+        // Creates a color object using a format name defined in `FORMATS`.
+        //
+        // ##### Parameters
+        //
+        // * *values* - the expression carries channel values of the color. It can be separate values,
+        // an array or an object containing specific key-value pairs.
+        //
+        //        For example,
+        //
+        //        * kolor.rgb(255, 0, 0)
+        //        * kolor.rgb([255, 0, 0])
+        //        * kolor.rgb({ r: 255, g: 0, b: 0 })
+        kolor[key.toLowerCase()] = (function(key) {
             return function() {
                 var args = utils.slice(arguments, 0),
                     type = utils.typeOf(args[0]);
                 if (type === 'Array' || type === 'Object') {
                     args = args[0];
                 }
-                return new kolor[format](args);
-            }
-        }(format);
-    }
+                return new kolor[key](args);
+            };
+        }(key));
 
-    for (var key in FORMATS) {
         var format = FORMATS[key],
             channels = format.channels,
             converters = format.converters;
@@ -812,7 +812,7 @@
                     } else {
                         return this[prop];
                     }
-                }
+                };
             }(i);
         }
 
@@ -825,7 +825,7 @@
         // Returns the format string in all caps such as `RGBA`, `HSV`, etc.
         kolor[key].prototype.format = function() {
             return this._format;
-        }
+        };
 
         // ### Converters
         //
@@ -874,7 +874,7 @@
                 values.push(DATATYPES[channel.cssType].stringify(this[channel.name]()));
             }
             return this.format().toLowerCase() + '(' + values.join(', ') + ')';
-        }
+        };
 
         // #### .hex()
         // Outputs color channels as a hex string.
@@ -1175,6 +1175,28 @@
     };
 
     // Everything is ready, expose to outer scope
-    scope["kolor"] = kolor;
+    define("kolor", function(require, exports, module) {
+        module.exports = kolor;
+    });
 
-})(this);
+}(typeof define === 'function' && define.amd ? define : function (id, factory) {
+    if (typeof exports !== 'undefined') {
+        //commonjs
+        factory(require, exports, module);
+    } else {
+        var mod = {};
+        var exp = {};
+
+        factory(function(value) {
+            return window[value];
+        }, exp, mod);
+
+        if (mod.exports) {
+            // Defining output using `module.exports`
+            window[id] = mod.exports;
+        } else {
+            // Defining output using `exports.*`
+            window[id] = exp;
+        }
+    }
+}));
