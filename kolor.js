@@ -727,11 +727,11 @@
         // * *values* - the expression carries channel values of the color. It can be separate values,
         // an array or an object containing specific key-value pairs.
         //
-        //        For example,
+        //    For example,
         //
-        //        * kolor.rgb(255, 0, 0)
-        //        * kolor.rgb([255, 0, 0])
-        //        * kolor.rgb({ r: 255, g: 0, b: 0 })
+        //    * kolor.rgb(255, 0, 0)
+        //    * kolor.rgb([255, 0, 0])
+        //    * kolor.rgb({ r: 255, g: 0, b: 0 })
         kolor[key.toLowerCase()] = (function(key) {
             return function() {
                 var args = utils.slice(arguments, 0),
@@ -1181,7 +1181,6 @@
 
 }(typeof define === 'function' && define.amd ? define : function (id, factory) {
     if (typeof exports !== 'undefined') {
-        //commonjs
         factory(require, exports, module);
     } else {
         var mod = {};
