@@ -1,0 +1,141 @@
+html,
+body,
+article {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    font-size: 20px;
+    font-family: "source-sans-pro-1", "Helvetica Neue", Arial, sans-serif;
+}
+
+input {
+    font-size: 100%;
+}
+
+input,
+code,
+#converter {
+    font-family: Monaco, Consolas, monospace;
+}
+
+#converter {
+    position: relative;
+    height: 100%;
+    font-size: 32px;
+}
+
+#converter h1,
+#converter p {
+    margin: 0;
+    padding: 0;
+}
+
+#converter .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+
+#converter input {
+    border: 8px solid #000;
+    font-size: 100%;
+}
+
+#converter h1 {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #000;
+    color: white;
+}
+
+#converter p {
+    margin-bottom: 20px;
+}
+
+#exp {
+    width: 600px;
+    padding: 10px 15px;
+    background-color: white;
+    outline: none;
+}
+
+#converter .output:before {
+    content: attr(data-format);
+    display: inline-block;
+    width: 80px;
+    padding: 10px 0;
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#converter .output input {
+    width: 528px;
+    border-left: none;
+    padding: 2px 15px;
+}
+
+#readme .content {
+    width: 960px;
+    margin: 0 auto;
+    padding-top: 40px;
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+    float: left;
+    padding: 6px 9px;
+    color: white;
+}
+
+h1 {
+    background-color: #000;
+}
+
+h2 {
+    background-color: #222;
+}
+
+h3 {
+    background-color: #444;
+}
+
+h1 + *,
+h2 + *,
+h3 + * {
+    clear: left;
+}
+
+p {
+    margin-top: 0;
+}
+
+pre {
+    font-size: 16px;
+}
+
+a {
+    color: #3269a0;
+}
+
+code {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+    font-size: 18px;
+}
+
+pre code {
+    font-size: 12px;
+}
