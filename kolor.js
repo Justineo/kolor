@@ -1,4 +1,13 @@
 (function(define) {
+
+    // ## Config
+    //
+    // Global configuraiton. See `kolor.config` for more details.
+
+    var config = {
+        cssPrecision: 'auto'
+    };
+
     // ## Utilities
 
     var utils = {
@@ -325,7 +334,10 @@
                     return value;
                 },
                 stringify: function(value) {
-                    return value + '';
+                    var precision = config.cssPrecision;
+                    return precision === 'auto'
+                        ? value + ''
+                        : parseFloat(value.toFixed(precision)) + '';
                 }
             },
             4: {
@@ -345,7 +357,10 @@
                     return value;
                 },
                 stringify: function(value) {
-                    return value * 100 + '%';
+                    var precision = config.cssPrecision;
+                    return precision === 'auto'
+                        ? value * 100 + '%'
+                        : parseFloat((value * 100).toFixed(precision)) + '%';
                 }
             }
         };
@@ -1086,6 +1101,23 @@
     }
 
     // ### kolor utilities
+    // #### kolor.config(*key*, *value*)
+    //
+    // Global config for kolor.
+    //
+    // ##### Parameters
+    // *key* - the name of the config item.
+    // *value* - the config value is to be used.
+    //
+    // Only one available *key* now:
+    //
+    // * `cssPrecision` - if set to an integer, kolor keeps at most this number
+    //   of digits after the period when outputing CSS expressions using `.css()`
+    //   or `.toString()`. `auto` by default, means kolor won't handle precision
+    //   when making the output.
+    kolor.config = function(key, value) {
+        config[key] = value;
+    }
 
     // #### kolor.random(*options*) [unstable API]
     //
