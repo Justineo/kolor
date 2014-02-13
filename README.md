@@ -96,9 +96,9 @@ Once a color object is created, it can be easily converted to other formats. Aft
     console.log(red.hex()); //'#ff0000'
     console.log(red.css()); //'rgb(255, 0, 0)'
 
-### Color transformation
+### Color modification
 
-A color can be transformed into another in many ways. After each transformation, a new color object is produced and returned.
+A color can be modified into another in many ways. After each modification, a new color object is produced and returned.
 
     color = red.spin(180); //spins the color wheel for 180 degrees
     color = red.mix(blue, 0.3); //mixes two colors with a given proportion.
