@@ -5,7 +5,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 */
 
 .hljs {
-  display: block; padding: 0.5em;
+  display: block; padding: 0.5em 1em;
   color: #333;
   background-color: rgba(255, 255, 255, 0.5);
 }
