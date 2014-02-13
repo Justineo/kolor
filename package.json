@@ -1,6 +1,6 @@
 {
     "name": "kolor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "contributors": [
         {
             "name": "justineo",
@@ -11,6 +11,7 @@
         "type" : "git",
         "url" : "https://github.com/Justineo/kolor.git"
     },
+    "main": "./kolor.js",
     "description": "Color manipulation in sexy syntax.",
     "homepage": "http://justineo.github.io/kolor/"
 }
