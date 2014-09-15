@@ -56,7 +56,7 @@
         // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle).
         shuffle: function(items) {
             var i, j, l = items.length;
-    
+
             for (i = l - 1; i > 0; i --) {
                 j = Math.floor(Math.random() * (i + 1));
                 utils.swap(items, i, j);
@@ -124,7 +124,7 @@
 
     // ### Color name-hex map
     //
-    // see [Extended color keywords, CSS Color Module Level 3](http://www.w3.org/TR/css3-color/#svg-color)
+    // see [Named Colors, CSS Color Module Level 4](http://dev.w3.org/csswg/css-color/#named-colors)
     var COLOR_MAP = {
         "aliceblue": "#f0f8ff",
         "antiquewhite": "#faebd7",
@@ -246,6 +246,7 @@
         "powderblue": "#b0e0e6",
         "purple": "#800080",
         "red": "#ff0000",
+        "rebeccapurple": "#663399",
         "rosybrown": "#bc8f8f",
         "royalblue": "#4169e1",
         "saddlebrown": "#8b4513",
@@ -272,8 +273,7 @@
         "white": "#ffffff",
         "whitesmoke": "#f5f5f5",
         "yellow": "#ffff00",
-        "yellowgreen": "#9acd32",
-        "rebeccapurple": "#663399" // not in CSS spec yet
+        "yellowgreen": "#9acd32"
     };
 
 
@@ -762,7 +762,7 @@
         var format = FORMATS[key],
             channels = format.channels,
             converters = format.converters;
-     
+
         // ### Constructor
         //
         // When `kolor` is used as a factory method, it will call these constructors.
@@ -1036,7 +1036,7 @@
         //
         // ##### Parameters
         // * *value* - the amount that the alpha value will the increase.
-        // 
+        //
         // ##### Return values
         // Returns a new color object after increasing alpha in the original format.
         kolor[key].prototype.fadeIn = function(value) {
@@ -1090,7 +1090,7 @@
                 value /= 255;
                 return value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
             }
-            
+
             var color = this.rgb(),
                 R = convert(color.r()),
                 G = convert(color.g()),
