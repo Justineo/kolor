@@ -124,7 +124,7 @@
 
     // ### Color name-hex map
     //
-    // see [Extended color keywords, CSS Color Module Level 3](http://www.w3.org/TR/css3-color/#svg-color)
+    // see [Named Colors, CSS Color Module Level 4](http://dev.w3.org/csswg/css-color/#named-colors)
     var COLOR_MAP = {
         "aliceblue": "#f0f8ff",
         "antiquewhite": "#faebd7",
@@ -246,6 +246,7 @@
         "powderblue": "#b0e0e6",
         "purple": "#800080",
         "red": "#ff0000",
+        "rebeccapurple": "#663399",
         "rosybrown": "#bc8f8f",
         "royalblue": "#4169e1",
         "saddlebrown": "#8b4513",
@@ -272,8 +273,7 @@
         "white": "#ffffff",
         "whitesmoke": "#f5f5f5",
         "yellow": "#ffff00",
-        "yellowgreen": "#9acd32",
-        "rebeccapurple": "#663399" // not in CSS spec yet
+        "yellowgreen": "#9acd32"
     };
 
 
