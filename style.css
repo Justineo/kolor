@@ -127,6 +127,11 @@ a {
     color: #3269a0;
 }
 
+h1 a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+}
+
 code {
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid #DDD;
