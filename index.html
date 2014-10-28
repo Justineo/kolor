@@ -34,7 +34,7 @@
                     <li>HSV(A)</li>
                 </ul>
 
-                <h2>Usage</h2>
+                <h2 id="usage"><a href="#usage">#</a> Usage</h2>
                 <ul>
                     <li>
                         <p><a href="http://vanilla-js.com/">Vanilla JS</a></p>
@@ -55,7 +55,7 @@
                     </li>
                 </ul>
 
-                <h3>Creating a color object</h3>
+                <h3 id="creation"><a href="#creation">#</a> Creating a color object</h3>
                 <p>Colors may be created in the following ways:</p>
                 <ol>
                     <li>
@@ -83,7 +83,7 @@
                 </ol>
                 <p><em>Created colors are in certain formats and can be converted to other formats.</em></p>
 
-                <h3>Accessors</h3>
+                <h3 id="accessors"><a href="#accessors">#</a> Accessors</h3>
                 <p><em>kolor</em> provides jQuery-like accessors for color objects.</p>
                 <pre><code>color.red(128); //altering 'red' channel
 color.r(255); //shorthand method is also available
@@ -93,21 +93,21 @@ console.log(color.r()); //255</code></pre>
                 <p>Setters return color object itself so we can do a bit of chaining:</p>
                 <pre><code>color.r(255).g(128).b(128); //making it lighter</code></pre>
 
-                <h3>Value restriction</h3>
+                <h3 id="value"><a href="#value">#</a> Value restriction</h3>
                 <p>When setting a value of a channel, the specified value will be automatically restricted within a valid range according to the channel configuration.</p>
                 <pre><code>console.log(rgbColor.r(300).r()); //255
 console.log(hslColor.h(-10).h()); //350
 console.log(hsvColor.s('200%').s()); //1</code></pre>
 
-                <h3>Format conversion</h3>
+                <h3 id="format"><a href="#format">#</a> Format conversion</h3>
                 <p>Once a color object is created, it can be easily converted to other formats. After each conversion, a new color object will be produced and returned.</p>
                 <pre><code>var hsvColor = rgbColor.hsv().h(120); //converts and sets</code></pre>
 
-                <h3>String output</h3>
+                <h3 id="output"><a href="#output">#</a> String output</h3>
                 <pre><code>console.log(red.hex()); //'#ff0000'
 console.log(red.css()); //'rgb(255, 0, 0)'</code></pre>
 
-                <h3>Color modification</h3>
+                <h3 id="modification"><a href="#modification">#</a> Color modification</h3>
                 <p>A color can be modified into another in many ways. After each modification, a new color object is produced and returned.</p>
                 <pre><code>color = red.spin(180); //spins the color wheel for 180 degrees
 color = red.mix(blue, 0.3); //mixes two colors with a given proportion.
