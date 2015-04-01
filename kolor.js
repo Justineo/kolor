@@ -56,7 +56,7 @@
         // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle).
         shuffle: function(items) {
             var i, j, l = items.length;
-    
+
             for (i = l - 1; i > 0; i --) {
                 j = Math.floor(Math.random() * (i + 1));
                 utils.swap(items, i, j);
@@ -762,7 +762,7 @@
         var format = FORMATS[key],
             channels = format.channels,
             converters = format.converters;
-     
+
         // ### Constructor
         //
         // When `kolor` is used as a factory method, it will call these constructors.
@@ -1036,7 +1036,7 @@
         //
         // ##### Parameters
         // * *value* - the amount that the alpha value will the increase.
-        // 
+        //
         // ##### Return values
         // Returns a new color object after increasing alpha in the original format.
         kolor[key].prototype.fadeIn = function(value) {
@@ -1090,7 +1090,7 @@
                 value /= 255;
                 return value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
             }
-            
+
             var color = this.rgb(),
                 R = convert(color.r()),
                 G = convert(color.g()),
