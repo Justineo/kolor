@@ -84,6 +84,6 @@ var cases = [
 ];
 var ticks = 0;
 var autoPlay = setInterval(function () {
-    input.value = cases[(ticks++) % cases.length];
+    input.value = cases[(++ticks) % cases.length];
     sync();
 }, 5000);
