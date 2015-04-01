@@ -76,13 +76,16 @@ setTimeout(function() {
 
 var cases = [
     'rebeccapurple',
+    'rgb(255, 170, 0)',
     'rgba(64, 128, 255, 0.8)',
     'hsv(54, 40%, 95%)',
     'hsl(114, 75%, 75%)',
     '#8cf0e6'
 ];
-var ticks = 0;
-var autoPlay = setInterval(function () {
+var ticks = Math.floor(Math.random() * cases.length);
+function nextCase() {
     input.value = cases[(++ticks) % cases.length];
     sync();
-}, 5000);
+}
+var autoPlay = setInterval(nextCase, 5000);
+nextCase();
