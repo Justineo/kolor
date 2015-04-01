@@ -647,7 +647,7 @@
                 rgba = [0, 0, 0, a];
         }
 
-        for (var i = rgba.length; i--;) {
+        for (var i = rgba.length - 1; i--;) {
             rgba[i] *= 255;
         }
 
