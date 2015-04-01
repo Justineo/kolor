@@ -43,7 +43,10 @@ formats.forEach(function(format) {
 });
 
 input.onfocus = function () { this.select(); };
-input.oninput = param.oninput = sync;
+input.oninput = function () {
+    clearTimeout(autoPlay);
+    sync();
+};
 sync();
 
 action.onclick = function () {
@@ -70,3 +73,16 @@ go.onclick = function () {
 setTimeout(function() {
     converter.style.transition = 'all 1s';
 }, 0);
+
+var cases = [
+    'rebeccapurple',
+    'rgba(64, 128, 255, 0.5)',
+    'hsv(54, 40%, 95%)',
+    'hsl(114, 75%, 75%)',
+    '#8cf0e6'
+];
+var ticks = 0;
+var autoPlay = setInterval(function () {
+    input.value = cases[(ticks++) % cases.length];
+    sync();
+}, 5000);

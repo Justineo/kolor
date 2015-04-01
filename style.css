@@ -14,7 +14,8 @@ article {
 body {
     color: #333;
     font-size: 20px;
-    font-family: "source-sans-pro-1", "Helvetica Neue", Arial, sans-serif;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
 }
 
 input {
@@ -24,7 +25,8 @@ input {
 input,
 code,
 #converter {
-    font-family: Monaco, Consolas, monospace;
+    font-family: "Source Code Pro", Monaco, Consolas, monospace;
+    font-weight: 300;
 }
 
 #converter {
@@ -236,12 +238,12 @@ pre {
 
 a {
     color: #3269a0;
+    text-decoration: none;
 }
 
 h2 a,
 h3 a {
     color: rgba(255, 255, 255, 0.5);
-    text-decoration: none;
 }
 
 code {
