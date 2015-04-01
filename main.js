@@ -67,6 +67,7 @@ go.onclick = function () {
     color = kolor(input.value);
     var mod = color[action.dataset.type](parseFloat(param.value));
     input.value = mod.toString();
+    clearTimeout(autoPlay);
     sync(mod);
 };
 
