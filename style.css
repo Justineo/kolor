@@ -6,7 +6,8 @@
 
 html,
 body,
-article {
+article,
+#bg {
     margin: 0;
     height: 100%;
 }
@@ -32,6 +33,7 @@ code,
 #converter {
     position: relative;
     height: 100%;
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPklEQVQoz+2RwQ0AIAwCwThE91+u3QIHkCb61vuSg6RlVWFDUkTAMXDJk8KUZM/aCeyyzCRpFtom0gr/cScsuOgR1chcaLsAAAAASUVORK5CYII=) repeat 0 0;
     font-size: 24px;
 }
 
@@ -164,8 +166,7 @@ code,
             transform-origin: 100px calc(100% - 40px);
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.9);
-    -webkit-transition: -webkit-transform 0.3s;
-            transition: transform 0.3s;
+    transition: transform 0.3s;
 }
 
 #menu.active {
@@ -211,15 +212,15 @@ h3 {
 
 h1 {
     font-size: 1.5em;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 h2 {
-    background-color: #222;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 h3 {
-    background-color: #444;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 h1 + *,
@@ -256,5 +257,5 @@ code {
 }
 
 pre code {
-    font-size: 12px;
+    font-size: 16px;
 }

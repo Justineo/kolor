@@ -9,17 +9,18 @@ function sync(color) {
     formats.forEach(function(format) {
         outputs[format].value = color ? color[format]() : '-';
         if (color) {
-            converter.style.backgroundColor = color;
+            bg.style.backgroundColor = color.rgba();
         }
     });
     if (color) {
-        readme.style.backgroundColor = color.fadeOut(0.7);
+        readme.style.backgroundColor = color.fadeOut(color.rgba().a() * 0.7).rgba();
     }
 };
 
 kolor.config('cssPrecision', 2);
 
 var converter = $('converter');
+var bg = $('bg');
 var readme = $('readme');
 var input = $('exp');
 var action = $('action');
@@ -72,12 +73,12 @@ go.onclick = function () {
 };
 
 setTimeout(function() {
-    converter.style.transition = 'all 1s';
+    bg.style.transition = readme.style.transition = 'all 1s';
 }, 0);
 
 var cases = [
     'rebeccapurple',
-    'rgba(64, 128, 255, 0.5)',
+    'rgba(64, 128, 255, 0.8)',
     'hsv(54, 40%, 95%)',
     'hsl(114, 75%, 75%)',
     '#8cf0e6'
