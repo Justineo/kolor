@@ -10,7 +10,7 @@ function sync(color) {
         outputs[format].value = color ? color[format]() : '-';
     });
     if (color) {
-        bg.style.backgroundColor = color.rgba();
+        bg.style.backgroundColor = color.rgba().css();
         readme.style.backgroundColor = color.fadeOut(color.rgba().a() * 0.7).rgba();
     }
 };
