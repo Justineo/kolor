@@ -17,13 +17,6 @@ body {
     font-family: "source-sans-pro-1", "Helvetica Neue", Arial, sans-serif;
 }
 
-ul,
-li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
 input {
     font-size: 100%;
 }
@@ -176,6 +169,13 @@ code,
 #menu.active {
     -webkit-transform: scale(1);
             transform: scale(1);
+}
+
+#menu,
+#menu li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 #menu li {
