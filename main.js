@@ -8,11 +8,9 @@ function sync(color) {
 
     formats.forEach(function(format) {
         outputs[format].value = color ? color[format]() : '-';
-        if (color) {
-            bg.style.backgroundColor = color.rgba();
-        }
     });
     if (color) {
+        bg.style.backgroundColor = color.rgba();
         readme.style.backgroundColor = color.fadeOut(color.rgba().a() * 0.7).rgba();
     }
 };
