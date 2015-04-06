@@ -1,5 +1,7 @@
 # kolor
 
+[![views](https://sourcegraph.com/api/repos/github.com/Justineo/kolor/.counters/views.svg)](https://sourcegraph.com/github.com/Justineo/kolor) [![views 24h](https://sourcegraph.com/api/repos/github.com/Justineo/kolor/.counters/views-24h.svg)](https://sourcegraph.com/github.com/Justineo/kolor)
+
 *kolor* is a useful color manipulation tool in JavaScript.
 
 It provides color string parsing, format converting and basic color adjusting methods.
