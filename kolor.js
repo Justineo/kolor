@@ -118,6 +118,7 @@
             return Math.random() * (max - min) + min;
         },
 
+        // Extend the destination object from a source object.
         extend: function (dest, source) {
             for (var key in source) {
                 dest[key] = source[key];
