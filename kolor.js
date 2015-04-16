@@ -333,7 +333,7 @@
         };
         if (h1 === 0) {
             result.h1 = 360;
-        } else {
+        } else if (h2 === 0) {
             result.h2 = 360;
         }
         return result;
