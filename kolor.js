@@ -1,4 +1,4 @@
-(function(define) {
+(function (define) {
 
     // ## Config
     //
@@ -10,16 +10,16 @@
 
     // ## Utilities
 
-    var utils = {
+    var util = {
         // ### Object utils
 
         // Checks if the given value is a number.
-        isNumber: function(value) {
+        isNumber: function (value) {
             return '[object Number]' == Object.prototype.toString.call(value) && isFinite(value);
         },
 
         // Checks if the given value is a string.
-        isString: function(value) {
+        isString: function (value) {
             return '[object String]' == Object.prototype.toString.call(value);
         },
 
@@ -28,12 +28,12 @@
         // Return value can be 'String', 'Number', 'Object', 'Array', ...
         //
         // *Result might be different among browsers.*
-        typeOf: function(value) {
+        typeOf: function (value) {
             return Object.prototype.toString.call(value).slice(8, -1);
         },
 
         // Shorthand method for Object.prototype.hasOwnProperty.
-        has: function(obj, key) {
+        has: function (obj, key) {
             return Object.prototype.hasOwnProperty.call(obj, key);
         },
 
@@ -41,12 +41,12 @@
         // ### Array utils
 
         // Slices any array-ish object.
-        slice: function(arrayish, begin, end) {
+        slice: function (arrayish, begin, end) {
             return Array.prototype.slice.call(arrayish, begin, end);
         },
 
         // Swaps two array elements.
-        swap: function(items, i, j) {
+        swap: function (items, i, j) {
             var k = items[i];
             items[i] = items[j];
             items[j] = k;
@@ -54,18 +54,18 @@
 
         // Shuffles the given array using
         // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle).
-        shuffle: function(items) {
+        shuffle: function (items) {
             var i, j, l = items.length;
 
             for (i = l - 1; i > 0; i --) {
                 j = Math.floor(Math.random() * (i + 1));
-                utils.swap(items, i, j);
+                util.swap(items, i, j);
             }
         },
 
         // Iterates through the given array and produces a new array by mapping each value through
         // a given function.
-        map: function(source, callback, opt_this) {
+        map: function (source, callback, opt_this) {
             var results = [],
                 l = source.length,
                 i = l;
@@ -79,7 +79,7 @@
         // ### Number utils
 
         // Clamps a number to a given range.
-        clamp: function(value, min, max) {
+        clamp: function (value, min, max) {
             if (min > max) {
                 max = min + max;
                 min = max - min;
@@ -89,7 +89,7 @@
         },
 
         // Wraps a number inside a given range with modulo operation.
-        wrap: function(value, min, max) {
+        wrap: function (value, min, max) {
             var interval;
             if (min > max) {
                 max = min + max;
@@ -101,7 +101,7 @@
         },
 
         // Fills leading zeros for a number to make sure it has a fixed width.
-        zeroFill: function(number, width) {
+        zeroFill: function (number, width) {
             number += '';
             width -= number.length;
             if (width > 0) {
@@ -111,11 +111,18 @@
         },
 
         // Generates a random number in a given range.
-        random: function(min, max) {
+        random: function (min, max) {
             if (min === max) {
                 return min;
             }
             return Math.random() * (max - min) + min;
+        },
+
+        extend: function (dest, source) {
+            for (var key in source) {
+                dest[key] = source[key];
+            }
+            return dest;
         }
     };
 
@@ -125,157 +132,265 @@
     // ### Color name-hex map
     //
     // see [Named Colors, CSS Color Module Level 4](http://dev.w3.org/csswg/css-color/#named-colors)
-    var COLOR_MAP = {
-        "aliceblue": "#f0f8ff",
-        "antiquewhite": "#faebd7",
-        "aqua": "#00ffff",
-        "aquamarine": "#7fffd4",
-        "azure": "#f0ffff",
-        "beige": "#f5f5dc",
-        "bisque": "#ffe4c4",
-        "black": "#000000",
-        "blanchedalmond": "#ffebcd",
-        "blue": "#0000ff",
-        "blueviolet": "#8a2be2",
-        "brown": "#a52a2a",
-        "burlywood": "#deb887",
-        "cadetblue": "#5f9ea0",
-        "chartreuse": "#7fff00",
-        "chocolate": "#d2691e",
-        "coral": "#ff7f50",
-        "cornflowerblue": "#6495ed",
-        "cornsilk": "#fff8dc",
-        "crimson": "#dc143c",
-        "cyan": "#00ffff",
-        "darkblue": "#00008b",
-        "darkcyan": "#008b8b",
-        "darkgoldenrod": "#b8860b",
-        "darkgray": "#a9a9a9",
-        "darkgreen": "#006400",
-        "darkgrey": "#a9a9a9",
-        "darkkhaki": "#bdb76b",
-        "darkmagenta": "#8b008b",
-        "darkolivegreen": "#556b2f",
-        "darkorange": "#ff8c00",
-        "darkorchid": "#9932cc",
-        "darkred": "#8b0000",
-        "darksalmon": "#e9967a",
-        "darkseagreen": "#8fbc8f",
-        "darkslateblue": "#483d8b",
-        "darkslategray": "#2f4f4f",
-        "darkslategrey": "#2f4f4f",
-        "darkturquoise": "#00ced1",
-        "darkviolet": "#9400d3",
-        "deeppink": "#ff1493",
-        "deepskyblue": "#00bfff",
-        "dimgray": "#696969",
-        "dimgrey": "#696969",
-        "dodgerblue": "#1e90ff",
-        "firebrick": "#b22222",
-        "floralwhite": "#fffaf0",
-        "forestgreen": "#228b22",
-        "fuchsia": "#ff00ff",
-        "gainsboro": "#dcdcdc",
-        "ghostwhite": "#f8f8ff",
-        "gold": "#ffd700",
-        "goldenrod": "#daa520",
-        "gray": "#808080",
-        "green": "#008000",
-        "greenyellow": "#adff2f",
-        "grey": "#808080",
-        "honeydew": "#f0fff0",
-        "hotpink": "#ff69b4",
-        "indianred": "#cd5c5c",
-        "indigo": "#4b0082",
-        "ivory": "#fffff0",
-        "khaki": "#f0e68c",
-        "lavender": "#e6e6fa",
-        "lavenderblush": "#fff0f5",
-        "lawngreen": "#7cfc00",
-        "lemonchiffon": "#fffacd",
-        "lightblue": "#add8e6",
-        "lightcoral": "#f08080",
-        "lightcyan": "#e0ffff",
-        "lightgoldenrodyellow": "#fafad2",
-        "lightgray": "#d3d3d3",
-        "lightgreen": "#90ee90",
-        "lightgrey": "#d3d3d3",
-        "lightpink": "#ffb6c1",
-        "lightsalmon": "#ffa07a",
-        "lightseagreen": "#20b2aa",
-        "lightskyblue": "#87cefa",
-        "lightslategray": "#778899",
-        "lightslategrey": "#778899",
-        "lightsteelblue": "#b0c4de",
-        "lightyellow": "#ffffe0",
-        "lime": "#00ff00",
-        "limegreen": "#32cd32",
-        "linen": "#faf0e6",
-        "magenta": "#ff00ff",
-        "maroon": "#800000",
-        "mediumaquamarine": "#66cdaa",
-        "mediumblue": "#0000cd",
-        "mediumorchid": "#ba55d3",
-        "mediumpurple": "#9370db",
-        "mediumseagreen": "#3cb371",
-        "mediumslateblue": "#7b68ee",
-        "mediumspringgreen": "#00fa9a",
-        "mediumturquoise": "#48d1cc",
-        "mediumvioletred": "#c71585",
-        "midnightblue": "#191970",
-        "mintcream": "#f5fffa",
-        "mistyrose": "#ffe4e1",
-        "moccasin": "#ffe4b5",
-        "navajowhite": "#ffdead",
-        "navy": "#000080",
-        "oldlace": "#fdf5e6",
-        "olive": "#808000",
-        "olivedrab": "#6b8e23",
-        "orange": "#ffa500",
-        "orangered": "#ff4500",
-        "orchid": "#da70d6",
-        "palegoldenrod": "#eee8aa",
-        "palegreen": "#98fb98",
-        "paleturquoise": "#afeeee",
-        "palevioletred": "#db7093",
-        "papayawhip": "#ffefd5",
-        "peachpuff": "#ffdab9",
-        "peru": "#cd853f",
-        "pink": "#ffc0cb",
-        "plum": "#dda0dd",
-        "powderblue": "#b0e0e6",
-        "purple": "#800080",
-        "red": "#ff0000",
-        "rebeccapurple": "#663399",
-        "rosybrown": "#bc8f8f",
-        "royalblue": "#4169e1",
-        "saddlebrown": "#8b4513",
-        "salmon": "#fa8072",
-        "sandybrown": "#f4a460",
-        "seagreen": "#2e8b57",
-        "seashell": "#fff5ee",
-        "sienna": "#a0522d",
-        "silver": "#c0c0c0",
-        "skyblue": "#87ceeb",
-        "slateblue": "#6a5acd",
-        "slategray": "#708090",
-        "slategrey": "#708090",
-        "snow": "#fffafa",
-        "springgreen": "#00ff7f",
-        "steelblue": "#4682b4",
-        "tan": "#d2b48c",
-        "teal": "#008080",
-        "thistle": "#d8bfd8",
-        "tomato": "#ff6347",
-        "turquoise": "#40e0d0",
-        "violet": "#ee82ee",
-        "wheat": "#f5deb3",
-        "white": "#ffffff",
-        "whitesmoke": "#f5f5f5",
-        "yellow": "#ffff00",
-        "yellowgreen": "#9acd32"
+    var NAMED_COLORS = {
+        aliceblue: '#f0f8ff',
+        antiquewhite: '#faebd7',
+        aqua: '#00ffff',
+        aquamarine: '#7fffd4',
+        azure: '#f0ffff',
+        beige: '#f5f5dc',
+        bisque: '#ffe4c4',
+        black: '#000000',
+        blanchedalmond: '#ffebcd',
+        blue: '#0000ff',
+        blueviolet: '#8a2be2',
+        brown: '#a52a2a',
+        burlywood: '#deb887',
+        cadetblue: '#5f9ea0',
+        chartreuse: '#7fff00',
+        chocolate: '#d2691e',
+        coral: '#ff7f50',
+        cornflowerblue: '#6495ed',
+        cornsilk: '#fff8dc',
+        crimson: '#dc143c',
+        cyan: '#00ffff',
+        darkblue: '#00008b',
+        darkcyan: '#008b8b',
+        darkgoldenrod: '#b8860b',
+        darkgray: '#a9a9a9',
+        darkgreen: '#006400',
+        darkgrey: '#a9a9a9',
+        darkkhaki: '#bdb76b',
+        darkmagenta: '#8b008b',
+        darkolivegreen: '#556b2f',
+        darkorange: '#ff8c00',
+        darkorchid: '#9932cc',
+        darkred: '#8b0000',
+        darksalmon: '#e9967a',
+        darkseagreen: '#8fbc8f',
+        darkslateblue: '#483d8b',
+        darkslategray: '#2f4f4f',
+        darkslategrey: '#2f4f4f',
+        darkturquoise: '#00ced1',
+        darkviolet: '#9400d3',
+        deeppink: '#ff1493',
+        deepskyblue: '#00bfff',
+        dimgray: '#696969',
+        dimgrey: '#696969',
+        dodgerblue: '#1e90ff',
+        firebrick: '#b22222',
+        floralwhite: '#fffaf0',
+        forestgreen: '#228b22',
+        fuchsia: '#ff00ff',
+        gainsboro: '#dcdcdc',
+        ghostwhite: '#f8f8ff',
+        gold: '#ffd700',
+        goldenrod: '#daa520',
+        gray: '#808080',
+        green: '#008000',
+        greenyellow: '#adff2f',
+        grey: '#808080',
+        honeydew: '#f0fff0',
+        hotpink: '#ff69b4',
+        indianred: '#cd5c5c',
+        indigo: '#4b0082',
+        ivory: '#fffff0',
+        khaki: '#f0e68c',
+        lavender: '#e6e6fa',
+        lavenderblush: '#fff0f5',
+        lawngreen: '#7cfc00',
+        lemonchiffon: '#fffacd',
+        lightblue: '#add8e6',
+        lightcoral: '#f08080',
+        lightcyan: '#e0ffff',
+        lightgoldenrodyellow: '#fafad2',
+        lightgray: '#d3d3d3',
+        lightgreen: '#90ee90',
+        lightgrey: '#d3d3d3',
+        lightpink: '#ffb6c1',
+        lightsalmon: '#ffa07a',
+        lightseagreen: '#20b2aa',
+        lightskyblue: '#87cefa',
+        lightslategray: '#778899',
+        lightslategrey: '#778899',
+        lightsteelblue: '#b0c4de',
+        lightyellow: '#ffffe0',
+        lime: '#00ff00',
+        limegreen: '#32cd32',
+        linen: '#faf0e6',
+        magenta: '#ff00ff',
+        maroon: '#800000',
+        mediumaquamarine: '#66cdaa',
+        mediumblue: '#0000cd',
+        mediumorchid: '#ba55d3',
+        mediumpurple: '#9370db',
+        mediumseagreen: '#3cb371',
+        mediumslateblue: '#7b68ee',
+        mediumspringgreen: '#00fa9a',
+        mediumturquoise: '#48d1cc',
+        mediumvioletred: '#c71585',
+        midnightblue: '#191970',
+        mintcream: '#f5fffa',
+        mistyrose: '#ffe4e1',
+        moccasin: '#ffe4b5',
+        navajowhite: '#ffdead',
+        navy: '#000080',
+        oldlace: '#fdf5e6',
+        olive: '#808000',
+        olivedrab: '#6b8e23',
+        orange: '#ffa500',
+        orangered: '#ff4500',
+        orchid: '#da70d6',
+        palegoldenrod: '#eee8aa',
+        palegreen: '#98fb98',
+        paleturquoise: '#afeeee',
+        palevioletred: '#db7093',
+        papayawhip: '#ffefd5',
+        peachpuff: '#ffdab9',
+        peru: '#cd853f',
+        pink: '#ffc0cb',
+        plum: '#dda0dd',
+        powderblue: '#b0e0e6',
+        purple: '#800080',
+        red: '#ff0000',
+        rebeccapurple: '#663399',
+        rosybrown: '#bc8f8f',
+        royalblue: '#4169e1',
+        saddlebrown: '#8b4513',
+        salmon: '#fa8072',
+        sandybrown: '#f4a460',
+        seagreen: '#2e8b57',
+        seashell: '#fff5ee',
+        sienna: '#a0522d',
+        silver: '#c0c0c0',
+        skyblue: '#87ceeb',
+        slateblue: '#6a5acd',
+        slategray: '#708090',
+        slategrey: '#708090',
+        snow: '#fffafa',
+        springgreen: '#00ff7f',
+        steelblue: '#4682b4',
+        tan: '#d2b48c',
+        teal: '#008080',
+        thistle: '#d8bfd8',
+        tomato: '#ff6347',
+        turquoise: '#40e0d0',
+        violet: '#ee82ee',
+        wheat: '#f5deb3',
+        white: '#ffffff',
+        whitesmoke: '#f5f5f5',
+        yellow: '#ffff00',
+        yellowgreen: '#9acd32',
+
+        transparent: 'rgba(0, 0, 0, 0)' // CSS keyword
     };
 
+    // ### Named hues
+    //
+    // see [Simple Named Hues: the <named-hue> term, CSS Color Module Level 4](http://dev.w3.org/csswg/css-color/#simple-hues)
+    //
+    // #### Base hues
+    var BASE_HUE = {
+        red: 0,
+        orange: 30,
+        yellow: 60,
+        green: 120,
+        blue: 240,
+        purple: 300
+    };
+
+    // #### Splash hues
+    var SPLASH_HUE = {
+        reddish: 0,
+        orangish: 30,
+        yellowish: 60,
+        greenish: 120,
+        bluish: 240,
+        purplish: 300
+    };
+
+    // Sorted base hues in array
+    var NAMED_HUE_INDEX = {
+        0: 0,
+        30: 1,
+        60: 2,
+        120: 3,
+        240: 4,
+        300: 5
+    };
+
+    // 0 -> 360 in some circumstances for correct calculation
+    function fixHues(h1, h2) {
+        var diff = Math.abs(NAMED_HUE_INDEX[h1] - NAMED_HUE_INDEX[h2]);
+        if (diff !== 1 && diff !== 5) {
+            return false;
+        }
+
+        var result = {
+            h1: h1,
+            h2: h2
+        };
+        if (h1 === 0) {
+            result.h1 = 360;
+        } else {
+            result.h2 = 360;
+        }
+        return result;
+    }
+
+    // Parses simple named hues
+    function parseNamedHues(value) {
+        var tokens = value.split(/\s+/),
+            l = tokens.length;
+
+        if (l < 1 || l > 2) {
+            return false;
+        }
+
+        var t1 = tokens[l - 1].toLowerCase();
+
+        if (!(t1 in BASE_HUE)) {
+            return false;
+        }
+
+        var h1 = BASE_HUE[t1];
+
+        // single-value syntax
+        if (l === 1) {
+            return h1;
+        }
+
+        // double-value syntax
+        var h2,
+            t2 = tokens[0].toLowerCase(),
+            hues;
+        if (t2 in BASE_HUE) {
+            h2 = BASE_HUE[t2];
+            hues = fixHues(h1, h2);
+            return hues ? (hues.h1 + hues.h2) / 2 : false;
+        } else if (t2 in SPLASH_HUE) {
+            h2 = SPLASH_HUE[t2];
+            hues = fixHues(h1, h2);
+            return hues ? (hues.h1 + (hues.h2 - hues.h1) / 4) : false;
+        } else {
+            var found = t2.match(/(\w+)\(\s*([^\)]+)\s*\)/i);
+            if (!found) {
+                return false;
+            }
+            t2 = found[1];
+            if (t2 in SPLASH_HUE) {
+                h2 = SPLASH_HUE[t2];
+                hues = fixHues(h1, h2);
+                var percent = DATATYPES[PERCENT].parse(found[2]);
+                if (percent === false) {
+                    return percent;
+                }
+                return hues ? (hues.h1 + (hues.h2 - hues.h1) * percent) : false;
+            }
+        }
+
+        return false;
+    }
 
     // ### Color value data type flags
     //
@@ -286,171 +401,274 @@
     // * PERCENT: 10%, 87.53%, ...
     var INTEGER = 1,
         NUMBER = 2,
-        PERCENT = 4;
+        PERCENT = 4,
+        HUE = 8;
 
     // ### Utils for each data type
     //
     // * *parse* - gets valid value from various types of input.
     // * *stringify* - produces string value according to actual data value.
     var DATATYPES = {
-            1: {
-                flag: INTEGER,
-                parse: function(value) {
-                    switch (utils.typeOf(value)) {
-                        case 'Number':
-                            value = Math.round(value);
-                            break;
-                        case 'String':
-                            if (value.match(/^[\-+]?\d+$/i)) {
-                                value = parseInt(value, 10);
-                            } else {
-                                value = false;
-                            }
-                            break;
-                        default:
+        1: {
+            flag: INTEGER,
+            parse: function (value) {
+                switch (util.typeOf(value)) {
+                    case 'Number':
+                        value = Math.round(value);
+                        break;
+                    case 'String':
+                        if (value.match(/^[\-+]?\d+$/i)) {
+                            value = parseInt(value, 10);
+                        } else {
                             value = false;
-                    }
-                    return value;
-                },
-                stringify: function(value) {
-                    return Math.round(value) + '';
+                        }
+                        break;
+                    default:
+                        value = false;
                 }
+                return value;
             },
-            2: {
-                flag: NUMBER,
-                parse: function(value) {
-                    switch (utils.typeOf(value)) {
-                        case 'Number':
-                            break;
-                        case 'String':
-                            if (value.match(/^[\-+]?\d+(?:\.\d+)?$|^[\-+]?\.\d+$/i)) {
-                                value = parseFloat(value);
-                            } else {
-                                value = false;
-                            }
-                            break;
-                        default:
-                            value = false;
-                    }
-                    return value;
-                },
-                stringify: function(value) {
-                    var precision = config.cssPrecision;
-                    return precision === 'auto'
-                        ? value + ''
-                        : parseFloat(value.toFixed(precision)) + '';
-                }
-            },
-            4: {
-                flag: PERCENT,
-                parse: function(value) {
-                    switch (utils.typeOf(value)) {
-                        case 'String':
-                            if (value.match(/^[\-+]?\d+(?:\.\d+)?%$|^[\-+]?\.\d+%$/i)) {
-                                value = parseFloat(value) / 100;
-                            } else {
-                                value = false;
-                            }
-                            break;
-                        default:
-                            value = false;
-                    }
-                    return value;
-                },
-                stringify: function(value) {
-                    var precision = config.cssPrecision;
-                    return precision === 'auto'
-                        ? value * 100 + '%'
-                        : parseFloat((value * 100).toFixed(precision)) + '%';
-                }
+            stringify: function (value) {
+                return Math.round(value) + '';
             }
-        };
+        },
+        2: {
+            flag: NUMBER,
+            parse: function (value) {
+                switch (util.typeOf(value)) {
+                    case 'Number':
+                        break;
+                    case 'String':
+                        if (value.match(/^[\-+]?\d+(?:\.\d+)?$|^[\-+]?\.\d+$/i)) {
+                            value = parseFloat(value);
+                        } else {
+                            value = false;
+                        }
+                        break;
+                    default:
+                        value = false;
+                }
+                return value;
+            },
+            stringify: function (value) {
+                var precision = config.cssPrecision;
+                return precision === 'auto'
+                    ? value + ''
+                    : parseFloat(value.toFixed(precision)) + '';
+            }
+        },
+        4: {
+            flag: PERCENT,
+            parse: function (value) {
+                switch (util.typeOf(value)) {
+                    case 'String':
+                        if (value.match(/^[\-+]?\d+(?:\.\d+)?%$|^[\-+]?\.\d+%$/i)) {
+                            value = parseFloat(value) / 100;
+                        } else {
+                            value = false;
+                        }
+                        break;
+                    default:
+                        value = false;
+                }
+                return value;
+            },
+            stringify: function (value) {
+                var precision = config.cssPrecision;
+                return precision === 'auto'
+                    ? value * 100 + '%'
+                    : parseFloat((value * 100).toFixed(precision)) + '%';
+            }
+        },
+        8: {
+            flag: HUE,
+            parse: function (value) {
+                switch (util.typeOf(value)) {
+                    case 'String':
+                        if (value.match(/^[\-+]?\d+(?:\.\d+)?deg$|^[\-+]?\.\d+deg$/i)) {
+                            value = parseFloat(value);
+                        } else if (value = parseNamedHues(value)) {
+                            // do nothing
+                        } else {
+                            value = false;
+                        }
+                        break;
+                    default:
+                        value = false;
+                }
+                return value;
+            },
+            stringify: function (value) {
+                var precision = config.cssPrecision;
+                return precision === 'auto'
+                    ? value + 'deg'
+                    : parseFloat(value.toFixed(precision)) + 'deg';
+            }
+        }
+    };
 
     // ### Value filters
     function CLAMP(value) {
-        return utils.clamp(value, this.range[0], this.range[1]);
+        return util.clamp(value, this.range[0], this.range[1]);
     }
 
 
     function MOD(value) {
-        return utils.wrap(value, this.range[0], this.range[1]);
+        return util.wrap(value, this.range[0], this.range[1]);
     }
 
-    // ### Color format configurations
-    var FORMATS = {
+    // ### Color channels
+    //
+    function Channel(options) {
+        util.extend(this, options);
+    }
+
+    // #### Channel.create(*type*, *name*, *alias*[, *options*])
+    //
+    // Create a color channel.
+    //
+    // ##### Parameters
+    // * *type* - the channel type.
+    // * *name* - the name of the channel.
+    // * *alias* - the alias of the channel.
+    // * *options* - additional options of the channel.
+    //
+    // ##### Return values
+    // Returns the created channel object.
+    Channel.create = function (type, name, alias, options) {
+        return new type(util.extend(options || {}, {
+            name: name,
+            alias: alias
+        }));
+    };
+
+    // Constructor for 0~255 integer or percentage.
+    function Octet() {
+        this.dataType = INTEGER|PERCENT;
+        this.cssType = INTEGER;
+        this.range = [0, 255];
+        this.filter = CLAMP;
+        this.initial = 255;
+        Channel.apply(this, arguments);
+    }
+    Octet.prototype = new Channel();
+    Octet.prototype.constructor = Octet;
+
+    // Constructor for channel can be number from 0~1 or percentage.
+    function Ratio() {
+        this.dataType = NUMBER|PERCENT;
+        this.cssType = NUMBER;
+        this.range = [0, 1];
+        this.filter = CLAMP;
+        this.initial = 1;
+        Channel.apply(this, arguments);
+    }
+    Ratio.prototype = new Channel();
+    Ratio.prototype.constructor = Ratio;
+
+    // Constructor for those channel can be .
+    function Hue() {
+        this.dataType = NUMBER|HUE;
+        this.cssType = NUMBER;
+        this.range = [0, 360];
+        this.filter = MOD;
+        this.initial = 0;
+        Channel.apply(this, arguments);
+    }
+    Hue.prototype = new Channel();
+    Hue.prototype.constructor = Hue;
+
+    // ### Color space configurations
+    var SPACES = {
         RGB: {
             channels: [
-                { name: 'red', shorthand: 'r', dataType: INTEGER|PERCENT, cssType: INTEGER, range: [0, 255], filter: CLAMP, initial: 255 },
-                { name: 'green', shorthand: 'g', dataType: INTEGER|PERCENT, cssType: INTEGER, range: [0, 255], filter: CLAMP, initial: 255 },
-                { name: 'blue', shorthand: 'b', dataType: INTEGER|PERCENT, cssType: INTEGER, range: [0, 255], filter: CLAMP, initial: 255 }
+                Channel.create(Octet, 'red', 'r'),
+                Channel.create(Octet, 'green', 'g'),
+                Channel.create(Octet, 'blue', 'b')
             ],
             pattern: /rgb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         RGBA: {
             channels: [
-                { name: 'red', shorthand: 'r', dataType: INTEGER|PERCENT, cssType: INTEGER, range: [0, 255], filter: CLAMP, initial: 255 },
-                { name: 'green', shorthand: 'g', dataType: INTEGER|PERCENT, cssType: INTEGER, range: [0, 255], filter: CLAMP, initial: 255 },
-                { name: 'blue', shorthand: 'b', dataType: INTEGER|PERCENT, cssType: INTEGER, range: [0, 255], filter: CLAMP, initial: 255 },
-                { name: 'alpha', shorthand: 'a', dataType: NUMBER|PERCENT, cssType: NUMBER, range: [0, 1], filter: CLAMP, initial: 1 }
+                Channel.create(Octet, 'red', 'r'),
+                Channel.create(Octet, 'green', 'g'),
+                Channel.create(Octet, 'blue', 'b'),
+                Channel.create(Ratio, 'alpha', 'a')
             ],
             pattern: /rgba\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSL: {
             channels: [
-                { name: 'hue', shorthand: 'h', dataType: NUMBER, cssType: NUMBER, range: [0, 360], filter: MOD, initial: 0 },
-                { name: 'saturation', shorthand: 's', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
-                { name: 'lightness', shorthand: 'l', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 }
+                Channel.create(Hue, 'hue', 'h'),
+                Channel.create(Ratio, 'saturation', 's'),
+                Channel.create(Ratio, 'lightness', 'l')
             ],
             pattern: /hsl\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSLA: {
             channels: [
-                { name: 'hue', shorthand: 'h', dataType: NUMBER, cssType: NUMBER, range: [0, 360], filter: MOD, initial: 0 },
-                { name: 'saturation', shorthand: 's', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
-                { name: 'lightness', shorthand: 'l', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
-                { name: 'alpha', shorthand: 'a', dataType: NUMBER|PERCENT, cssType: NUMBER, range: [0, 1], filter: CLAMP, initial: 1 }
+                Channel.create(Hue, 'hue', 'h'),
+                Channel.create(Ratio, 'saturation', 's'),
+                Channel.create(Ratio, 'lightness', 'l'),
+                Channel.create(Ratio, 'alpha', 'a')
             ],
             pattern: /hsla\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSV: {
             channels: [
-                { name: 'hue', shorthand: 'h', dataType: NUMBER, cssType: NUMBER, range: [0, 360], filter: MOD, initial: 0 },
-                { name: 'saturation', shorthand: 's', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
-                { name: 'value', shorthand: 'v', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 }
+                Channel.create(Hue, 'hue', 'h'),
+                Channel.create(Ratio, 'saturation', 's'),
+                Channel.create(Ratio, 'value', 'v'),
             ],
             pattern: /hsv\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSVA: {
             channels: [
-                { name: 'hue', shorthand: 'h', dataType: NUMBER, cssType: NUMBER, range: [0, 360], filter: MOD, initial: 0 },
-                { name: 'saturation', shorthand: 's', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
-                { name: 'value', shorthand: 'v', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
-                { name: 'alpha', shorthand: 'a', dataType: NUMBER|PERCENT, cssType: NUMBER, range: [0, 1], filter: CLAMP, initial: 1 }
+                Channel.create(Hue, 'hue', 'h'),
+                Channel.create(Ratio, 'saturation', 's'),
+                Channel.create(Ratio, 'value', 'v'),
+                Channel.create(Ratio, 'alpha', 'a')
             ],
             pattern: /hsva\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HWB: {
             channels: [
-                { name: 'hue', shorthand: 'h', dataType: NUMBER, cssType: NUMBER, range: [0, 360], filter: MOD, initial: 0 },
-                { name: 'whiteness', shorthand: 'w', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
-                { name: 'blackness', shorthand: 'b', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
-                { name: 'alpha', shorthand: 'a', dataType: NUMBER|PERCENT, cssType: NUMBER, range: [0, 1], filter: CLAMP, initial: 1 }
+                Channel.create(Hue, 'hue', 'h'),
+                Channel.create(Ratio, 'whiteness', 'w'),
+                Channel.create(Ratio, 'blackness', 'b'),
+                Channel.create(Ratio, 'alpha', 'a')
             ],
             pattern: /hwb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,\)]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
+        },
+        GRAY: {
+            channels: [
+                Channel.create(Octet, 'shade', 's'),
+                Channel.create(Ratio, 'alpha', 'a')
+            ],
+            pattern: /gray\(\s*([^,\)]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
+        },
+        CMYK: {
+            channels: [
+                Channel.create(Octet, 'cyan', 'c'),
+                Channel.create(Octet, 'magenta', 'm'),
+                Channel.create(Octet, 'yellow', 'y'),
+                Channel.create(Ratio, 'black', ['b', 'k'])
+            ],
+            pattern: /(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*\)/i
         }
     };
 
-    // ### Format converter algorithms
+    // ### Space converting algorithms
 
-    // Clones a color object in the same format.
+    // Clones a color object in the same space.
     function CLONE() {
         return kolor(this);
     }
 
     // Produces a new color object by adding alpha channel to the old one.
     function ADD_ALPHA() {
-        var format = this.format(),
-            channels = FORMATS[format].channels,
+        var space = this.space(),
+            channels = SPACES[space].channels,
             l = channels.length,
             result = [];
 
@@ -458,20 +676,37 @@
             result.push(this[channels[i].name]());
         }
         result.push(1);
-        return new kolor[format + 'A'](result);
+        return new kolor[space + 'A'](result);
     }
 
     // Produces a new color object by removing alpha channel from the old one.
     function REMOVE_ALPHA() {
-        var format = this.format(),
-            channels = FORMATS[format].channels,
+        var space = this.space(),
+            channels = SPACES[space].channels,
             l = channels.length,
             result = [];
 
         for (var i = 0; i < l - 1; i++) {
             result.push(this[channels[i].name]());
         }
-        return new kolor[format.slice(0, -1)](result);
+        return new kolor[space.slice(0, -1)](result);
+    }
+
+    // Naively converts RGB color to CMYK
+    function RGB_TO_CMYK() {
+        var r = this.r() / 255,
+            g = this.g() / 255,
+            b = this.b() / 255
+            black = 1 - Math.max(r, g, b);
+
+        if (black === 0) {
+            return kolor.cmyk(0, 0, 0, 0);
+        }
+
+        var c = (1 - r - black) / (1 - black) * 255,
+            m = (1 - g - black) / (1 - black) * 255,
+            y = (1 - b - black) / (1 - black) * 255;
+        return kolor.cmyk(c, m, y, black);
     }
 
     // Converts RGBA color to HSLA.
@@ -545,18 +780,9 @@
         return kolor.hsva(h, s, v, a);
     }
 
-    // Converts RGBA color to HWB
-    function RGBA_TO_HWB() {
-        var r = this.r(),
-            g = this.g(),
-            b = this.b(),
-            a = this.a(),
-            hwb = {};
-
-        hwb.h = this.hsla().h();
-        hwb.w = 1 / 255 * Math.min(r, g, b);
-        hwb.b = 1 - 1 / 255 * Math.max(r, g, b);
-        return kolor.hwb(hwb.h, hwb.w, hwb.b, hwb.a);
+    // Converts RGBA color to GRAY
+    function RGBA_TO_GRAY() {
+        return this.grayscale();
     }
 
     // Converts HSLA color to RGBA.
@@ -635,29 +861,55 @@
         return kolor.rgba(rgba);
     }
 
-    // Converts HWB color to RGBA.
-    function HWB_TO_RGBA() {
-        var h = this.hue(),
-            w = this.whiteness(),
-            b = this.blackness(),
-            a = this.alpha();
-        var rgba = HSLA_TO_RGBA.call(kolor.hsla(h, 1, 0.5, a)).toArray();
-        for(var i = 0; i < 3; i++) {
-            rgba[i] *= (1 - w - b);
-            rgba[i] += w;
-        }
-        return kolor.rgba(rgba);
+    // Converts HSVA color to HWB.
+    function HSVA_TO_HWB() {
+        var h = this.h(),
+            s = this.s(),
+            v = this.v(),
+            a = this.a();
+        return kolor.hwb(h, (1 - s) * v, 1 - v);
+    }
+
+    // Converts HWB color to HSVA.
+    function HWB_TO_HSVA() {
+        var h = this.h(),
+            w = this.w(),
+            b = this.b(),
+            a = this.a();
+        return kolor.hsva(h, 1 - w / (1 - b), 1 - b, a);
+    }
+
+    // Converts GRAY color to RGBA.
+    function GRAY_TO_RGBA() {
+        var s = this.s(),
+            a = this.a();
+
+        return kolor.rgba(s, s, s, a);
+    }
+
+    // Naively converts CMYK color to RGBA.
+    function CMYK_TO_RGB() {
+        var c = this.c() / 255,
+            m = this.m() / 255,
+            y = this.y() / 255,
+            black = this.b();
+
+        var r = 1 - Math.min(1, c * (1 - black) + black);
+            g = 1 - Math.min(1, m * (1 - black) + black);
+            b = 1 - Math.min(1, y * (1 - black) + black);
+        return kolor.rgb(r, g, b);
     }
 
     var CONVERTERS = {
         RGB: {
-            RGBA: ADD_ALPHA
+            RGBA: ADD_ALPHA,
+            CMYK: RGB_TO_CMYK
         },
         RGBA: {
             RGB: REMOVE_ALPHA,
             HSLA: RGBA_TO_HSLA,
             HSVA: RGBA_TO_HSVA,
-            HWB: RGBA_TO_HWB
+            GRAY: RGBA_TO_GRAY
         },
         HSL: {
             HSLA: ADD_ALPHA
@@ -671,10 +923,17 @@
         },
         HSVA: {
             HSV: REMOVE_ALPHA,
-            RGBA: HSVA_TO_RGBA
+            RGBA: HSVA_TO_RGBA,
+            HWB: HSVA_TO_HWB,
         },
         HWB: {
-            RGBA: HWB_TO_RGBA
+            HSVA: HWB_TO_HSVA
+        },
+        GRAY: {
+            RGB: GRAY_TO_RGBA
+        },
+        CMYK: {
+            RGB: CMYK_TO_RGB
         }
     };
 
@@ -706,11 +965,11 @@
             }
         }
 
-        throw new Error('Insufficient converters to convert ' + from + ' colors into ' + to + '.');
+        return null;
     }
 
 
-    // Filters input value according to data type definitions and color format configurations.
+    // Filters input value according to data type definitions and color space configurations.
     function filterValue(value, channel) {
         var type;
         for (var key in DATATYPES) {
@@ -739,31 +998,31 @@
     //
     // * *exp* - the expression to be parsed. If *exp* is another color object, the factory method clones and
     // returns it as the result. If *exp* is a string, it can be any of the following types:
-    //        * A color name defined in `COLOR_MAP`.
+    //        * A color name defined in `NAMED_COLORS`.
     //        * A hex value like `#FF0000`, `#F00`, or even `ff0000`, `F00`, etc.
     //        * A CSS-style color expression like `rgba(255, 0, 0, 1)`, `hsl(120, 50%, 25%)`, etc.
     //
     // ##### Return values
     //
-    // Returns a color object in a certain format decided by the given expression. Color names and hex values
-    // result in RGB colors, while CSS-style expressions specify the output format themselves.
-    var kolor = function(exp) {
+    // Returns a color object in a certain space decided by the given expression. Color names and hex values
+    // result in RGB colors, while CSS-style expressions specify the output space themselves.
+    var kolor = function (exp) {
 
-        // Check if the input is another color object by checking the private attribute `_format`.
-        if (exp._format && utils.has(kolor, exp._format)) {
-            return new kolor[exp._format](exp.toArray());
+        // Check if the input is another color object by checking the private attribute `_space`.
+        if (exp._space && util.has(kolor, exp._space)) {
+            return new kolor[exp._space](exp.toArray());
         }
 
         // Check if the input is a predefined color name and create again using hex value on success.
-        if (utils.has(COLOR_MAP, exp)) {
-            return kolor(COLOR_MAP[exp.toLowerCase()]);
+        if (util.has(NAMED_COLORS, exp)) {
+            return kolor(NAMED_COLORS[exp.toLowerCase()]);
         }
 
         // Try to match hex values, return RGB color on success.
-        var matches = /^\s*#?([0-9a-f]{3}|[0-9a-f]{6})\s*$/i.exec(exp),
+        var found = /^\s*#?([0-9a-f]{3}|[0-9a-f]{6})\s*$/i.exec(exp),
             hex, rgb = [];
-        if (matches) {
-            hex = matches[1];
+        if (found) {
+            hex = found[1];
             if (hex.length === 3) {
                 hex = [hex.charAt(0), hex.charAt(0), hex.charAt(1), hex.charAt(1), hex.charAt(2), hex.charAt(2)].join('');
             }
@@ -773,11 +1032,11 @@
             return new kolor.RGB(rgb);
         }
 
-        // Recognize specific format with pattern mathing and return color object in corresponding format.
-        for (var key in FORMATS) {
-            matches = FORMATS[key].pattern.exec(exp);
-            if (matches) {
-                var args = matches.slice(1);
+        // Recognize specific space with pattern mathing and return color object in corresponding space.
+        for (var key in SPACES) {
+            found = SPACES[key].pattern.exec(exp);
+            if (found) {
+                var args = found.slice(1);
                 return new kolor[key](args);
             }
         }
@@ -786,13 +1045,13 @@
         return false;
     };
 
-    for (var key in FORMATS) {
+    for (var key in SPACES) {
 
-        // ### Factory methods for each color format
+        // ### Factory methods for each color space
 
-        // #### kolor.*format*(*values*)
+        // #### kolor.*space*(*values*)
         //
-        // Creates a color object using a format name defined in `FORMATS`.
+        // Creates a color object using a space name defined in `SPACES`.
         //
         // ##### Parameters
         //
@@ -804,10 +1063,10 @@
         //    * kolor.rgb(255, 0, 0)
         //    * kolor.rgb([255, 0, 0])
         //    * kolor.rgb({ r: 255, g: 0, b: 0 })
-        kolor[key.toLowerCase()] = (function(key) {
+        kolor[key.toLowerCase()] = (function (key) {
             return function () {
-                var args = utils.slice(arguments, 0),
-                    type = utils.typeOf(args[0]);
+                var args = util.slice(arguments, 0),
+                    type = util.typeOf(args[0]);
                 if (type === 'Array' || type === 'Object') {
                     args = args[0];
                 }
@@ -815,29 +1074,29 @@
             };
         }(key));
 
-        var format = FORMATS[key],
-            channels = format.channels;
+        var space = SPACES[key],
+            channels = space.channels;
 
         // ### Constructor
         //
         // When `kolor` is used as a factory method, it will call these constructors.
-        kolor[key] = (function(key) {
-            return function(args) {
-                var channels = FORMATS[key].channels,
+        kolor[key] = (function (key) {
+            return function (args) {
+                var channels = SPACES[key].channels,
                     l = channels.length;
                 args = args == null ? [] : args;
-                this._format = key;
+                this._space = key;
                 for (var i = l; i--;) {
                     var channel = channels[i],
                         name = channel.name,
-                        shorthand = channel.shorthand,
+                        alias = channel.alias,
                         param;
                     if (args[i] != null) {
                         param = args[i];
-                    } else if (utils.has(args, name)) {
+                    } else if (util.has(args, name)) {
                         param = args[name];
-                    } else if (utils.has(args, shorthand)) {
-                        param = args[shorthand];
+                    } else if (util.has(args, alias)) {
+                        param = args[alias];
                     } else {
                         param = channel.initial;
                     }
@@ -853,7 +1112,7 @@
         //
         // kolor uses jQuery-like accessors.
         //
-        // Different color formats have different accessors, for example
+        // Different color spaces have different accessors, for example
         //
         // * for RGB colors `color.red()` retrieves channel value and `color.red(100)` sets it;
         // * for HSL we've got `color.hue()` and `color.hue(120)`
@@ -871,12 +1130,12 @@
         // getter.
         for (var i = channels.length; i--;) {
             var channel = channels[i],
-                shorthand = channel.shorthand;
+                alias = channel.alias;
 
-            kolor[key].prototype[channel.name] = kolor[key].prototype[shorthand] = function(i) {
+            kolor[key].prototype[channel.name] = function (i) {
                 var channel = channels[i],
-                    prop = '_' + channel.shorthand;
-                return function(value) {
+                    prop = '_' + channel.alias;
+                return function (value) {
                     if (value != null) {
                         this[prop] = this[i] = filterValue(value, channel);
                         return this;
@@ -885,39 +1144,60 @@
                     }
                 };
             }(i);
+
+            if (util.typeOf(alias) === 'String') {
+                alias = [alias];
+            }
+            for (var j = alias.length; j--;) {
+                kolor[key].prototype[alias[j]] = kolor[key].prototype[channel.name];
+            }
         }
 
-        // #### .format()
+        // #### .space()
         //
-        // A getter for the format of the color object.
+        // A getter for the space of the color object.
         //
         // ##### Return values
         //
-        // Returns the format string in all caps such as `RGBA`, `HSV`, etc.
+        // Returns the space string in all caps such as `RGBA`, `HSV`, etc.
+        kolor[key].prototype.space = function () {
+            return this._space;
+        };
+
+        // #### .format()
+        //
+        // Deprecated. Same as `.space()` and preserved just for backward compatibility.
+        //
+        // ##### Return values
+        //
+        // Returns the space string in all caps such as `RGBA`, `HSV`, etc.
         kolor[key].prototype.format = function () {
-            return this._format;
+            return this.space();
         };
 
         // ### Converters
         //
         // #### .*converter*()
         //
-        // Converts the color to the specified format. Converter names are lower-cased format names.
+        // Converts the color to the specified space. Converter names are lower-cased space names.
         //
         // ##### Return values
         //
-        // Returns a new color object in target format, if target format is the same as the original
+        // Returns a new color object in target space, if target space is the same as the original
         // one, a new color object will be cloned and returned.
-        for (var target in FORMATS) {
+        for (var target in SPACES) {
             if (key === target) {
                 continue;
             }
 
-            // should always returns an array if not causing errors
+            // array or null
             var converters = getConverters(key, target);
 
             kolor[key].prototype[target.toLowerCase()] = (function (key, converters) {
                 return function () {
+                    if (converters === null) {
+                        throw new Error('Can\'t convert ' + key + ' colors into ' + target + '.');
+                    }
                     var from = key;
                     var result = this;
                     for (var i = 0, j = converters.length; i < j; i++) {
@@ -944,7 +1224,7 @@
         //
         // For `rgba(255, 0, 0, 1)`, the return value is `[255, 0, 0, 1]`.
         kolor[key].prototype.toArray = function () {
-            return utils.slice(this, 0);
+            return util.slice(this, 0);
         };
 
         // #### .css(), .toString()
@@ -955,7 +1235,7 @@
         //
         // By CSS-style string we mean something like `rgba(255, 0, 0, 0.5)`, `hsl(30, 80%, 100%)`, etc.
         kolor[key].prototype.css = kolor[key].prototype.toString = function () {
-            var channels = FORMATS[this.format()].channels,
+            var channels = SPACES[this.space()].channels,
                 l = channels.length,
                 channel,
                 values = [];
@@ -963,39 +1243,39 @@
                 channel = channels[i];
                 values.push(DATATYPES[channel.cssType].stringify(this[channel.name]()));
             }
-            return this.format().toLowerCase() + '(' + values.join(', ') + ')';
+            return this.space().toLowerCase() + '(' + values.join(', ') + ')';
         };
 
         // #### .hex()
         // Outputs color channels as a hex string.
         //
         // ##### Return values
-        // Returns a hex string corresponds to the RGB format of the color,
+        // Returns a hex string corresponds to the RGB space of the color,
         // which means the color is converted to RGB first and the hex value is produced
         // by its RGB channels.
         kolor[key].prototype.hex = function () {
             var color = this;
-            if (this.format() !== 'RGB') {
+            if (this.space() !== 'RGB') {
                 color = this.rgb();
             }
             function toHex(n) {
-                return utils.zeroFill(Math.round(n).toString(16), 2);
+                return util.zeroFill(Math.round(n).toString(16), 2);
             }
             return ['#', toHex(color.r()), toHex(color.g()), toHex(color.b())].join('');
         };
 
         // #### .copyFrom(*color*)
-        // Converts channel values of another color to the same format as the current one and
+        // Converts channel values of another color to the same space as the current one and
         // copies them to the current color.
         //
         // ##### Parameters
         // * *color* - the color to be copied from.
-        kolor[key].prototype.copyFrom = function(color) {
-            var format = this.format(),
-                channels = FORMATS[format].channels,
+        kolor[key].prototype.copyFrom = function (color) {
+            var space = this.space(),
+                channels = SPACES[space].channels,
                 i, accessor;
-            if (color.format() !== format) {
-                color = color[format.toLowerCase()]();
+            if (color.space() !== space) {
+                color = color[space.toLowerCase()]();
             }
             for (i = channels.length; i--;) {
                 accessor = channels[i].name;
@@ -1016,8 +1296,8 @@
         // * *proportion* - the proportion of the other color, ranging from 0 to 1.
         //
         // ##### Return values
-        // Returns a new color object in the same format as the original one.
-        kolor[key].prototype.mix = function(color, proportion) {
+        // Returns a new color object in the same space as the original one.
+        kolor[key].prototype.mix = function (color, proportion) {
             var dest = this.rgba(),
                 src = color.rgba(),
                 p = proportion == null ? 0.5 : proportion,
@@ -1029,7 +1309,7 @@
             dest.g(dest.g() * w1 + src.g() * w2);
             dest.b(dest.b() * w1 + src.b() * w2);
             dest.a(dest.a() * p + src.a() * (1 - p));
-            return dest[this.format().toLowerCase()]();
+            return dest[this.space().toLowerCase()]();
         };
 
         // #### .spin(*value*)
@@ -1041,11 +1321,11 @@
         // * *value* - the value that the color wheel will spin, in degree.
         //
         // ##### Return values
-        // Returns a new color object after spinning in the original format.
-        kolor[key].prototype.spin = function(value) {
+        // Returns a new color object after spinning in the original space.
+        kolor[key].prototype.spin = function (value) {
             var color = this.hsla();
             color.h((color.h() + value) % 360);
-            return color[this.format().toLowerCase()]();
+            return color[this.space().toLowerCase()]();
         };
 
         // #### .saturate(*value*)
@@ -1056,11 +1336,11 @@
         // * *value* - the amount that the saturation value will increase.
         //
         // ##### Return values
-        // Returns a new color object after increasing saturation in the original format.
-        kolor[key].prototype.saturate = function(value) {
+        // Returns a new color object after increasing saturation in the original space.
+        kolor[key].prototype.saturate = function (value) {
             var color = this.hsla();
             color.s((color.s() + value));
-            return color[this.format().toLowerCase()]();
+            return color[this.space().toLowerCase()]();
         };
 
         // #### .desaturate(*value*)
@@ -1071,8 +1351,8 @@
         // * *value* - the amount that the saturation value will decrease.
         //
         // ##### Return values
-        // Returns a new color object after decreasing saturation in the original format.
-        kolor[key].prototype.desaturate = function(value) {
+        // Returns a new color object after decreasing saturation in the original space.
+        kolor[key].prototype.desaturate = function (value) {
             return this.saturate(0 - value);
         };
 
@@ -1084,11 +1364,11 @@
         // * *value* - the amount that the lightness value will the increase.
         //
         // ##### Return values
-        // Returns a new color object after increasing lightness in the original format.
-        kolor[key].prototype.lighten = function(value) {
+        // Returns a new color object after increasing lightness in the original space.
+        kolor[key].prototype.lighten = function (value) {
             var color = this.hsla();
             color.l((color.l() + value));
-            return color[this.format().toLowerCase()]();
+            return color[this.space().toLowerCase()]();
         };
 
         // #### .darken(*value*)
@@ -1099,8 +1379,8 @@
         // * *value* - the amount that the lightness value will the decrease.
         //
         // ##### Return values
-        // Returns a new color object after decreasing lightness in the original format.
-        kolor[key].prototype.darken = function(value) {
+        // Returns a new color object after decreasing lightness in the original space.
+        kolor[key].prototype.darken = function (value) {
             return this.lighten(0 - value);
         };
 
@@ -1112,10 +1392,10 @@
         // * *value* - the amount that the alpha value will the increase.
         //
         // ##### Return values
-        // Returns a new color object after increasing alpha in the original format.
-        kolor[key].prototype.fadeIn = function(value) {
-            var format = this.a ? this.format() : this.format() + 'A',
-                color = this[format.toLowerCase()]();
+        // Returns a new color object after increasing alpha in the original space.
+        kolor[key].prototype.fadeIn = function (value) {
+            var space = this.a ? this.space() : this.space() + 'A',
+                color = this[space.toLowerCase()]();
             return color.a(color.a() + value);
         };
 
@@ -1127,8 +1407,8 @@
         // * *value* - the amount that the alpha value will the decrease.
         //
         // ##### Return values
-        // Returns a new color object after decreasing alpha in the original format.
-        kolor[key].prototype.fadeOut = function(value) {
+        // Returns a new color object after decreasing alpha in the original space.
+        kolor[key].prototype.fadeOut = function (value) {
             return this.fadeIn(0 - value);
         };
 
@@ -1137,7 +1417,7 @@
         // Returns the grayscale color by decreasing saturation(HSL) of the current color to 0.
         //
         // ##### Return values
-        // Returns a new grayscaled color object in the original format.
+        // Returns a new grayscaled color object in the original space.
         kolor[key].prototype.grayscale = function () {
             return this.desaturate(1);
         };
@@ -1147,7 +1427,7 @@
         // Returns the complement of the current color by spinning the color wheel for 180 degrees.
         //
         // ##### Return values
-        // Returns a new complement color object the original format.
+        // Returns a new complement color object the original space.
         kolor[key].prototype.complement = function () {
             return this.spin(180);
         };
@@ -1173,6 +1453,11 @@
             return 0.2126 * R + 0.7152 * G + 0.0722 * B;
         };
 
+        kolor[key].prototype.contrastRatio = function (color) {
+            var l1 = this.luminance(),
+                l2 = color.luminance();
+            return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+        };
     }
 
     // ### kolor utilities
@@ -1190,13 +1475,13 @@
     //   of digits after the period when outputing CSS expressions using `.css()`
     //   or `.toString()`. `auto` by default, means kolor won't handle precision
     //   when making the output.
-    kolor.config = function(key, value) {
+    kolor.config = function (key, value) {
         config[key] = value;
     }
 
     // #### kolor.random(*options*) [unstable API]
     //
-    // Generates a random color or color set. Colors are generated in HSL format
+    // Generates a random color or color set. Colors are generated in HSL space
     // and different colors will have different hue values and these colors are
     // distributed uniformly across the specified hue range.
     //
@@ -1219,11 +1504,11 @@
     //
     //     The range of lightness. If set to a number, use this fixed value.
     //
-    // * *format* - String, `"hex"` by default.
+    // * *space* - String, `"hex"` by default.
     //
-    //     The output format for the generated color(s). Available values include
+    //     The output space for the generated color(s). Available values include
     //
-    //     `hex`, `css` and format names defined in `FORMATS`, which are
+    //     `hex`, `css` and space names defined in `SPACES`, which are
     //     case-insensitive.
     //
     // * *shuffle* - Boolean, `true` by default.
@@ -1231,9 +1516,9 @@
     //     If the output array should be shuffled.
     //
     // ##### Return values
-    // If size is undefined or 1, returns a random color in the specified format.
+    // If size is undefined or 1, returns a random color in the specified space.
     // Otherwise, returns an array such colors.
-    kolor.random = function(options) {
+    kolor.random = function (options) {
         options = options || {};
 
         function getValue(value, defaultValue) {
@@ -1248,7 +1533,7 @@
             l = getValue(options.l, [0, 1]),
             a = getValue(options.a, 1),
             shuffle = getValue(options.shuffle, true),
-            format = (options.format || 'hex').toLowerCase(),
+            space = (options.space || 'hex').toLowerCase(),
             colors = [],
             color, i;
 
@@ -1259,16 +1544,16 @@
         for (i = 0; i < size; i++) {
             color = kolor.hsla(
                 (360 + h[0] + interval * i + offset) % 360,
-                s.length ? utils.random(s[0], s[1]) : s,
-                l.length ? utils.random(l[0], l[1]) : l,
-                a.length ? utils.random(a[0], a[1]) : a
+                s.length ? util.random(s[0], s[1]) : s,
+                l.length ? util.random(l[0], l[1]) : l,
+                a.length ? util.random(a[0], a[1]) : a
             );
-            if (format == 'hex') {
+            if (space == 'hex') {
                 color = color.hex();
-            } else if (format == 'css') {
+            } else if (space == 'css') {
                 color = color.css();
-            } else if (utils.has(FORMATS, format.toUpperCase())) {
-                color = color[format]();
+            } else if (util.has(SPACES, space.toUpperCase())) {
+                color = color[space]();
             }
             colors.push(color);
         }
@@ -1277,12 +1562,12 @@
             return colors[0];
         }
 
-        shuffle && utils.shuffle(colors);
+        shuffle && util.shuffle(colors);
         return colors;
     };
 
     // Everything is ready, export the whole module
-    define("kolor", function(require, exports, module) {
+    define("kolor", function (require, exports, module) {
         module.exports = kolor;
     });
 
@@ -1297,7 +1582,7 @@
         var mod = {};
         var exp = {};
 
-        factory(function(value) {
+        factory(function (value) {
             return window[value];
         }, exp, mod);
 
