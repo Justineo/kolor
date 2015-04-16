@@ -26,7 +26,7 @@ var menu = $('menu');
 var param = $('param');
 var go = $('go');
 
-var formats = ['rgb', 'hsv', 'hsl', 'hex'];
+var formats = ['rgb', 'hsv', 'hsl', 'hwb', 'hex'];
 var outputs = {};
 var actionType = 'fadeIn';
 var actionParam = {
@@ -80,6 +80,7 @@ var cases = [
     'rgba(64, 128, 255, 0.8)',
     'hsv(54, 40%, 95%)',
     'hsl(114, 75%, 75%)',
+    'hwb(orangish(10%) red, 50%, 0%, 0.7)',
     '#8cf0e6'
 ];
 var ticks = Math.floor(Math.random() * cases.length);
