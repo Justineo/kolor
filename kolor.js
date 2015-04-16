@@ -1454,6 +1454,16 @@
             return 0.2126 * R + 0.7152 * G + 0.0722 * B;
         };
 
+        // #### .contrastRatio()
+        //
+        // Returns the contrast ratio of two colors.
+        // See [Contrast ratio, CSS Color Module Level 4](http://dev.w3.org/csswg/css-color/#contrast-ratio).
+        //
+        // ##### Parameters
+        // * *color* - the color object to be compared to.
+        //
+        // ##### Return values
+        // The calculated contrast ratio.
         kolor[key].prototype.contrastRatio = function (color) {
             var l1 = this.luminance(),
                 l2 = color.luminance();
