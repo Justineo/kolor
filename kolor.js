@@ -384,14 +384,7 @@
                 { name: 'green', shorthand: 'g', dataType: INTEGER|PERCENT, cssType: INTEGER, range: [0, 255], filter: CLAMP, initial: 255 },
                 { name: 'blue', shorthand: 'b', dataType: INTEGER|PERCENT, cssType: INTEGER, range: [0, 255], filter: CLAMP, initial: 255 }
             ],
-            pattern: /rgb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i,
-            converters: {
-                RGBA: ADD_ALPHA,
-                HSL: function() { return this.rgba().hsla().hsl(); },
-                HSLA: function() { return this.rgba().hsla(); },
-                HSV: function() { return this.rgba().hsva().hsv(); },
-                HSVA: function() { return this.rgba().hsva(); }
-            }
+            pattern: /rgb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         RGBA: {
             channels: [
@@ -400,14 +393,7 @@
                 { name: 'blue', shorthand: 'b', dataType: INTEGER|PERCENT, cssType: INTEGER, range: [0, 255], filter: CLAMP, initial: 255 },
                 { name: 'alpha', shorthand: 'a', dataType: NUMBER|PERCENT, cssType: NUMBER, range: [0, 1], filter: CLAMP, initial: 1 }
             ],
-            pattern: /rgba\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i,
-            converters: {
-                RGB: REMOVE_ALPHA,
-                HSL: function() { return this.hsla().hsl(); },
-                HSLA: RGBA_TO_HSLA,
-                HSV: function() { return this.hsva().hsv(); },
-                HSVA: RGBA_TO_HSVA
-            }
+            pattern: /rgba\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSL: {
             channels: [
@@ -415,14 +401,7 @@
                 { name: 'saturation', shorthand: 's', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
                 { name: 'lightness', shorthand: 'l', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 }
             ],
-            pattern: /hsl\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i,
-            converters: {
-                RGB: function() { return this.hsla().rgba().rgb(); },
-                RGBA: function() { return this.hsla().rgba(); },
-                HSLA: ADD_ALPHA,
-                HSV: function() {  return this.hsla().rgba().hsva().hsv(); },
-                HSVA: function() {  return this.hsla().rgba().hsva(); }
-            }
+            pattern: /hsl\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSLA: {
             channels: [
@@ -431,14 +410,7 @@
                 { name: 'lightness', shorthand: 'l', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
                 { name: 'alpha', shorthand: 'a', dataType: NUMBER|PERCENT, cssType: NUMBER, range: [0, 1], filter: CLAMP, initial: 1 }
             ],
-            pattern: /hsla\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i,
-            converters: {
-                RGB: function() { return this.rgba().rgb(); },
-                RGBA: HSLA_TO_RGBA,
-                HSL: REMOVE_ALPHA,
-                HSV: function() { return this.rgba().hsva().hsv(); },
-                HSVA: function() { return this.rgba().hsva(); }
-            }
+            pattern: /hsla\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSV: {
             channels: [
@@ -446,14 +418,7 @@
                 { name: 'saturation', shorthand: 's', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
                 { name: 'value', shorthand: 'v', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 }
             ],
-            pattern: /hsv\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i,
-            converters: {
-                RGB: function() { return this.hsva().rgba().rgb(); },
-                RGBA: function() { return this.hsva().rgba(); },
-                HSL: function() { return this.hsva().rgba().hsla().hsl(); },
-                HSLA: function() { return this.hsva().rgba().hsla(); },
-                HSVA: ADD_ALPHA
-            }
+            pattern: /hsv\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSVA: {
             channels: [
@@ -462,14 +427,16 @@
                 { name: 'value', shorthand: 'v', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
                 { name: 'alpha', shorthand: 'a', dataType: NUMBER|PERCENT, cssType: NUMBER, range: [0, 1], filter: CLAMP, initial: 1 }
             ],
-            pattern: /hsva\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i,
-            converters: {
-                RGB: function() { return this.rgba().rgb(); },
-                RGBA: HSVA_TO_RGBA,
-                HSL: function() { return this.rgba().hsla().hsl(); },
-                HSLA: function() { return this.rgba().hsla(); },
-                HSV: REMOVE_ALPHA
-            }
+            pattern: /hsva\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
+        },
+        HWB: {
+            channels: [
+                { name: 'hue', shorthand: 'h', dataType: NUMBER, cssType: NUMBER, range: [0, 360], filter: MOD, initial: 0 },
+                { name: 'whiteness', shorthand: 'w', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
+                { name: 'blackness', shorthand: 'b', dataType: NUMBER|PERCENT, cssType: PERCENT, range: [0, 1], filter: CLAMP, initial: 0 },
+                { name: 'alpha', shorthand: 'a', dataType: NUMBER|PERCENT, cssType: NUMBER, range: [0, 1], filter: CLAMP, initial: 1 }
+            ],
+            pattern: /hwb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,\)]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
         }
     };
 
@@ -578,6 +545,20 @@
         return kolor.hsva(h, s, v, a);
     }
 
+    // Converts RGBA color to HWB
+    function RGBA_TO_HWB() {
+        var r = this.r(),
+            g = this.g(),
+            b = this.b(),
+            a = this.a(),
+            hwb = {};
+
+        hwb.h = this.hsla().h();
+        hwb.w = 1 / 255 * Math.min(r, g, b);
+        hwb.b = 1 - 1 / 255 * Math.max(r, g, b);
+        return kolor.hwb(hwb.h, hwb.w, hwb.b, hwb.a);
+    }
+
     // Converts HSLA color to RGBA.
     function HSLA_TO_RGBA() {
         var h = this.h(),
@@ -653,6 +634,81 @@
 
         return kolor.rgba(rgba);
     }
+
+    // Converts HWB color to RGBA.
+    function HWB_TO_RGBA() {
+        var h = this.hue(),
+            w = this.whiteness(),
+            b = this.blackness(),
+            a = this.alpha();
+        var rgba = HSLA_TO_RGBA.call(kolor.hsla(h, 1, 0.5, a)).toArray();
+        for(var i = 0; i < 3; i++) {
+            rgba[i] *= (1 - w - b);
+            rgba[i] += w;
+        }
+        return kolor.rgba(rgba);
+    }
+
+    var CONVERTERS = {
+        RGB: {
+            RGBA: ADD_ALPHA
+        },
+        RGBA: {
+            RGB: REMOVE_ALPHA,
+            HSLA: RGBA_TO_HSLA,
+            HSVA: RGBA_TO_HSVA,
+            HWB: RGBA_TO_HWB
+        },
+        HSL: {
+            HSLA: ADD_ALPHA
+        },
+        HSLA: {
+            HSL: REMOVE_ALPHA,
+            RGBA: HSLA_TO_RGBA,
+        },
+        HSV: {
+            HSVA: ADD_ALPHA
+        },
+        HSVA: {
+            HSV: REMOVE_ALPHA,
+            RGBA: HSVA_TO_RGBA
+        },
+        HWB: {
+            RGBA: HWB_TO_RGBA
+        }
+    };
+
+    // Breadth-first search to find the conversion path
+    function getConverters(from, to) {
+        if (from === to) {
+            return [];
+        }
+
+        if (CONVERTERS[from][to]) {
+            return [to];
+        }
+
+        var queue = [from];
+        var path = {};
+        path[from] = [];
+        var chain = [];
+
+        while (queue.length) {
+            var v = queue.shift();
+            for (var w in CONVERTERS[v]) {
+                if (!path[w]) {
+                    queue.push(w);
+                    path[w] = path[v].concat([w]);
+                    if (w === to) {
+                        return path[w];
+                    }
+                }
+            }
+        }
+
+        throw new Error('Insufficient converters to convert ' + from + ' colors into ' + to + '.');
+    }
+
 
     // Filters input value according to data type definitions and color format configurations.
     function filterValue(value, channel) {
@@ -749,7 +805,7 @@
         //    * kolor.rgb([255, 0, 0])
         //    * kolor.rgb({ r: 255, g: 0, b: 0 })
         kolor[key.toLowerCase()] = (function(key) {
-            return function() {
+            return function () {
                 var args = utils.slice(arguments, 0),
                     type = utils.typeOf(args[0]);
                 if (type === 'Array' || type === 'Object') {
@@ -760,8 +816,7 @@
         }(key));
 
         var format = FORMATS[key],
-            channels = format.channels,
-            converters = format.converters;
+            channels = format.channels;
 
         // ### Constructor
         //
@@ -839,7 +894,7 @@
         // ##### Return values
         //
         // Returns the format string in all caps such as `RGBA`, `HSV`, etc.
-        kolor[key].prototype.format = function() {
+        kolor[key].prototype.format = function () {
             return this._format;
         };
 
@@ -853,8 +908,27 @@
         //
         // Returns a new color object in target format, if target format is the same as the original
         // one, a new color object will be cloned and returned.
-        for (var c in converters) {
-            kolor[key].prototype[c.toLowerCase()] = converters[c];
+        for (var target in FORMATS) {
+            if (key === target) {
+                continue;
+            }
+
+            // should always returns an array if not causing errors
+            var converters = getConverters(key, target);
+
+            kolor[key].prototype[target.toLowerCase()] = (function (key, converters) {
+                return function () {
+                    var from = key;
+                    var result = this;
+                    for (var i = 0, j = converters.length; i < j; i++) {
+                        var current = converters[i];
+                        var converter = CONVERTERS[from][current];
+                        result = converter.call(result);
+                        from = current;
+                    }
+                    return result;
+                };
+            })(key, converters);
         }
         kolor[key].prototype[key.toLowerCase()] = CLONE;
 
@@ -869,7 +943,7 @@
         // Returns an array consists of the color's channel values.
         //
         // For `rgba(255, 0, 0, 1)`, the return value is `[255, 0, 0, 1]`.
-        kolor[key].prototype.toArray = function() {
+        kolor[key].prototype.toArray = function () {
             return utils.slice(this, 0);
         };
 
@@ -880,7 +954,7 @@
         // Returns the CSS-style string for the color object.
         //
         // By CSS-style string we mean something like `rgba(255, 0, 0, 0.5)`, `hsl(30, 80%, 100%)`, etc.
-        kolor[key].prototype.css = kolor[key].prototype.toString = function() {
+        kolor[key].prototype.css = kolor[key].prototype.toString = function () {
             var channels = FORMATS[this.format()].channels,
                 l = channels.length,
                 channel,
@@ -899,7 +973,7 @@
         // Returns a hex string corresponds to the RGB format of the color,
         // which means the color is converted to RGB first and the hex value is produced
         // by its RGB channels.
-        kolor[key].prototype.hex = function() {
+        kolor[key].prototype.hex = function () {
             var color = this;
             if (this.format() !== 'RGB') {
                 color = this.rgb();
@@ -1064,7 +1138,7 @@
         //
         // ##### Return values
         // Returns a new grayscaled color object in the original format.
-        kolor[key].prototype.grayscale = function() {
+        kolor[key].prototype.grayscale = function () {
             return this.desaturate(1);
         };
 
@@ -1074,7 +1148,7 @@
         //
         // ##### Return values
         // Returns a new complement color object the original format.
-        kolor[key].prototype.complement = function() {
+        kolor[key].prototype.complement = function () {
             return this.spin(180);
         };
 
@@ -1085,7 +1159,7 @@
         //
         // ##### Return values
         // The calculated luminance value.
-        kolor[key].prototype.luminance = function() {
+        kolor[key].prototype.luminance = function () {
             function convert(value) {
                 value /= 255;
                 return value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
