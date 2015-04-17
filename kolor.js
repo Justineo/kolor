@@ -550,7 +550,6 @@
         this.range = [0, 255];
         this.filter = CLAMP;
         this.initial = 255;
-        Channel.apply(this, arguments);
     }
     Octet.prototype = new Channel();
     Octet.prototype.constructor = Octet;
@@ -562,7 +561,6 @@
         this.range = [0, 1];
         this.filter = CLAMP;
         this.initial = 1;
-        Channel.apply(this, arguments);
     }
     Ratio.prototype = new Channel();
     Ratio.prototype.constructor = Ratio;
@@ -570,7 +568,6 @@
     // Constructor for ratios which output percent values.
     function Percent() {
         this.cssType = PERCENT;
-        Ratio.apply(this, arguments);
     }
     Percent.prototype = new Ratio();
     Percent.prototype.constructor = Percent;
@@ -582,7 +579,6 @@
         this.range = [0, 360];
         this.filter = MOD;
         this.initial = 0;
-        Channel.apply(this, arguments);
     }
     Hue.prototype = new Channel();
     Hue.prototype.constructor = Hue;
