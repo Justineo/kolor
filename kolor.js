@@ -331,9 +331,9 @@
             h1: h1,
             h2: h2
         };
-        if (h1 === 0) {
+        if (h1 === 0 && h2 === 300) {
             result.h1 = 360;
-        } else if (h2 === 0) {
+        } else if (h2 === 0 && h1 === 300) {
             result.h2 = 360;
         }
         return result;

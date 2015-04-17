@@ -1,4 +1,7 @@
 # Changelog
+* 1.1.1
+    - fix a named hue bug
+
 * 1.1.0
     - add `hwb()` support [CSS Colors Level 4]
     - add `gray()` support [CSS Colors Level 4]
