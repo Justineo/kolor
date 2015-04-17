@@ -1,6 +1,7 @@
 # Changelog
 * 1.1.2
     - fix output type for percent values
+    - add converters between HSVA and HSLA
 
 * 1.1.1
     - fix a named hue bug
