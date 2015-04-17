@@ -545,6 +545,7 @@
 
     // Constructor for 0~255 integer or percentage.
     function Octet() {
+        Channel.apply(this, arguments);
         this.dataType = INTEGER|PERCENT;
         this.cssType = INTEGER;
         this.range = [0, 255];
@@ -556,6 +557,7 @@
 
     // Constructor for channel can be number from 0~1 or percentage.
     function Ratio() {
+        Channel.apply(this, arguments);
         this.dataType = NUMBER|PERCENT;
         this.cssType = NUMBER;
         this.range = [0, 1];
@@ -567,6 +569,7 @@
 
     // Constructor for ratios which output percent values.
     function Percent() {
+        Ratio.apply(this, arguments);
         this.cssType = PERCENT;
     }
     Percent.prototype = new Ratio();
@@ -574,6 +577,7 @@
 
     // Constructor for those channel can be .
     function Hue() {
+        Channel.apply(this, arguments);
         this.dataType = NUMBER|HUE;
         this.cssType = NUMBER;
         this.range = [0, 360];
