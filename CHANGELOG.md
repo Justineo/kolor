@@ -1,4 +1,7 @@
 # Changelog
+* 1.1.2
+    - fix output type for percent values
+
 * 1.1.1
     - fix a named hue bug
 
