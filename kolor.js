@@ -567,6 +567,14 @@
     Ratio.prototype = new Channel();
     Ratio.prototype.constructor = Ratio;
 
+    // Constructor for ratios which output percent values.
+    function Percent() {
+        this.cssType = PERCENT;
+        Ratio.apply(this, arguments);
+    }
+    Percent.prototype = new Ratio();
+    Percent.prototype.constructor = Percent;
+
     // Constructor for those channel can be .
     function Hue() {
         this.dataType = NUMBER|HUE;
@@ -601,16 +609,16 @@
         HSL: {
             channels: [
                 Channel.create(Hue, 'hue', 'h'),
-                Channel.create(Ratio, 'saturation', 's'),
-                Channel.create(Ratio, 'lightness', 'l')
+                Channel.create(Percent, 'saturation', 's'),
+                Channel.create(Percent, 'lightness', 'l')
             ],
             pattern: /hsl\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSLA: {
             channels: [
                 Channel.create(Hue, 'hue', 'h'),
-                Channel.create(Ratio, 'saturation', 's'),
-                Channel.create(Ratio, 'lightness', 'l'),
+                Channel.create(Percent, 'saturation', 's'),
+                Channel.create(Percent, 'lightness', 'l'),
                 Channel.create(Ratio, 'alpha', 'a')
             ],
             pattern: /hsla\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
@@ -618,16 +626,16 @@
         HSV: {
             channels: [
                 Channel.create(Hue, 'hue', 'h'),
-                Channel.create(Ratio, 'saturation', 's'),
-                Channel.create(Ratio, 'value', 'v'),
+                Channel.create(Percent, 'saturation', 's'),
+                Channel.create(Percent, 'value', 'v'),
             ],
             pattern: /hsv\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
         HSVA: {
             channels: [
                 Channel.create(Hue, 'hue', 'h'),
-                Channel.create(Ratio, 'saturation', 's'),
-                Channel.create(Ratio, 'value', 'v'),
+                Channel.create(Percent, 'saturation', 's'),
+                Channel.create(Percent, 'value', 'v'),
                 Channel.create(Ratio, 'alpha', 'a')
             ],
             pattern: /hsva\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
@@ -635,8 +643,8 @@
         HWB: {
             channels: [
                 Channel.create(Hue, 'hue', 'h'),
-                Channel.create(Ratio, 'whiteness', 'w'),
-                Channel.create(Ratio, 'blackness', 'b'),
+                Channel.create(Percent, 'whiteness', 'w'),
+                Channel.create(Percent, 'blackness', 'b'),
                 Channel.create(Ratio, 'alpha', 'a')
             ],
             pattern: /hwb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,\)]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
