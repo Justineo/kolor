@@ -833,6 +833,22 @@
         return kolor.rgba(rgb.r, rgb.g, rgb.b, a);
     }
 
+    // Converts HSLA color to HSVA.
+    function HSLA_TO_HSVA() {
+        var h = this.h(),
+            s = this.s(),
+            l = this.l(),
+            a = this.a(),
+            sv,
+            v;
+
+        l *= 2;
+        s *= (l <= 1) ? l : 2 - l;
+        v = (l + s) / 2;
+        sv = (2 * s) / (l + s);
+        return kolor.hsva(h, sv, v, a);
+    }
+
     // Converts HSVA color to RGBA.
     function HSVA_TO_RGBA() {
         var h = this.h(),
@@ -868,6 +884,23 @@
         }
 
         return kolor.rgba(rgba);
+    }
+
+    // Converts HSVA color to HSLA.
+    function HSVA_TO_HSLA() {
+        var h = this.h(),
+            s = this.s(),
+            v = this.v(),
+            a = this.a(),
+            sl,
+            l;
+
+        l = (2 - s) * v;
+        sl = s * v;
+        sl /= (l <= 1) ? l : 2 - l;
+        sl = sl || 0;
+        l /= 2;
+        return kolor.hsva(h, sl, l, a);
     }
 
     // Converts HSVA color to HWB.
@@ -925,6 +958,7 @@
         },
         HSLA: {
             HSL: REMOVE_ALPHA,
+            HSVA: HSLA_TO_HSVA,
             RGBA: HSLA_TO_RGBA,
         },
         HSV: {
@@ -933,6 +967,7 @@
         HSVA: {
             HSV: REMOVE_ALPHA,
             RGBA: HSVA_TO_RGBA,
+            HSLA: HSVA_TO_HSLA,
             HWB: HSVA_TO_HWB,
         },
         HWB: {
