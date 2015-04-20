@@ -1,4 +1,7 @@
 # Changelog
+* 1.1.3
+    - fix GRAY to RGBA conversion config
+
 * 1.1.2
     - fix output type for percent values
     - add converters between HSVA and HSLA

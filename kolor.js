@@ -974,7 +974,7 @@
             HSVA: HWB_TO_HSVA
         },
         GRAY: {
-            RGB: GRAY_TO_RGBA
+            RGBA: GRAY_TO_RGBA
         },
         CMYK: {
             RGB: CMYK_TO_RGB
