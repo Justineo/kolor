@@ -639,9 +639,9 @@ a given function.</p>
             h1: h1,
             h2: h2
         };
-        <span class="hljs-keyword">if</span> (h1 === <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">if</span> (h1 === <span class="hljs-number">0</span> &amp;&amp; h2 === <span class="hljs-number">300</span>) {
             result.h1 = <span class="hljs-number">360</span>;
-        } <span class="hljs-keyword">else</span> {
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (h2 === <span class="hljs-number">0</span> &amp;&amp; h1 === <span class="hljs-number">300</span>) {
             result.h2 = <span class="hljs-number">360</span>;
         }
         <span class="hljs-keyword">return</span> result;
@@ -973,12 +973,12 @@ a given function.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Octet</span><span class="hljs-params">()</span> </span>{
+        Channel.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
         <span class="hljs-keyword">this</span>.dataType = INTEGER|PERCENT;
         <span class="hljs-keyword">this</span>.cssType = INTEGER;
         <span class="hljs-keyword">this</span>.range = [<span class="hljs-number">0</span>, <span class="hljs-number">255</span>];
         <span class="hljs-keyword">this</span>.filter = CLAMP;
         <span class="hljs-keyword">this</span>.initial = <span class="hljs-number">255</span>;
-        Channel.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
     }
     Octet.prototype = <span class="hljs-keyword">new</span> Channel();
     Octet.prototype.constructor = Octet;</pre></div></div>
@@ -997,12 +997,12 @@ a given function.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Ratio</span><span class="hljs-params">()</span> </span>{
+        Channel.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
         <span class="hljs-keyword">this</span>.dataType = NUMBER|PERCENT;
         <span class="hljs-keyword">this</span>.cssType = NUMBER;
         <span class="hljs-keyword">this</span>.range = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>];
         <span class="hljs-keyword">this</span>.filter = CLAMP;
         <span class="hljs-keyword">this</span>.initial = <span class="hljs-number">1</span>;
-        Channel.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
     }
     Ratio.prototype = <span class="hljs-keyword">new</span> Channel();
     Ratio.prototype.constructor = Ratio;</pre></div></div>
@@ -1016,20 +1016,16 @@ a given function.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
-              <p>Constructor for those channel can be .</p>
+              <p>Constructor for ratios which output percent values.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Hue</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">this</span>.dataType = NUMBER|HUE;
-        <span class="hljs-keyword">this</span>.cssType = NUMBER;
-        <span class="hljs-keyword">this</span>.range = [<span class="hljs-number">0</span>, <span class="hljs-number">360</span>];
-        <span class="hljs-keyword">this</span>.filter = MOD;
-        <span class="hljs-keyword">this</span>.initial = <span class="hljs-number">0</span>;
-        Channel.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Percent</span><span class="hljs-params">()</span> </span>{
+        Ratio.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+        <span class="hljs-keyword">this</span>.cssType = PERCENT;
     }
-    Hue.prototype = <span class="hljs-keyword">new</span> Channel();
-    Hue.prototype.constructor = Hue;</pre></div></div>
+    Percent.prototype = <span class="hljs-keyword">new</span> Ratio();
+    Percent.prototype.constructor = Percent;</pre></div></div>
             
         </li>
         
@@ -1039,6 +1035,30 @@ a given function.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>Constructor for those channel can be .</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Hue</span><span class="hljs-params">()</span> </span>{
+        Channel.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+        <span class="hljs-keyword">this</span>.dataType = NUMBER|HUE;
+        <span class="hljs-keyword">this</span>.cssType = NUMBER;
+        <span class="hljs-keyword">this</span>.range = [<span class="hljs-number">0</span>, <span class="hljs-number">360</span>];
+        <span class="hljs-keyword">this</span>.filter = MOD;
+        <span class="hljs-keyword">this</span>.initial = <span class="hljs-number">0</span>;
+    }
+    Hue.prototype = <span class="hljs-keyword">new</span> Channel();
+    Hue.prototype.constructor = Hue;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <h3 id="color-space-configurations">Color space configurations</h3>
 
@@ -1065,16 +1085,16 @@ a given function.</p>
         HSL: {
             channels: [
                 Channel.create(Hue, <span class="hljs-string">'hue'</span>, <span class="hljs-string">'h'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'saturation'</span>, <span class="hljs-string">'s'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'lightness'</span>, <span class="hljs-string">'l'</span>)
+                Channel.create(Percent, <span class="hljs-string">'saturation'</span>, <span class="hljs-string">'s'</span>),
+                Channel.create(Percent, <span class="hljs-string">'lightness'</span>, <span class="hljs-string">'l'</span>)
             ],
             pattern: <span class="hljs-regexp">/hsl\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i</span>
         },
         HSLA: {
             channels: [
                 Channel.create(Hue, <span class="hljs-string">'hue'</span>, <span class="hljs-string">'h'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'saturation'</span>, <span class="hljs-string">'s'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'lightness'</span>, <span class="hljs-string">'l'</span>),
+                Channel.create(Percent, <span class="hljs-string">'saturation'</span>, <span class="hljs-string">'s'</span>),
+                Channel.create(Percent, <span class="hljs-string">'lightness'</span>, <span class="hljs-string">'l'</span>),
                 Channel.create(Ratio, <span class="hljs-string">'alpha'</span>, <span class="hljs-string">'a'</span>)
             ],
             pattern: <span class="hljs-regexp">/hsla\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i</span>
@@ -1082,16 +1102,16 @@ a given function.</p>
         HSV: {
             channels: [
                 Channel.create(Hue, <span class="hljs-string">'hue'</span>, <span class="hljs-string">'h'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'saturation'</span>, <span class="hljs-string">'s'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'value'</span>, <span class="hljs-string">'v'</span>),
+                Channel.create(Percent, <span class="hljs-string">'saturation'</span>, <span class="hljs-string">'s'</span>),
+                Channel.create(Percent, <span class="hljs-string">'value'</span>, <span class="hljs-string">'v'</span>),
             ],
             pattern: <span class="hljs-regexp">/hsv\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i</span>
         },
         HSVA: {
             channels: [
                 Channel.create(Hue, <span class="hljs-string">'hue'</span>, <span class="hljs-string">'h'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'saturation'</span>, <span class="hljs-string">'s'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'value'</span>, <span class="hljs-string">'v'</span>),
+                Channel.create(Percent, <span class="hljs-string">'saturation'</span>, <span class="hljs-string">'s'</span>),
+                Channel.create(Percent, <span class="hljs-string">'value'</span>, <span class="hljs-string">'v'</span>),
                 Channel.create(Ratio, <span class="hljs-string">'alpha'</span>, <span class="hljs-string">'a'</span>)
             ],
             pattern: <span class="hljs-regexp">/hsva\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i</span>
@@ -1099,8 +1119,8 @@ a given function.</p>
         HWB: {
             channels: [
                 Channel.create(Hue, <span class="hljs-string">'hue'</span>, <span class="hljs-string">'h'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'whiteness'</span>, <span class="hljs-string">'w'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'blackness'</span>, <span class="hljs-string">'b'</span>),
+                Channel.create(Percent, <span class="hljs-string">'whiteness'</span>, <span class="hljs-string">'w'</span>),
+                Channel.create(Percent, <span class="hljs-string">'blackness'</span>, <span class="hljs-string">'b'</span>),
                 Channel.create(Ratio, <span class="hljs-string">'alpha'</span>, <span class="hljs-string">'a'</span>)
             ],
             pattern: <span class="hljs-regexp">/hwb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,\)]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i</span>
@@ -1126,11 +1146,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-39">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <h3 id="space-converting-algorithms">Space converting algorithms</h3>
 
@@ -1139,11 +1159,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-40">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-40">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               <p>Clones a color object in the same space.</p>
 
@@ -1156,11 +1176,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-41">
+        <li id="section-42">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-41">&#182;</a>
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               <p>Produces a new color object by adding alpha channel to the old one.</p>
 
@@ -1182,11 +1202,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-42">
+        <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-42">&#182;</a>
+                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <p>Produces a new color object by removing alpha channel from the old one.</p>
 
@@ -1207,11 +1227,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-43">
+        <li id="section-44">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-43">&#182;</a>
+                <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
               <p>Naively converts RGB color to CMYK</p>
 
@@ -1236,11 +1256,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-44">
+        <li id="section-45">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-44">&#182;</a>
+                <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
               <p>Converts RGBA color to HSLA.</p>
 
@@ -1285,11 +1305,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-45">
+        <li id="section-46">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-45">&#182;</a>
+                <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
               <p>Converts RGBA color to HSVA.</p>
 
@@ -1331,11 +1351,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-46">
+        <li id="section-47">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-46">&#182;</a>
+                <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
               <p>Converts RGBA color to GRAY</p>
 
@@ -1348,11 +1368,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-47">
+        <li id="section-48">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-47">&#182;</a>
+                <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
               <p>Converts HSLA color to RGBA.</p>
 
@@ -1399,11 +1419,39 @@ a given function.</p>
         </li>
         
         
-        <li id="section-48">
+        <li id="section-49">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-48">&#182;</a>
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>Converts HSLA color to HSVA.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSLA_TO_HSVA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h(),
+            s = <span class="hljs-keyword">this</span>.s(),
+            l = <span class="hljs-keyword">this</span>.l(),
+            a = <span class="hljs-keyword">this</span>.a(),
+            sv,
+            v;
+
+        l *= <span class="hljs-number">2</span>;
+        s *= (l &lt;= <span class="hljs-number">1</span>) ? l : <span class="hljs-number">2</span> - l;
+        v = (l + s) / <span class="hljs-number">2</span>;
+        sv = (<span class="hljs-number">2</span> * s) / (l + s);
+        <span class="hljs-keyword">return</span> kolor.hsva(h, sv, v, a);
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
               <p>Converts HSVA color to RGBA.</p>
 
@@ -1448,11 +1496,40 @@ a given function.</p>
         </li>
         
         
-        <li id="section-49">
+        <li id="section-51">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-49">&#182;</a>
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
+              <p>Converts HSVA color to HSLA.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSVA_TO_HSLA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h(),
+            s = <span class="hljs-keyword">this</span>.s(),
+            v = <span class="hljs-keyword">this</span>.v(),
+            a = <span class="hljs-keyword">this</span>.a(),
+            sl,
+            l;
+
+        l = (<span class="hljs-number">2</span> - s) * v;
+        sl = s * v;
+        sl /= (l &lt;= <span class="hljs-number">1</span>) ? l : <span class="hljs-number">2</span> - l;
+        sl = sl || <span class="hljs-number">0</span>;
+        l /= <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">return</span> kolor.hsva(h, sl, l, a);
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
               <p>Converts HSVA color to HWB.</p>
 
@@ -1469,11 +1546,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-50">
+        <li id="section-53">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-50">&#182;</a>
+                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <p>Converts HWB color to HSVA.</p>
 
@@ -1490,11 +1567,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-51">
+        <li id="section-54">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
               <p>Converts GRAY color to RGBA.</p>
 
@@ -1510,11 +1587,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-52">
+        <li id="section-55">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
               <p>Naively converts CMYK color to RGBA.</p>
 
@@ -1548,6 +1625,7 @@ a given function.</p>
         },
         HSLA: {
             HSL: REMOVE_ALPHA,
+            HSVA: HSLA_TO_HSVA,
             RGBA: HSLA_TO_RGBA,
         },
         HSV: {
@@ -1556,13 +1634,14 @@ a given function.</p>
         HSVA: {
             HSV: REMOVE_ALPHA,
             RGBA: HSVA_TO_RGBA,
+            HSLA: HSVA_TO_HSLA,
             HWB: HSVA_TO_HWB,
         },
         HWB: {
             HSVA: HWB_TO_HSVA
         },
         GRAY: {
-            RGB: GRAY_TO_RGBA
+            RGBA: GRAY_TO_RGBA
         },
         CMYK: {
             RGB: CMYK_TO_RGB
@@ -1572,11 +1651,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-53">
+        <li id="section-56">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
+                <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
               <p>Breadth-first search to find the conversion path</p>
 
@@ -1615,11 +1694,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-54">
+        <li id="section-57">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-54">&#182;</a>
+                <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
               <p>Filters input value according to data type definitions and color space configurations.</p>
 
@@ -1645,11 +1724,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-55">
+        <li id="section-58">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-55">&#182;</a>
+                <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
               <h2 id="kolor-api">kolor API</h2>
 
@@ -1658,11 +1737,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-56">
+        <li id="section-59">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-56">&#182;</a>
+                <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
               <h4 id="kolor-exp-">kolor(<em>exp</em>)</h4>
 <p><code>kolor</code> as a function is used as a factory method to parse given expressions into color objects.</p>
@@ -1685,11 +1764,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-57">
+        <li id="section-60">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-60">&#182;</a>
               </div>
               <p>Check if the input is another color object by checking the private attribute <code>_space</code>.</p>
 
@@ -1702,11 +1781,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-58">
+        <li id="section-61">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
+                <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
               <p>Check if the input is a predefined color name and create again using hex value on success.</p>
 
@@ -1719,11 +1798,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-59">
+        <li id="section-62">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-59">&#182;</a>
+                <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
               <p>Try to match hex values, return RGB color on success.</p>
 
@@ -1745,11 +1824,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-60">
+        <li id="section-63">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-60">&#182;</a>
+                <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
               <p>Recognize specific space with pattern mathing and return color object in corresponding space.</p>
 
@@ -1766,11 +1845,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-61">
+        <li id="section-64">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-61">&#182;</a>
+                <a class="pilcrow" href="#section-64">&#182;</a>
               </div>
               <p>Return false if fail to parse the input expression.</p>
 
@@ -1784,11 +1863,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-62">
+        <li id="section-65">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-62">&#182;</a>
+                <a class="pilcrow" href="#section-65">&#182;</a>
               </div>
               <h3 id="factory-methods-for-each-color-space">Factory methods for each color space</h3>
 
@@ -1797,11 +1876,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-63">
+        <li id="section-66">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-63">&#182;</a>
+                <a class="pilcrow" href="#section-66">&#182;</a>
               </div>
               <h4 id="kolor-space-values-">kolor.<em>space</em>(<em>values</em>)</h4>
 <p>Creates a color object using a space name defined in <code>SPACES</code>.</p>
@@ -1837,11 +1916,11 @@ an array or an object containing specific key-value pairs.</p>
         </li>
         
         
-        <li id="section-64">
+        <li id="section-67">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-64">&#182;</a>
+                <a class="pilcrow" href="#section-67">&#182;</a>
               </div>
               <h3 id="constructor">Constructor</h3>
 <p>When <code>kolor</code> is used as a factory method, it will call these constructors.</p>
@@ -1877,11 +1956,11 @@ an array or an object containing specific key-value pairs.</p>
         </li>
         
         
-        <li id="section-65">
+        <li id="section-68">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-65">&#182;</a>
+                <a class="pilcrow" href="#section-68">&#182;</a>
               </div>
               <h3 id="accessors">Accessors</h3>
 <h4 id="-accessor-value-">.<em>accessor</em>([<em>value</em>])</h4>
@@ -1931,11 +2010,11 @@ getter.</p>
         </li>
         
         
-        <li id="section-66">
+        <li id="section-69">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-66">&#182;</a>
+                <a class="pilcrow" href="#section-69">&#182;</a>
               </div>
               <h4 id="-space-">.space()</h4>
 <p>A getter for the space of the color object.</p>
@@ -1951,11 +2030,11 @@ getter.</p>
         </li>
         
         
-        <li id="section-67">
+        <li id="section-70">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-70">&#182;</a>
               </div>
               <h4 id="-format-">.format()</h4>
 <p>Deprecated. Same as <code>.space()</code> and preserved just for backward compatibility.</p>
@@ -1971,11 +2050,11 @@ getter.</p>
         </li>
         
         
-        <li id="section-68">
+        <li id="section-71">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-68">&#182;</a>
+                <a class="pilcrow" href="#section-71">&#182;</a>
               </div>
               <h3 id="converters">Converters</h3>
 <h4 id="-converter-">.<em>converter</em>()</h4>
@@ -1994,11 +2073,11 @@ one, a new color object will be cloned and returned.</p>
         </li>
         
         
-        <li id="section-69">
+        <li id="section-72">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-69">&#182;</a>
+                <a class="pilcrow" href="#section-72">&#182;</a>
               </div>
               <p>array or null</p>
 
@@ -2028,11 +2107,11 @@ one, a new color object will be cloned and returned.</p>
         </li>
         
         
-        <li id="section-70">
+        <li id="section-73">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-70">&#182;</a>
+                <a class="pilcrow" href="#section-73">&#182;</a>
               </div>
               <h3 id="common-methods">Common methods</h3>
 
@@ -2041,11 +2120,11 @@ one, a new color object will be cloned and returned.</p>
         </li>
         
         
-        <li id="section-71">
+        <li id="section-74">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-71">&#182;</a>
+                <a class="pilcrow" href="#section-74">&#182;</a>
               </div>
               <h4 id="-toarray-">.toArray()</h4>
 <p>Produces an array carrying channel values. Because the channel values are stored both in
@@ -2064,11 +2143,11 @@ objects can use some array methods like <code>slice</code>.</p>
         </li>
         
         
-        <li id="section-72">
+        <li id="section-75">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-72">&#182;</a>
+                <a class="pilcrow" href="#section-75">&#182;</a>
               </div>
               <h4 id="-css-tostring-">.css(), .toString()</h4>
 <p>Outputs color channel values as a CSS-style string.</p>
@@ -2093,11 +2172,11 @@ objects can use some array methods like <code>slice</code>.</p>
         </li>
         
         
-        <li id="section-73">
+        <li id="section-76">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-73">&#182;</a>
+                <a class="pilcrow" href="#section-76">&#182;</a>
               </div>
               <h4 id="-hex-">.hex()</h4>
 <p>Outputs color channels as a hex string.</p>
@@ -2122,11 +2201,11 @@ by its RGB channels.</p>
         </li>
         
         
-        <li id="section-74">
+        <li id="section-77">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-74">&#182;</a>
+                <a class="pilcrow" href="#section-77">&#182;</a>
               </div>
               <h4 id="-copyfrom-color-">.copyFrom(<em>color</em>)</h4>
 <p>Converts channel values of another color to the same space as the current one and
@@ -2154,11 +2233,11 @@ copies them to the current color.</p>
         </li>
         
         
-        <li id="section-75">
+        <li id="section-78">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-75">&#182;</a>
+                <a class="pilcrow" href="#section-78">&#182;</a>
               </div>
               <h3 id="less-sass-like-apis">LESS/SASS-like APIs</h3>
 
@@ -2167,11 +2246,11 @@ copies them to the current color.</p>
         </li>
         
         
-        <li id="section-76">
+        <li id="section-79">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-76">&#182;</a>
+                <a class="pilcrow" href="#section-79">&#182;</a>
               </div>
               <h4 id="-mix-color-proportion-0-5-">.mix(<em>color</em> [, <em>proportion</em> = 0.5])</h4>
 <p>Mixes with another color using additive mixing.</p>
@@ -2205,11 +2284,11 @@ copies them to the current color.</p>
         </li>
         
         
-        <li id="section-77">
+        <li id="section-80">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-77">&#182;</a>
+                <a class="pilcrow" href="#section-80">&#182;</a>
               </div>
               <h4 id="-spin-value-">.spin(<em>value</em>)</h4>
 <p>Increases hue value (decreases if value is less than zero) or say spins the color wheel
@@ -2232,11 +2311,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-78">
+        <li id="section-81">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-78">&#182;</a>
+                <a class="pilcrow" href="#section-81">&#182;</a>
               </div>
               <h4 id="-saturate-value-">.saturate(<em>value</em>)</h4>
 <p>Increases saturation value. Saturation channel here defined by HSL model, not HSV.</p>
@@ -2258,11 +2337,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-79">
+        <li id="section-82">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-79">&#182;</a>
+                <a class="pilcrow" href="#section-82">&#182;</a>
               </div>
               <h4 id="-desaturate-value-">.desaturate(<em>value</em>)</h4>
 <p>Decreases saturation value. Saturation channel here defined by HSL model, not HSV.</p>
@@ -2282,11 +2361,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-80">
+        <li id="section-83">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-80">&#182;</a>
+                <a class="pilcrow" href="#section-83">&#182;</a>
               </div>
               <h4 id="-lighten-value-">.lighten(<em>value</em>)</h4>
 <p>Increases lightness value.</p>
@@ -2308,11 +2387,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-81">
+        <li id="section-84">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-81">&#182;</a>
+                <a class="pilcrow" href="#section-84">&#182;</a>
               </div>
               <h4 id="-darken-value-">.darken(<em>value</em>)</h4>
 <p>Decreases lightness value.</p>
@@ -2332,11 +2411,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-82">
+        <li id="section-85">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-82">&#182;</a>
+                <a class="pilcrow" href="#section-85">&#182;</a>
               </div>
               <h4 id="-fadein-value-">.fadeIn(<em>value</em>)</h4>
 <p>Increases alpha value, will add alpha channel to those don’t have it.</p>
@@ -2358,11 +2437,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-83">
+        <li id="section-86">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-83">&#182;</a>
+                <a class="pilcrow" href="#section-86">&#182;</a>
               </div>
               <h4 id="-fadeout-value-">.fadeOut(<em>value</em>)</h4>
 <p>Decreases alpha value, will add alpha channel to those don’t have it.</p>
@@ -2382,11 +2461,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-84">
+        <li id="section-87">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-84">&#182;</a>
+                <a class="pilcrow" href="#section-87">&#182;</a>
               </div>
               <h4 id="-grayscale-">.grayscale()</h4>
 <p>Returns the grayscale color by decreasing saturation(HSL) of the current color to 0.</p>
@@ -2402,11 +2481,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-85">
+        <li id="section-88">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-85">&#182;</a>
+                <a class="pilcrow" href="#section-88">&#182;</a>
               </div>
               <h4 id="-complement-">.complement()</h4>
 <p>Returns the complement of the current color by spinning the color wheel for 180 degrees.</p>
@@ -2422,11 +2501,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-86">
+        <li id="section-89">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-86">&#182;</a>
+                <a class="pilcrow" href="#section-89">&#182;</a>
               </div>
               <h4 id="-luminance-">.luminance()</h4>
 <p>Returns the luminance of a color which indicates how bright the reflecting surface will
@@ -2453,11 +2532,11 @@ appear. See <a href="http://www.w3.org/TR/WCAG20/#relativeluminancedef">relative
         </li>
         
         
-        <li id="section-87">
+        <li id="section-90">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-87">&#182;</a>
+                <a class="pilcrow" href="#section-90">&#182;</a>
               </div>
               <h4 id="-contrastratio-">.contrastRatio()</h4>
 <p>Returns the contrast ratio of two colors.
@@ -2481,11 +2560,11 @@ See <a href="http://dev.w3.org/csswg/css-color/#contrast-ratio">Contrast ratio, 
         </li>
         
         
-        <li id="section-88">
+        <li id="section-91">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-88">&#182;</a>
+                <a class="pilcrow" href="#section-91">&#182;</a>
               </div>
               <h3 id="kolor-utilities">kolor utilities</h3>
 <h4 id="kolor-config-key-value-">kolor.config(<em>key</em>, <em>value</em>)</h4>
@@ -2510,11 +2589,11 @@ when making the output.</li>
         </li>
         
         
-        <li id="section-89">
+        <li id="section-92">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-89">&#182;</a>
+                <a class="pilcrow" href="#section-92">&#182;</a>
               </div>
               <h4 id="kolor-random-options-unstable-api-">kolor.random(<em>options</em>) [unstable API]</h4>
 <p>Generates a random color or color set. Colors are generated in HSL space
@@ -2601,11 +2680,11 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-90">
+        <li id="section-93">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-90">&#182;</a>
+                <a class="pilcrow" href="#section-93">&#182;</a>
               </div>
               <p>Everything is ready, export the whole module</p>
 
@@ -2620,11 +2699,11 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-91">
+        <li id="section-94">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-91">&#182;</a>
+                <a class="pilcrow" href="#section-94">&#182;</a>
               </div>
               <p>Define it the UMD way</p>
 
@@ -2646,11 +2725,11 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-92">
+        <li id="section-95">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-92">&#182;</a>
+                <a class="pilcrow" href="#section-95">&#182;</a>
               </div>
               <p>Defining output using <code>module.exports</code></p>
 
@@ -2662,11 +2741,11 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-93">
+        <li id="section-96">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-93">&#182;</a>
+                <a class="pilcrow" href="#section-96">&#182;</a>
               </div>
               <p>Defining output using <code>exports.*</code></p>
 
