@@ -13,12 +13,13 @@ function sync(color) {
         bg.style.backgroundColor = color.rgba().css();
 
         var skipColor;
-        if (color.hsl().l() > 0.5) {
-            skipColor = color.lighten(0.1);
+        var hsla = color.hsla();
+        if (hsla.l() > 0.5 || hsla.a() < 0.5) {
+            skipColor = kolor('#000').fadeOut(0.8);
         } else {
-            skipColor = color.darken(0.1);
+            skipColor = kolor('#fff').fadeOut(0.8);
         }
-        skip.style.color = skipColor.css();
+        skip.style.color = skipColor.rgba().css();
         readme.style.backgroundColor = color.fadeOut(color.rgba().a() * 0.7).rgba().css();
     }
 };
@@ -80,7 +81,8 @@ go.onclick = function () {
 };
 
 setTimeout(function() {
-    bg.style.transition = readme.style.transition = 'all 1s';
+    bg.style.webkitTransition = skip.style.webkitTransition = readme.style.webkitTransition = 'all 1s';
+    bg.style.transition = skip.style.transition = readme.style.transition = 'all 1s';
 }, 0);
 
 var cases = [
