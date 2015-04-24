@@ -198,6 +198,22 @@ code,
     color: #fff;
 }
 
+#skip {
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    margin-left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    font-size: 0;
+}
+
+#skip:before {
+    content: "▾";
+    font-size: 48px;
+    color: transparent;
+}
+
 #readme .content {
     width: 960px;
     margin: 0 auto;

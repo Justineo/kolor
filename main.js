@@ -11,7 +11,15 @@ function sync(color) {
     });
     if (color) {
         bg.style.backgroundColor = color.rgba().css();
-        readme.style.backgroundColor = color.fadeOut(color.rgba().a() * 0.7).rgba();
+
+        var skipColor;
+        if (color.hsl().l() > 0.5) {
+            skipColor = color.lighten(0.1);
+        } else {
+            skipColor = color.darken(0.1);
+        }
+        skip.style.color = skipColor.css();
+        readme.style.backgroundColor = color.fadeOut(color.rgba().a() * 0.7).rgba().css();
     }
 };
 
@@ -19,6 +27,7 @@ kolor.config('cssPrecision', 2);
 
 var converter = $('converter');
 var bg = $('bg');
+var skip = $('skip');
 var readme = $('readme');
 var input = $('exp');
 var action = $('action');
