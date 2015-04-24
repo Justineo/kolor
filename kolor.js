@@ -900,7 +900,7 @@
         sl /= (l <= 1) ? l : 2 - l;
         sl = sl || 0;
         l /= 2;
-        return kolor.hsva(h, sl, l, a);
+        return kolor.hsla(h, sl, l, a);
     }
 
     // Converts HSVA color to HWB.
