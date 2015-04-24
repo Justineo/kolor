@@ -1,4 +1,7 @@
 # Changelog
+* 1.1.4
+    - fix HSVA_TO_HSLA
+
 * 1.1.3
     - fix GRAY to RGBA conversion config
 
