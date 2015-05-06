@@ -658,9 +658,9 @@
         },
         CMYK: {
             channels: [
-                Channel.create(Octet, 'cyan', 'c'),
-                Channel.create(Octet, 'magenta', 'm'),
-                Channel.create(Octet, 'yellow', 'y'),
+                Channel.create(Ratio, 'cyan', 'c'),
+                Channel.create(Ratio, 'magenta', 'm'),
+                Channel.create(Ratio, 'yellow', 'y'),
                 Channel.create(Ratio, 'black', ['b', 'k'])
             ],
             pattern: /(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*\)/i
@@ -705,16 +705,16 @@
     function RGB_TO_CMYK() {
         var r = this.r() / 255,
             g = this.g() / 255,
-            b = this.b() / 255
+            b = this.b() / 255,
             black = 1 - Math.max(r, g, b);
 
         if (black === 0) {
             return kolor.cmyk(0, 0, 0, 0);
         }
 
-        var c = (1 - r - black) / (1 - black) * 255,
-            m = (1 - g - black) / (1 - black) * 255,
-            y = (1 - b - black) / (1 - black) * 255;
+        var c = (1 - r - black) / (1 - black),
+            m = (1 - g - black) / (1 - black),
+            y = (1 - b - black) / (1 - black);
         return kolor.cmyk(c, m, y, black);
     }
 
@@ -931,9 +931,9 @@
 
     // Naively converts CMYK color to RGBA.
     function CMYK_TO_RGB() {
-        var c = this.c() / 255,
-            m = this.m() / 255,
-            y = this.y() / 255,
+        var c = this.c(),
+            m = this.m(),
+            y = this.y(),
             black = this.b();
 
         var r = 1 - Math.min(1, c * (1 - black) + black);
