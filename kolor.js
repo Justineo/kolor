@@ -661,9 +661,10 @@
                 Channel.create(Ratio, 'cyan', 'c'),
                 Channel.create(Ratio, 'magenta', 'm'),
                 Channel.create(Ratio, 'yellow', 'y'),
-                Channel.create(Ratio, 'black', ['b', 'k'])
+                Channel.create(Ratio, 'black', ['b', 'k']),
+                Channel.create(Ratio, 'alpha', 'a')
             ],
-            pattern: /(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*\)/i
+            pattern: /(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
         }
     };
 
@@ -701,8 +702,8 @@
         return new kolor[space.slice(0, -1)](result);
     }
 
-    // Naively converts RGB color to CMYK
-    function RGB_TO_CMYK() {
+    // Naively converts RGBA color to CMYK
+    function RGBA_TO_CMYK() {
         var r = this.r() / 255,
             g = this.g() / 255,
             b = this.b() / 255,
@@ -715,7 +716,7 @@
         var c = (1 - r - black) / (1 - black),
             m = (1 - g - black) / (1 - black),
             y = (1 - b - black) / (1 - black);
-        return kolor.cmyk(c, m, y, black);
+        return kolor.cmyk(c, m, y, black, this.a());
     }
 
     // Converts RGBA color to HSLA.
@@ -930,7 +931,7 @@
     }
 
     // Naively converts CMYK color to RGBA.
-    function CMYK_TO_RGB() {
+    function CMYK_TO_RGBA() {
         var c = this.c(),
             m = this.m(),
             y = this.y(),
@@ -939,19 +940,19 @@
         var r = 1 - Math.min(1, c * (1 - black) + black);
             g = 1 - Math.min(1, m * (1 - black) + black);
             b = 1 - Math.min(1, y * (1 - black) + black);
-        return kolor.rgb(r, g, b);
+        return kolor.rgba(r * 255, g * 255, b * 255, this.a());
     }
 
     var CONVERTERS = {
         RGB: {
-            RGBA: ADD_ALPHA,
-            CMYK: RGB_TO_CMYK
+            RGBA: ADD_ALPHA
         },
         RGBA: {
             RGB: REMOVE_ALPHA,
             HSLA: RGBA_TO_HSLA,
             HSVA: RGBA_TO_HSVA,
-            GRAY: RGBA_TO_GRAY
+            GRAY: RGBA_TO_GRAY,
+            CMYK: RGBA_TO_CMYK
         },
         HSL: {
             HSLA: ADD_ALPHA
@@ -977,7 +978,7 @@
             RGBA: GRAY_TO_RGBA
         },
         CMYK: {
-            RGB: CMYK_TO_RGB
+            RGBA: CMYK_TO_RGBA
         }
     };
 
@@ -1135,14 +1136,22 @@
                         name = channel.name,
                         alias = channel.alias,
                         param;
+
                     if (args[i] != null) {
                         param = args[i];
                     } else if (util.has(args, name)) {
                         param = args[name];
-                    } else if (util.has(args, alias)) {
-                        param = args[alias];
                     } else {
-                        param = channel.initial;
+                        alias = util.isString(alias) ? [alias] : alias;
+                        for (var j = 0, k = alias.length; j < k; j++) {
+                            if (util.has(args, alias[j])) {
+                                param = args[alias[j]];
+                                break;
+                            }
+                        }
+                        if (!param) {
+                            param = channel.initial;
+                        }
                     }
                     this[name](param);
                 }
