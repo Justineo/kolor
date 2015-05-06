@@ -521,6 +521,7 @@
     // ### Color channels
     //
     function Channel(options) {
+        this.optional = false;
         util.extend(this, options);
     }
 
@@ -645,7 +646,7 @@
                 Channel.create(Hue, 'hue', 'h'),
                 Channel.create(Percent, 'whiteness', 'w'),
                 Channel.create(Percent, 'blackness', 'b'),
-                Channel.create(Ratio, 'alpha', 'a')
+                Channel.create(Ratio, 'alpha', 'a', { optional: true })
             ],
             pattern: /hwb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,\)]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
         },
@@ -662,7 +663,7 @@
                 Channel.create(Ratio, 'magenta', 'm'),
                 Channel.create(Ratio, 'yellow', 'y'),
                 Channel.create(Ratio, 'black', ['b', 'k']),
-                Channel.create(Ratio, 'alpha', 'a')
+                Channel.create(Ratio, 'alpha', 'a', { optional: true })
             ],
             pattern: /(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
         }
@@ -1291,10 +1292,15 @@
             var channels = SPACES[this.space()].channels,
                 l = channels.length,
                 channel,
+                value,
                 values = [];
             for (var i = 0; i < l; i++) {
                 channel = channels[i];
-                values.push(DATATYPES[channel.cssType].stringify(this[channel.name]()));
+                value = this[channel.name]();
+                if (value === channel.initial && channel.optional) {
+                    continue;
+                }
+                values.push(DATATYPES[channel.cssType].stringify(value));
             }
             return this.space().toLowerCase() + '(' + values.join(', ') + ')';
         };
