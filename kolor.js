@@ -911,7 +911,7 @@
             s = this.s(),
             v = this.v(),
             a = this.a();
-        return kolor.hwb(h, (1 - s) * v, 1 - v);
+        return kolor.hwb(h, (1 - s) * v, 1 - v, a);
     }
 
     // Converts HWB color to HSVA.

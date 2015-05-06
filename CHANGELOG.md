@@ -1,4 +1,7 @@
 # Changelog
+* 1.1.6
+    - fix HSVA_TO_HWB
+
 * 1.1.5
     - fix CMYK, add alpha channel and fix converters
     - added optional channels for better output
