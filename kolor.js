@@ -705,16 +705,13 @@
     function RGB_TO_CMYK() {
         var r = this.r() / 255,
             g = this.g() / 255,
-            b = this.b() / 255
+            b = this.b() / 255,
             black = 1 - Math.max(r, g, b);
 
-        if (black === 0) {
-            return kolor.cmyk(0, 0, 0, 0);
-        }
-
-        var c = (1 - r - black) / (1 - black) * 255,
-            m = (1 - g - black) / (1 - black) * 255,
-            y = (1 - b - black) / (1 - black) * 255;
+        var c = (1 - r - black) / (1 - black) * 100,
+            m = (1 - g - black) / (1 - black) * 100,
+            y = (1 - b - black) / (1 - black) * 100;
+        black *= 100;
         return kolor.cmyk(c, m, y, black);
     }
 
@@ -931,14 +928,14 @@
 
     // Naively converts CMYK color to RGBA.
     function CMYK_TO_RGB() {
-        var c = this.c() / 255,
-            m = this.m() / 255,
-            y = this.y() / 255,
-            black = this.b();
+        var c = this.c() / 100,
+            m = this.m() / 100,
+            y = this.y() / 100,
+            black = this.b() / 100;
 
-        var r = 1 - Math.min(1, c * (1 - black) + black);
-            g = 1 - Math.min(1, m * (1 - black) + black);
-            b = 1 - Math.min(1, y * (1 - black) + black);
+        var r = 255 * (1 - c) * (1 - black),
+            g = 255 * (1 - m) * (1 - black),
+            b = 255 * (1 - y) * (1 - black);
         return kolor.rgb(r, g, b);
     }
 
