@@ -1436,10 +1436,19 @@
         // * *value* - the amount that the alpha value will the increase.
         //
         // ##### Return values
-        // Returns a new color object after increasing alpha in the original space.
+        // Returns a new color object after increasing alpha in the original space adding
+        // an alpha channel.
+        // If the original space dosen't have an alpha version, the color will be converted
+        // into RGBA.
         kolor[key].prototype.fadeIn = function (value) {
             var space = this.a ? this.space() : this.space() + 'A',
+                color;
+
+            if (util.has(SPACES, space)) {
                 color = this[space.toLowerCase()]();
+            } else {
+                color = this.rgba();
+            }
             return color.a(color.a() + value);
         };
 
