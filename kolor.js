@@ -664,7 +664,7 @@
                 Channel.create(Ratio, 'black', ['b', 'k']),
                 Channel.create(Ratio, 'alpha', 'a')
             ],
-            pattern: /(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?),\s*([^\)]+?))?\s*\)/i
+            pattern: /(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
         }
     };
 
@@ -940,7 +940,7 @@
         var r = 1 - Math.min(1, c * (1 - black) + black);
             g = 1 - Math.min(1, m * (1 - black) + black);
             b = 1 - Math.min(1, y * (1 - black) + black);
-        return kolor.rgba(r, g, b, this.a());
+        return kolor.rgba(r * 255, g * 255, b * 255, this.a());
     }
 
     var CONVERTERS = {
@@ -1136,14 +1136,22 @@
                         name = channel.name,
                         alias = channel.alias,
                         param;
+
                     if (args[i] != null) {
                         param = args[i];
                     } else if (util.has(args, name)) {
                         param = args[name];
-                    } else if (util.has(args, alias)) {
-                        param = args[alias];
                     } else {
-                        param = channel.initial;
+                        alias = util.isString(alias) ? [alias] : alias;
+                        for (var j = 0, k = alias.length; j < k; j++) {
+                            if (util.has(args, alias[j])) {
+                                param = args[alias[j]];
+                                break;
+                            }
+                        }
+                        if (!param) {
+                            param = channel.initial;
+                        }
                     }
                     this[name](param);
                 }
