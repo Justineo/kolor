@@ -1,0 +1,13 @@
+{
+    "eslint": {
+        "rules": {
+            "no-loop-func": false,
+            "max-len": false,
+            "wrap-iife": false,
+            "guard-for-in": false,
+            "no-else-return": false,
+            "new-cap": false,
+            "brace-style": [2, "1tbs", { "allowSingleLine": true }]
+        }
+    }
+}
