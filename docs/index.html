@@ -30,7 +30,11 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(define)</span> </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * @file Kolor.js
+ * @author Justineo(justice360@gmail.com)
+ */</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(define)</span> </span>{</pre></div></div>
             
         </li>
         
@@ -40,6 +44,21 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Global namespace</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> kolor;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
               <h2 id="config">Config</h2>
 <p>Global configuraiton. See <code>kolor.config</code> for more details.</p>
@@ -54,11 +73,11 @@
         </li>
         
         
-        <li id="section-3">
+        <li id="section-4">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
+                <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
               <h2 id="utilities">Utilities</h2>
 
@@ -70,32 +89,15 @@
         </li>
         
         
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <h3 id="object-utils">Object utils</h3>
-
-            </div>
-            
-        </li>
-        
-        
         <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>Checks if the given value is a number.</p>
+              <h3 id="object-utils">Object utils</h3>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>        isNumber: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(value)</span> </span>{
-            <span class="hljs-keyword">return</span> <span class="hljs-string">'[object Number]'</span> == <span class="hljs-built_in">Object</span>.prototype.toString.call(value) &amp;&amp; <span class="hljs-built_in">isFinite</span>(value);
-        },</pre></div></div>
             
         </li>
         
@@ -106,12 +108,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Checks if the given value is a string.</p>
+              <p>Checks if the given value is a number.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        isString: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(value)</span> </span>{
-            <span class="hljs-keyword">return</span> <span class="hljs-string">'[object String]'</span> == <span class="hljs-built_in">Object</span>.prototype.toString.call(value);
+            <div class="content"><div class='highlight'><pre>        isNumber: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(value)</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'[object Number]'</span> === <span class="hljs-built_in">Object</span>.prototype.toString.call(value) &amp;&amp; <span class="hljs-built_in">isFinite</span>(value);
         },</pre></div></div>
             
         </li>
@@ -122,6 +124,23 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Checks if the given value is a string.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        isString: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(value)</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'[object String]'</span> === <span class="hljs-built_in">Object</span>.prototype.toString.call(value);
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>Retrieves the type of the given value.</p>
 <p>Return value can be ‘String’, ‘Number’, ‘Object’, ‘Array’, …</p>
@@ -136,11 +155,11 @@
         </li>
         
         
-        <li id="section-8">
+        <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>Shorthand method for Object.prototype.hasOwnProperty.</p>
 
@@ -153,11 +172,11 @@
         </li>
         
         
-        <li id="section-9">
+        <li id="section-10">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <h3 id="array-utils">Array utils</h3>
 
@@ -166,11 +185,11 @@
         </li>
         
         
-        <li id="section-10">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>Slices any array-ish object.</p>
 
@@ -183,11 +202,11 @@
         </li>
         
         
-        <li id="section-11">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>Swaps two array elements.</p>
 
@@ -202,11 +221,11 @@
         </li>
         
         
-        <li id="section-12">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Shuffles the given array using
 <a href="http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle</a>.</p>
@@ -214,36 +233,10 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>        shuffle: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(items)</span> </span>{
-            <span class="hljs-keyword">var</span> i, j, l = items.length;
-
-            <span class="hljs-keyword">for</span> (i = l - <span class="hljs-number">1</span>; i &gt; <span class="hljs-number">0</span>; i --) {
-                j = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (i + <span class="hljs-number">1</span>));
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = items.length - <span class="hljs-number">1</span>; i &gt; <span class="hljs-number">0</span>; i--) {
+                <span class="hljs-keyword">var</span> j = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (i + <span class="hljs-number">1</span>));
                 util.swap(items, i, j);
             }
-        },</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-13">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
-              <p>Iterates through the given array and produces a new array by mapping each value through
-a given function.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        map: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(source, callback, opt_this)</span> </span>{
-            <span class="hljs-keyword">var</span> results = [],
-                l = source.length,
-                i = l;
-            <span class="hljs-keyword">while</span> (i--) {
-                results[i] = callback.call(opt_this || source, source[i], i);
-            }
-            <span class="hljs-keyword">return</span> results;
         },</pre></div></div>
             
         </li>
@@ -255,9 +248,19 @@ a given function.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <h3 id="number-utils">Number utils</h3>
+              <p>Iterates through the given array and produces a new array by mapping each value through
+a given function.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>        map: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(source, callback, context)</span> </span>{
+            <span class="hljs-keyword">var</span> results = [];
+            <span class="hljs-keyword">var</span> i = source.length;
+            <span class="hljs-keyword">while</span> (i--) {
+                results[i] = callback.call(context || source, source[i], i);
+            }
+            <span class="hljs-keyword">return</span> results;
+        },</pre></div></div>
             
         </li>
         
@@ -267,6 +270,19 @@ a given function.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <h3 id="number-utils">Number utils</h3>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>Clamps a number to a given range.</p>
 
@@ -284,11 +300,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>Wraps a number inside a given range with modulo operation.</p>
 
@@ -308,11 +324,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Fills leading zeros for a number to make sure it has a fixed width.</p>
 
@@ -330,11 +346,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-18">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Generates a random number in a given range.</p>
 
@@ -350,11 +366,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-19">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>Extend the destination object from a source object.</p>
 
@@ -371,11 +387,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <h2 id="preparation">Preparation</h2>
 
@@ -384,11 +400,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-21">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <h3 id="color-name-hex-map">Color name-hex map</h3>
 <p>see <a href="http://dev.w3.org/csswg/css-color/#named-colors">Named Colors, CSS Color Module Level 4</a></p>
@@ -551,11 +567,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <h3 id="named-hues">Named hues</h3>
 <p>see <a href="http://dev.w3.org/csswg/css-color/#simple-hues">Simple Named Hues: the <named-hue> term, CSS Color Module Level 4</a></p>
@@ -575,11 +591,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-23">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <h4 id="splash-hues">Splash hues</h4>
 
@@ -597,11 +613,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-24">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Sorted base hues in array</p>
 
@@ -619,11 +635,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-25">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>0 -&gt; 360 in some circumstances for correct calculation</p>
 
@@ -650,19 +666,19 @@ a given function.</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Parses simple named hues</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseNamedHues</span><span class="hljs-params">(value)</span> </span>{
-        <span class="hljs-keyword">var</span> tokens = value.split(<span class="hljs-regexp">/\s+/</span>),
-            l = tokens.length;
+        <span class="hljs-keyword">var</span> tokens = value.split(<span class="hljs-regexp">/\s+/</span>);
+        <span class="hljs-keyword">var</span> l = tokens.length;
 
         <span class="hljs-keyword">if</span> (l &lt; <span class="hljs-number">1</span> || l &gt; <span class="hljs-number">2</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
@@ -679,11 +695,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-27">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>single-value syntax</p>
 
@@ -696,19 +712,19 @@ a given function.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>double-value syntax</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> h2,
-            t2 = tokens[<span class="hljs-number">0</span>].toLowerCase(),
-            hues;
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> h2;
+        <span class="hljs-keyword">var</span> t2 = tokens[<span class="hljs-number">0</span>].toLowerCase();
+        <span class="hljs-keyword">var</span> hues;
         <span class="hljs-keyword">if</span> (t2 <span class="hljs-keyword">in</span> BASE_HUE) {
             h2 = BASE_HUE[t2];
             hues = fixHues(h1, h2);
@@ -740,11 +756,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <h3 id="color-value-data-type-flags">Color value data type flags</h3>
 <p>Uses powers of 2 in order to easily define several data types for one data field.</p>
@@ -756,19 +772,19 @@ a given function.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> INTEGER = <span class="hljs-number">1</span>,
-        NUMBER = <span class="hljs-number">2</span>,
-        PERCENT = <span class="hljs-number">4</span>,
-        HUE = <span class="hljs-number">8</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> INTEGER = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">var</span> NUMBER = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">var</span> PERCENT = <span class="hljs-number">4</span>;
+    <span class="hljs-keyword">var</span> HUE = <span class="hljs-number">8</span>;</pre></div></div>
             
         </li>
         
         
-        <li id="section-30">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <h3 id="utils-for-each-data-type">Utils for each data type</h3>
 <ul>
@@ -862,11 +878,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-31">
+        <li id="section-32">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-31">&#182;</a>
+                <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
               <p>do nothing</p>
 
@@ -893,11 +909,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-32">
+        <li id="section-33">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
               <h3 id="value-filters">Value filters</h3>
 
@@ -915,28 +931,29 @@ a given function.</p>
         </li>
         
         
-        <li id="section-33">
+        <li id="section-34">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               <h3 id="color-channels">Color channels</h3>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Channel</span><span class="hljs-params">(options)</span> </span>{
+        <span class="hljs-keyword">this</span>.optional = <span class="hljs-literal">false</span>;
         util.extend(<span class="hljs-keyword">this</span>, options);
     }</pre></div></div>
             
         </li>
         
         
-        <li id="section-34">
+        <li id="section-35">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
               <h4 id="channel-create-type-name-alias-options-">Channel.create(<em>type</em>, <em>name</em>, <em>alias</em>[, <em>options</em>])</h4>
 <p>Create a color channel.</p>
@@ -962,11 +979,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-35">
+        <li id="section-36">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <p>Constructor for 0~255 integer or percentage.</p>
 
@@ -974,7 +991,7 @@ a given function.</p>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Octet</span><span class="hljs-params">()</span> </span>{
         Channel.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
-        <span class="hljs-keyword">this</span>.dataType = INTEGER|PERCENT;
+        <span class="hljs-keyword">this</span>.dataType = INTEGER | PERCENT;
         <span class="hljs-keyword">this</span>.cssType = INTEGER;
         <span class="hljs-keyword">this</span>.range = [<span class="hljs-number">0</span>, <span class="hljs-number">255</span>];
         <span class="hljs-keyword">this</span>.filter = CLAMP;
@@ -986,11 +1003,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-36">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <p>Constructor for channel can be number from 0~1 or percentage.</p>
 
@@ -998,7 +1015,7 @@ a given function.</p>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Ratio</span><span class="hljs-params">()</span> </span>{
         Channel.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
-        <span class="hljs-keyword">this</span>.dataType = NUMBER|PERCENT;
+        <span class="hljs-keyword">this</span>.dataType = NUMBER | PERCENT;
         <span class="hljs-keyword">this</span>.cssType = NUMBER;
         <span class="hljs-keyword">this</span>.range = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>];
         <span class="hljs-keyword">this</span>.filter = CLAMP;
@@ -1010,11 +1027,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-37">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               <p>Constructor for ratios which output percent values.</p>
 
@@ -1030,11 +1047,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-38">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>Constructor for those channel can be .</p>
 
@@ -1042,7 +1059,7 @@ a given function.</p>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Hue</span><span class="hljs-params">()</span> </span>{
         Channel.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
-        <span class="hljs-keyword">this</span>.dataType = NUMBER|HUE;
+        <span class="hljs-keyword">this</span>.dataType = NUMBER | HUE;
         <span class="hljs-keyword">this</span>.cssType = NUMBER;
         <span class="hljs-keyword">this</span>.range = [<span class="hljs-number">0</span>, <span class="hljs-number">360</span>];
         <span class="hljs-keyword">this</span>.filter = MOD;
@@ -1054,11 +1071,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-39">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <h3 id="color-space-configurations">Color space configurations</h3>
 
@@ -1103,7 +1120,7 @@ a given function.</p>
             channels: [
                 Channel.create(Hue, <span class="hljs-string">'hue'</span>, <span class="hljs-string">'h'</span>),
                 Channel.create(Percent, <span class="hljs-string">'saturation'</span>, <span class="hljs-string">'s'</span>),
-                Channel.create(Percent, <span class="hljs-string">'value'</span>, <span class="hljs-string">'v'</span>),
+                Channel.create(Percent, <span class="hljs-string">'value'</span>, <span class="hljs-string">'v'</span>)
             ],
             pattern: <span class="hljs-regexp">/hsv\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i</span>
         },
@@ -1121,7 +1138,7 @@ a given function.</p>
                 Channel.create(Hue, <span class="hljs-string">'hue'</span>, <span class="hljs-string">'h'</span>),
                 Channel.create(Percent, <span class="hljs-string">'whiteness'</span>, <span class="hljs-string">'w'</span>),
                 Channel.create(Percent, <span class="hljs-string">'blackness'</span>, <span class="hljs-string">'b'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'alpha'</span>, <span class="hljs-string">'a'</span>)
+                Channel.create(Ratio, <span class="hljs-string">'alpha'</span>, <span class="hljs-string">'a'</span>, {optional: <span class="hljs-literal">true</span>})
             ],
             pattern: <span class="hljs-regexp">/hwb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,\)]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i</span>
         },
@@ -1134,27 +1151,15 @@ a given function.</p>
         },
         CMYK: {
             channels: [
-                Channel.create(Octet, <span class="hljs-string">'cyan'</span>, <span class="hljs-string">'c'</span>),
-                Channel.create(Octet, <span class="hljs-string">'magenta'</span>, <span class="hljs-string">'m'</span>),
-                Channel.create(Octet, <span class="hljs-string">'yellow'</span>, <span class="hljs-string">'y'</span>),
-                Channel.create(Ratio, <span class="hljs-string">'black'</span>, [<span class="hljs-string">'b'</span>, <span class="hljs-string">'k'</span>])
+                Channel.create(Ratio, <span class="hljs-string">'cyan'</span>, <span class="hljs-string">'c'</span>),
+                Channel.create(Ratio, <span class="hljs-string">'magenta'</span>, <span class="hljs-string">'m'</span>),
+                Channel.create(Ratio, <span class="hljs-string">'yellow'</span>, <span class="hljs-string">'y'</span>),
+                Channel.create(Ratio, <span class="hljs-string">'black'</span>, [<span class="hljs-string">'b'</span>, <span class="hljs-string">'k'</span>]),
+                Channel.create(Ratio, <span class="hljs-string">'alpha'</span>, <span class="hljs-string">'a'</span>, {optional: <span class="hljs-literal">true</span>})
             ],
-            pattern: <span class="hljs-regexp">/(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*\)/i</span>
+            pattern: <span class="hljs-regexp">/(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i</span>
         }
     };</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-40">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-40">&#182;</a>
-              </div>
-              <h3 id="space-converting-algorithms">Space converting algorithms</h3>
-
-            </div>
             
         </li>
         
@@ -1164,6 +1169,19 @@ a given function.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <h3 id="space-converting-algorithms">Space converting algorithms</h3>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               <p>Clones a color object in the same space.</p>
 
@@ -1176,52 +1194,27 @@ a given function.</p>
         </li>
         
         
-        <li id="section-42">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-42">&#182;</a>
-              </div>
-              <p>Produces a new color object by adding alpha channel to the old one.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ADD_ALPHA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> space = <span class="hljs-keyword">this</span>.space(),
-            channels = SPACES[space].channels,
-            l = channels.length,
-            result = [];
-
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; l; i++) {
-            result.push(<span class="hljs-keyword">this</span>[channels[i].name]());
-        }
-        result.push(<span class="hljs-number">1</span>);
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> kolor[space + <span class="hljs-string">'A'</span>](result);
-    }</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
-              <p>Produces a new color object by removing alpha channel from the old one.</p>
+              <p>Produces a new color object by adding alpha channel to the old one.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">REMOVE_ALPHA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> space = <span class="hljs-keyword">this</span>.space(),
-            channels = SPACES[space].channels,
-            l = channels.length,
-            result = [];
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ADD_ALPHA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> space = <span class="hljs-keyword">this</span>.space();
+        <span class="hljs-keyword">var</span> channels = SPACES[space].channels;
+        <span class="hljs-keyword">var</span> result = [];
 
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; l - <span class="hljs-number">1</span>; i++) {
+        <span class="hljs-keyword">var</span> l = channels.length;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; l; i++) {
             result.push(<span class="hljs-keyword">this</span>[channels[i].name]());
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> kolor[space.slice(<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>)](result);
+        result.push(<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> kolor[space + <span class="hljs-string">'A'</span>](result);
     }</pre></div></div>
             
         </li>
@@ -1233,24 +1226,20 @@ a given function.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
-              <p>Naively converts RGB color to CMYK</p>
+              <p>Produces a new color object by removing alpha channel from the old one.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RGB_TO_CMYK</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> r = <span class="hljs-keyword">this</span>.r() / <span class="hljs-number">255</span>,
-            g = <span class="hljs-keyword">this</span>.g() / <span class="hljs-number">255</span>,
-            b = <span class="hljs-keyword">this</span>.b() / <span class="hljs-number">255</span>
-            black = <span class="hljs-number">1</span> - <span class="hljs-built_in">Math</span>.max(r, g, b);
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">REMOVE_ALPHA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> space = <span class="hljs-keyword">this</span>.space();
+        <span class="hljs-keyword">var</span> channels = SPACES[space].channels;
+        <span class="hljs-keyword">var</span> result = [];
 
-        <span class="hljs-keyword">if</span> (black === <span class="hljs-number">0</span>) {
-            <span class="hljs-keyword">return</span> kolor.cmyk(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+        <span class="hljs-keyword">var</span> l = channels.length;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; l - <span class="hljs-number">1</span>; i++) {
+            result.push(<span class="hljs-keyword">this</span>[channels[i].name]());
         }
-
-        <span class="hljs-keyword">var</span> c = (<span class="hljs-number">1</span> - r - black) / (<span class="hljs-number">1</span> - black) * <span class="hljs-number">255</span>,
-            m = (<span class="hljs-number">1</span> - g - black) / (<span class="hljs-number">1</span> - black) * <span class="hljs-number">255</span>,
-            y = (<span class="hljs-number">1</span> - b - black) / (<span class="hljs-number">1</span> - black) * <span class="hljs-number">255</span>;
-        <span class="hljs-keyword">return</span> kolor.cmyk(c, m, y, black);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> kolor[space.slice(<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>)](result);
     }</pre></div></div>
             
         </li>
@@ -1262,44 +1251,24 @@ a given function.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
-              <p>Converts RGBA color to HSLA.</p>
+              <p>Naively converts RGBA color to CMYK</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RGBA_TO_HSLA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> r = <span class="hljs-keyword">this</span>.r() / <span class="hljs-number">255</span>,
-            g = <span class="hljs-keyword">this</span>.g() / <span class="hljs-number">255</span>,
-            b = <span class="hljs-keyword">this</span>.b() / <span class="hljs-number">255</span>,
-            a = <span class="hljs-keyword">this</span>.a(),
-            max = <span class="hljs-built_in">Math</span>.max(r, g, b),
-            min = <span class="hljs-built_in">Math</span>.min(r, g, b),
-            diff = max - min,
-            sum = max + min,
-            h, s, l;
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RGBA_TO_CMYK</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> r = <span class="hljs-keyword">this</span>.r() / <span class="hljs-number">255</span>;
+        <span class="hljs-keyword">var</span> g = <span class="hljs-keyword">this</span>.g() / <span class="hljs-number">255</span>;
+        <span class="hljs-keyword">var</span> b = <span class="hljs-keyword">this</span>.b() / <span class="hljs-number">255</span>;
+        <span class="hljs-keyword">var</span> black = <span class="hljs-number">1</span> - <span class="hljs-built_in">Math</span>.max(r, g, b);
 
-        <span class="hljs-keyword">if</span> (max === min) {
-            h = <span class="hljs-number">0</span>;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (max === r &amp;&amp; g &gt;= b) {
-            h = <span class="hljs-number">60</span> * (g - b) / diff + <span class="hljs-number">0</span>;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (max === r &amp;&amp; g &lt; b) {
-            h = <span class="hljs-number">60</span> * (g - b) / diff + <span class="hljs-number">360</span>;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (max === g) {
-            h = <span class="hljs-number">60</span> * (b - r) / diff + <span class="hljs-number">120</span>;
-        } <span class="hljs-keyword">else</span> { <span class="hljs-comment">//max === b</span>
-            h = <span class="hljs-number">60</span> * (r - g) / diff + <span class="hljs-number">240</span>;
+        <span class="hljs-keyword">if</span> (black === <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> kolor.cmyk(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
         }
 
-        l = sum / <span class="hljs-number">2</span>;
-
-        <span class="hljs-keyword">if</span> (l === <span class="hljs-number">0</span> || max === min) {
-            s = <span class="hljs-number">0</span>;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> &lt; l &amp;&amp; l &lt;= <span class="hljs-number">0.5</span>) {
-            s = diff / sum;
-        } <span class="hljs-keyword">else</span> { <span class="hljs-comment">//l &gt; 0.5</span>
-            s = diff / (<span class="hljs-number">2</span> - sum);
-        }
-
-        <span class="hljs-keyword">return</span> kolor.hsla(h, s, l, a);
+        <span class="hljs-keyword">var</span> c = (<span class="hljs-number">1</span> - r - black) / (<span class="hljs-number">1</span> - black);
+        <span class="hljs-keyword">var</span> m = (<span class="hljs-number">1</span> - g - black) / (<span class="hljs-number">1</span> - black);
+        <span class="hljs-keyword">var</span> y = (<span class="hljs-number">1</span> - b - black) / (<span class="hljs-number">1</span> - black);
+        <span class="hljs-keyword">return</span> kolor.cmyk(c, m, y, black, <span class="hljs-keyword">this</span>.a());
     }</pre></div></div>
             
         </li>
@@ -1311,19 +1280,22 @@ a given function.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
-              <p>Converts RGBA color to HSVA.</p>
+              <p>Converts RGBA color to HSLA.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RGBA_TO_HSVA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> r = <span class="hljs-keyword">this</span>.r() / <span class="hljs-number">255</span>,
-            g = <span class="hljs-keyword">this</span>.g() / <span class="hljs-number">255</span>,
-            b = <span class="hljs-keyword">this</span>.b() / <span class="hljs-number">255</span>,
-            a = <span class="hljs-keyword">this</span>.a(),
-            max = <span class="hljs-built_in">Math</span>.max(r, g, b),
-            min = <span class="hljs-built_in">Math</span>.min(r, g, b),
-            diff = max - min,
-            h, s, l;
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RGBA_TO_HSLA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> r = <span class="hljs-keyword">this</span>.r() / <span class="hljs-number">255</span>;
+        <span class="hljs-keyword">var</span> g = <span class="hljs-keyword">this</span>.g() / <span class="hljs-number">255</span>;
+        <span class="hljs-keyword">var</span> b = <span class="hljs-keyword">this</span>.b() / <span class="hljs-number">255</span>;
+        <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">this</span>.a();
+        <span class="hljs-keyword">var</span> max = <span class="hljs-built_in">Math</span>.max(r, g, b);
+        <span class="hljs-keyword">var</span> min = <span class="hljs-built_in">Math</span>.min(r, g, b);
+        <span class="hljs-keyword">var</span> diff = max - min;
+        <span class="hljs-keyword">var</span> sum = max + min;
+        <span class="hljs-keyword">var</span> h;
+        <span class="hljs-keyword">var</span> s;
+        <span class="hljs-keyword">var</span> l;
 
         <span class="hljs-keyword">if</span> (max === min) {
             h = <span class="hljs-number">0</span>;
@@ -1333,19 +1305,21 @@ a given function.</p>
             h = <span class="hljs-number">60</span> * (g - b) / diff + <span class="hljs-number">360</span>;
         } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (max === g) {
             h = <span class="hljs-number">60</span> * (b - r) / diff + <span class="hljs-number">120</span>;
-        } <span class="hljs-keyword">else</span> { <span class="hljs-comment">//max === b</span>
+        } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// max === b</span>
             h = <span class="hljs-number">60</span> * (r - g) / diff + <span class="hljs-number">240</span>;
         }
 
-        <span class="hljs-keyword">if</span> (max === <span class="hljs-number">0</span>) {
+        l = sum / <span class="hljs-number">2</span>;
+
+        <span class="hljs-keyword">if</span> (l === <span class="hljs-number">0</span> || max === min) {
             s = <span class="hljs-number">0</span>;
-        } <span class="hljs-keyword">else</span> {
-            s = diff / max;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> &lt; l &amp;&amp; l &lt;= <span class="hljs-number">0.5</span>) {
+            s = diff / sum;
+        } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// l &gt; 0.5</span>
+            s = diff / (<span class="hljs-number">2</span> - sum);
         }
 
-        v = max;
-
-        <span class="hljs-keyword">return</span> kolor.hsva(h, s, v, a);
+        <span class="hljs-keyword">return</span> kolor.hsla(h, s, l, a);
     }</pre></div></div>
             
         </li>
@@ -1356,6 +1330,52 @@ a given function.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <p>Converts RGBA color to HSVA.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RGBA_TO_HSVA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> r = <span class="hljs-keyword">this</span>.r() / <span class="hljs-number">255</span>;
+        <span class="hljs-keyword">var</span> g = <span class="hljs-keyword">this</span>.g() / <span class="hljs-number">255</span>;
+        <span class="hljs-keyword">var</span> b = <span class="hljs-keyword">this</span>.b() / <span class="hljs-number">255</span>;
+        <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">this</span>.a();
+        <span class="hljs-keyword">var</span> max = <span class="hljs-built_in">Math</span>.max(r, g, b);
+        <span class="hljs-keyword">var</span> min = <span class="hljs-built_in">Math</span>.min(r, g, b);
+        <span class="hljs-keyword">var</span> diff = max - min;
+        <span class="hljs-keyword">var</span> h;
+        <span class="hljs-keyword">var</span> s;
+
+        <span class="hljs-keyword">if</span> (max === min) {
+            h = <span class="hljs-number">0</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (max === r &amp;&amp; g &gt;= b) {
+            h = <span class="hljs-number">60</span> * (g - b) / diff + <span class="hljs-number">0</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (max === r &amp;&amp; g &lt; b) {
+            h = <span class="hljs-number">60</span> * (g - b) / diff + <span class="hljs-number">360</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (max === g) {
+            h = <span class="hljs-number">60</span> * (b - r) / diff + <span class="hljs-number">120</span>;
+        } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// max === b</span>
+            h = <span class="hljs-number">60</span> * (r - g) / diff + <span class="hljs-number">240</span>;
+        }
+
+        <span class="hljs-keyword">if</span> (max === <span class="hljs-number">0</span>) {
+            s = <span class="hljs-number">0</span>;
+        } <span class="hljs-keyword">else</span> {
+            s = diff / max;
+        }
+
+        <span class="hljs-keyword">var</span> v = max;
+        <span class="hljs-keyword">return</span> kolor.hsva(h, s, v, a);
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
               <p>Converts RGBA color to GRAY</p>
 
@@ -1368,26 +1388,26 @@ a given function.</p>
         </li>
         
         
-        <li id="section-48">
+        <li id="section-49">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-48">&#182;</a>
+                <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
               <p>Converts HSLA color to RGBA.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSLA_TO_RGBA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h(),
-            s = <span class="hljs-keyword">this</span>.s(),
-            l = <span class="hljs-keyword">this</span>.l(),
-            a = <span class="hljs-keyword">this</span>.a(),
-            q = l &lt; <span class="hljs-number">0.5</span> ? l * (<span class="hljs-number">1</span> + s) : l + s - l * s,
-            p = <span class="hljs-number">2</span> * l - q,
-            hk = h / <span class="hljs-number">360</span>,
-            t = {},
-            rgb = {};
+        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h();
+        <span class="hljs-keyword">var</span> s = <span class="hljs-keyword">this</span>.s();
+        <span class="hljs-keyword">var</span> l = <span class="hljs-keyword">this</span>.l();
+        <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">this</span>.a();
+        <span class="hljs-keyword">var</span> q = l &lt; <span class="hljs-number">0.5</span> ? l * (<span class="hljs-number">1</span> + s) : l + s - l * s;
+        <span class="hljs-keyword">var</span> p = <span class="hljs-number">2</span> * l - q;
+        <span class="hljs-keyword">var</span> hk = h / <span class="hljs-number">360</span>;
+        <span class="hljs-keyword">var</span> t = {};
+        <span class="hljs-keyword">var</span> rgb = {};
 
         t.r = hk + <span class="hljs-number">1</span> / <span class="hljs-number">3</span>;
         t.g = hk;
@@ -1407,7 +1427,7 @@ a given function.</p>
                 rgb[c] = q;
             } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-number">0.5</span> &lt;= t[c] &amp;&amp; t[c] &lt; <span class="hljs-number">2</span> / <span class="hljs-number">3</span>) {
                 rgb[c] = p + ((q - p) * <span class="hljs-number">6</span> * (<span class="hljs-number">2</span> / <span class="hljs-number">3</span> - t[c]));
-            } <span class="hljs-keyword">else</span> { <span class="hljs-comment">//t[c] &gt;= 2 / 3</span>
+            } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// t[c] &gt;= 2 / 3</span>
                 rgb[c] = p;
             }
             rgb[c] *= <span class="hljs-number">255</span>;
@@ -1419,57 +1439,55 @@ a given function.</p>
         </li>
         
         
-        <li id="section-49">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-49">&#182;</a>
-              </div>
-              <p>Converts HSLA color to HSVA.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSLA_TO_HSVA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h(),
-            s = <span class="hljs-keyword">this</span>.s(),
-            l = <span class="hljs-keyword">this</span>.l(),
-            a = <span class="hljs-keyword">this</span>.a(),
-            sv,
-            v;
-
-        l *= <span class="hljs-number">2</span>;
-        s *= (l &lt;= <span class="hljs-number">1</span>) ? l : <span class="hljs-number">2</span> - l;
-        v = (l + s) / <span class="hljs-number">2</span>;
-        sv = (<span class="hljs-number">2</span> * s) / (l + s);
-        <span class="hljs-keyword">return</span> kolor.hsva(h, sv, v, a);
-    }</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-50">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
+              <p>Converts HSLA color to HSVA.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSLA_TO_HSVA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h();
+        <span class="hljs-keyword">var</span> s = <span class="hljs-keyword">this</span>.s();
+        <span class="hljs-keyword">var</span> l = <span class="hljs-keyword">this</span>.l();
+        <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">this</span>.a();
+
+        l *= <span class="hljs-number">2</span>;
+        s *= (l &lt;= <span class="hljs-number">1</span>) ? l : <span class="hljs-number">2</span> - l;
+        <span class="hljs-keyword">var</span> v = (l + s) / <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">var</span> sv = (<span class="hljs-number">2</span> * s) / (l + s);
+        <span class="hljs-keyword">return</span> kolor.hsva(h, sv, v, a);
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
               <p>Converts HSVA color to RGBA.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSVA_TO_RGBA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h(),
-            s = <span class="hljs-keyword">this</span>.s(),
-            v = <span class="hljs-keyword">this</span>.v(),
-            a = <span class="hljs-keyword">this</span>.a(),
-            hi = <span class="hljs-built_in">Math</span>.floor(h / <span class="hljs-number">60</span>),
-            f = h / <span class="hljs-number">60</span> - hi,
-            p = v * (<span class="hljs-number">1</span> - s),
-            q = v * (<span class="hljs-number">1</span> - f * s),
-            t = v * (<span class="hljs-number">1</span> - (<span class="hljs-number">1</span> - f) * s),
-            rgba;
+        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h();
+        <span class="hljs-keyword">var</span> s = <span class="hljs-keyword">this</span>.s();
+        <span class="hljs-keyword">var</span> v = <span class="hljs-keyword">this</span>.v();
+        <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">this</span>.a();
+        <span class="hljs-keyword">var</span> hi = <span class="hljs-built_in">Math</span>.floor(h / <span class="hljs-number">60</span>);
+        <span class="hljs-keyword">var</span> f = h / <span class="hljs-number">60</span> - hi;
+        <span class="hljs-keyword">var</span> p = v * (<span class="hljs-number">1</span> - s);
+        <span class="hljs-keyword">var</span> q = v * (<span class="hljs-number">1</span> - f * s);
+        <span class="hljs-keyword">var</span> t = v * (<span class="hljs-number">1</span> - (<span class="hljs-number">1</span> - f) * s);
+        <span class="hljs-keyword">var</span> rgba;
 
-        <span class="hljs-keyword">switch</span>(hi) {
+        <span class="hljs-keyword">switch</span> (hi) {
             <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
                 rgba = [v, t, p, a]; <span class="hljs-keyword">break</span>;
             <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
@@ -1496,51 +1514,28 @@ a given function.</p>
         </li>
         
         
-        <li id="section-51">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-51">&#182;</a>
-              </div>
-              <p>Converts HSVA color to HSLA.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSVA_TO_HSLA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h(),
-            s = <span class="hljs-keyword">this</span>.s(),
-            v = <span class="hljs-keyword">this</span>.v(),
-            a = <span class="hljs-keyword">this</span>.a(),
-            sl,
-            l;
-
-        l = (<span class="hljs-number">2</span> - s) * v;
-        sl = s * v;
-        sl /= (l &lt;= <span class="hljs-number">1</span>) ? l : <span class="hljs-number">2</span> - l;
-        sl = sl || <span class="hljs-number">0</span>;
-        l /= <span class="hljs-number">2</span>;
-        <span class="hljs-keyword">return</span> kolor.hsva(h, sl, l, a);
-    }</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-52">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
-              <p>Converts HSVA color to HWB.</p>
+              <p>Converts HSVA color to HSLA.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSVA_TO_HWB</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h(),
-            s = <span class="hljs-keyword">this</span>.s(),
-            v = <span class="hljs-keyword">this</span>.v(),
-            a = <span class="hljs-keyword">this</span>.a();
-        <span class="hljs-keyword">return</span> kolor.hwb(h, (<span class="hljs-number">1</span> - s) * v, <span class="hljs-number">1</span> - v);
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSVA_TO_HSLA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h();
+        <span class="hljs-keyword">var</span> s = <span class="hljs-keyword">this</span>.s();
+        <span class="hljs-keyword">var</span> v = <span class="hljs-keyword">this</span>.v();
+        <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">this</span>.a();
+
+        <span class="hljs-keyword">var</span> l = (<span class="hljs-number">2</span> - s) * v;
+        <span class="hljs-keyword">var</span> sl = s * v;
+        sl /= (l &lt;= <span class="hljs-number">1</span>) ? l : <span class="hljs-number">2</span> - l;
+        sl = sl || <span class="hljs-number">0</span>;
+        l /= <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">return</span> kolor.hsla(h, sl, l, a);
     }</pre></div></div>
             
         </li>
@@ -1552,16 +1547,16 @@ a given function.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
-              <p>Converts HWB color to HSVA.</p>
+              <p>Converts HSVA color to HWB.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HWB_TO_HSVA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h(),
-            w = <span class="hljs-keyword">this</span>.w(),
-            b = <span class="hljs-keyword">this</span>.b(),
-            a = <span class="hljs-keyword">this</span>.a();
-        <span class="hljs-keyword">return</span> kolor.hsva(h, <span class="hljs-number">1</span> - w / (<span class="hljs-number">1</span> - b), <span class="hljs-number">1</span> - b, a);
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HSVA_TO_HWB</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h();
+        <span class="hljs-keyword">var</span> s = <span class="hljs-keyword">this</span>.s();
+        <span class="hljs-keyword">var</span> v = <span class="hljs-keyword">this</span>.v();
+        <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">this</span>.a();
+        <span class="hljs-keyword">return</span> kolor.hwb(h, (<span class="hljs-number">1</span> - s) * v, <span class="hljs-number">1</span> - v, a);
     }</pre></div></div>
             
         </li>
@@ -1573,15 +1568,16 @@ a given function.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
-              <p>Converts GRAY color to RGBA.</p>
+              <p>Converts HWB color to HSVA.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GRAY_TO_RGBA</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> s = <span class="hljs-keyword">this</span>.s(),
-            a = <span class="hljs-keyword">this</span>.a();
-
-        <span class="hljs-keyword">return</span> kolor.rgba(s, s, s, a);
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HWB_TO_HSVA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> h = <span class="hljs-keyword">this</span>.h();
+        <span class="hljs-keyword">var</span> w = <span class="hljs-keyword">this</span>.w();
+        <span class="hljs-keyword">var</span> b = <span class="hljs-keyword">this</span>.b();
+        <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">this</span>.a();
+        <span class="hljs-keyword">return</span> kolor.hsva(h, <span class="hljs-number">1</span> - w / (<span class="hljs-number">1</span> - b), <span class="hljs-number">1</span> - b, a);
     }</pre></div></div>
             
         </li>
@@ -1593,60 +1589,16 @@ a given function.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
-              <p>Naively converts CMYK color to RGBA.</p>
+              <p>Converts GRAY color to RGBA.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">CMYK_TO_RGB</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">this</span>.c() / <span class="hljs-number">255</span>,
-            m = <span class="hljs-keyword">this</span>.m() / <span class="hljs-number">255</span>,
-            y = <span class="hljs-keyword">this</span>.y() / <span class="hljs-number">255</span>,
-            black = <span class="hljs-keyword">this</span>.b();
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GRAY_TO_RGBA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> s = <span class="hljs-keyword">this</span>.s();
+        <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">this</span>.a();
 
-        <span class="hljs-keyword">var</span> r = <span class="hljs-number">1</span> - <span class="hljs-built_in">Math</span>.min(<span class="hljs-number">1</span>, c * (<span class="hljs-number">1</span> - black) + black);
-            g = <span class="hljs-number">1</span> - <span class="hljs-built_in">Math</span>.min(<span class="hljs-number">1</span>, m * (<span class="hljs-number">1</span> - black) + black);
-            b = <span class="hljs-number">1</span> - <span class="hljs-built_in">Math</span>.min(<span class="hljs-number">1</span>, y * (<span class="hljs-number">1</span> - black) + black);
-        <span class="hljs-keyword">return</span> kolor.rgb(r, g, b);
-    }
-
-    <span class="hljs-keyword">var</span> CONVERTERS = {
-        RGB: {
-            RGBA: ADD_ALPHA,
-            CMYK: RGB_TO_CMYK
-        },
-        RGBA: {
-            RGB: REMOVE_ALPHA,
-            HSLA: RGBA_TO_HSLA,
-            HSVA: RGBA_TO_HSVA,
-            GRAY: RGBA_TO_GRAY
-        },
-        HSL: {
-            HSLA: ADD_ALPHA
-        },
-        HSLA: {
-            HSL: REMOVE_ALPHA,
-            HSVA: HSLA_TO_HSVA,
-            RGBA: HSLA_TO_RGBA,
-        },
-        HSV: {
-            HSVA: ADD_ALPHA
-        },
-        HSVA: {
-            HSV: REMOVE_ALPHA,
-            RGBA: HSVA_TO_RGBA,
-            HSLA: HSVA_TO_HSLA,
-            HWB: HSVA_TO_HWB,
-        },
-        HWB: {
-            HSVA: HWB_TO_HSVA
-        },
-        GRAY: {
-            RGBA: GRAY_TO_RGBA
-        },
-        CMYK: {
-            RGB: CMYK_TO_RGB
-        }
-    };</pre></div></div>
+        <span class="hljs-keyword">return</span> kolor.rgba(s, s, s, a);
+    }</pre></div></div>
             
         </li>
         
@@ -1656,6 +1608,70 @@ a given function.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p>Naively converts CMYK color to RGBA.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">CMYK_TO_RGBA</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">this</span>.c();
+        <span class="hljs-keyword">var</span> m = <span class="hljs-keyword">this</span>.m();
+        <span class="hljs-keyword">var</span> y = <span class="hljs-keyword">this</span>.y();
+        <span class="hljs-keyword">var</span> black = <span class="hljs-keyword">this</span>.b();
+
+        <span class="hljs-keyword">var</span> r = <span class="hljs-number">1</span> - <span class="hljs-built_in">Math</span>.min(<span class="hljs-number">1</span>, c * (<span class="hljs-number">1</span> - black) + black);
+        <span class="hljs-keyword">var</span> g = <span class="hljs-number">1</span> - <span class="hljs-built_in">Math</span>.min(<span class="hljs-number">1</span>, m * (<span class="hljs-number">1</span> - black) + black);
+        <span class="hljs-keyword">var</span> b = <span class="hljs-number">1</span> - <span class="hljs-built_in">Math</span>.min(<span class="hljs-number">1</span>, y * (<span class="hljs-number">1</span> - black) + black);
+        <span class="hljs-keyword">return</span> kolor.rgba(r * <span class="hljs-number">255</span>, g * <span class="hljs-number">255</span>, b * <span class="hljs-number">255</span>, <span class="hljs-keyword">this</span>.a());
+    }
+
+    <span class="hljs-keyword">var</span> CONVERTERS = {
+        RGB: {
+            RGBA: ADD_ALPHA
+        },
+        RGBA: {
+            RGB: REMOVE_ALPHA,
+            HSLA: RGBA_TO_HSLA,
+            HSVA: RGBA_TO_HSVA,
+            GRAY: RGBA_TO_GRAY,
+            CMYK: RGBA_TO_CMYK
+        },
+        HSL: {
+            HSLA: ADD_ALPHA
+        },
+        HSLA: {
+            HSL: REMOVE_ALPHA,
+            HSVA: HSLA_TO_HSVA,
+            RGBA: HSLA_TO_RGBA
+        },
+        HSV: {
+            HSVA: ADD_ALPHA
+        },
+        HSVA: {
+            HSV: REMOVE_ALPHA,
+            RGBA: HSVA_TO_RGBA,
+            HSLA: HSVA_TO_HSLA,
+            HWB: HSVA_TO_HWB
+        },
+        HWB: {
+            HSVA: HWB_TO_HSVA
+        },
+        GRAY: {
+            RGBA: GRAY_TO_RGBA
+        },
+        CMYK: {
+            RGBA: CMYK_TO_RGBA
+        }
+    };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
               <p>Breadth-first search to find the conversion path</p>
 
@@ -1673,7 +1689,6 @@ a given function.</p>
         <span class="hljs-keyword">var</span> queue = [from];
         <span class="hljs-keyword">var</span> path = {};
         path[from] = [];
-        <span class="hljs-keyword">var</span> chain = [];
 
         <span class="hljs-keyword">while</span> (queue.length) {
             <span class="hljs-keyword">var</span> v = queue.shift();
@@ -1694,11 +1709,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-57">
+        <li id="section-58">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
               <p>Filters input value according to data type definitions and color space configurations.</p>
 
@@ -1724,11 +1739,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-58">
+        <li id="section-59">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
+                <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
               <h2 id="kolor-api">kolor API</h2>
 
@@ -1737,11 +1752,11 @@ a given function.</p>
         </li>
         
         
-        <li id="section-59">
+        <li id="section-60">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-59">&#182;</a>
+                <a class="pilcrow" href="#section-60">&#182;</a>
               </div>
               <h4 id="kolor-exp-">kolor(<em>exp</em>)</h4>
 <p><code>kolor</code> as a function is used as a factory method to parse given expressions into color objects.</p>
@@ -1759,16 +1774,16 @@ result in RGB colors, while CSS-style expressions specify the output space thems
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> kolor = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exp)</span> </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    kolor = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(exp)</span> </span>{</pre></div></div>
             
         </li>
         
         
-        <li id="section-60">
+        <li id="section-61">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-60">&#182;</a>
+                <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
               <p>Check if the input is another color object by checking the private attribute <code>_space</code>.</p>
 
@@ -1781,11 +1796,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-61">
+        <li id="section-62">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-61">&#182;</a>
+                <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
               <p>Check if the input is a predefined color name and create again using hex value on success.</p>
 
@@ -1798,48 +1813,34 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-62">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-62">&#182;</a>
-              </div>
-              <p>Try to match hex values, return RGB color on success.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> found = <span class="hljs-regexp">/^\s*#?([0-9a-f]{3}|[0-9a-f]{6})\s*$/i</span>.exec(exp),
-            hex, rgb = [];
-        <span class="hljs-keyword">if</span> (found) {
-            hex = found[<span class="hljs-number">1</span>];
-            <span class="hljs-keyword">if</span> (hex.length === <span class="hljs-number">3</span>) {
-                hex = [hex.charAt(<span class="hljs-number">0</span>), hex.charAt(<span class="hljs-number">0</span>), hex.charAt(<span class="hljs-number">1</span>), hex.charAt(<span class="hljs-number">1</span>), hex.charAt(<span class="hljs-number">2</span>), hex.charAt(<span class="hljs-number">2</span>)].join(<span class="hljs-string">''</span>);
-            }
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
-                rgb.push(<span class="hljs-built_in">parseInt</span>(hex.substring(i * <span class="hljs-number">2</span>, i * <span class="hljs-number">2</span> + <span class="hljs-number">2</span>), <span class="hljs-number">16</span>));
-            }
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> kolor.RGB(rgb);
-        }</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-63">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
-              <p>Recognize specific space with pattern mathing and return color object in corresponding space.</p>
+              <p>Try to match hex values, return RGB/RGBA color on success.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> SPACES) {
-            found = SPACES[key].pattern.exec(exp);
-            <span class="hljs-keyword">if</span> (found) {
-                <span class="hljs-keyword">var</span> args = found.slice(<span class="hljs-number">1</span>);
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> kolor[key](args);
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> pattern = <span class="hljs-regexp">/^\s*#?([0-9a-f]{3}[0-9a-f]?|[0-9a-f]{6}(?:[0-9a-f]{2})?)\s*$/i</span>;
+        <span class="hljs-keyword">var</span> match;
+        <span class="hljs-keyword">if</span> (match = exp.match(pattern)) {
+            <span class="hljs-keyword">var</span> hex = match[<span class="hljs-number">1</span>];
+
+            <span class="hljs-keyword">if</span> (hex.length &lt;= <span class="hljs-number">4</span>) {
+                hex = util.map(hex.split(<span class="hljs-string">''</span>), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ch)</span> </span>{
+                    <span class="hljs-keyword">return</span> ch + ch;
+                }).join(<span class="hljs-string">''</span>);
             }
+
+            <span class="hljs-keyword">var</span> channels = util.map(hex.match(<span class="hljs-regexp">/\w{2}/g</span>), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(val, i)</span> </span>{
+                <span class="hljs-keyword">var</span> decimal = <span class="hljs-built_in">parseInt</span>(val, <span class="hljs-number">16</span>);
+                <span class="hljs-keyword">return</span> i === <span class="hljs-number">3</span> ? decimal * <span class="hljs-number">100</span> / <span class="hljs-number">255</span> + <span class="hljs-string">'%'</span> : decimal;
+            });
+
+            <span class="hljs-keyword">var</span> space = channels.length === <span class="hljs-number">4</span> ? <span class="hljs-string">'RGBA'</span> : <span class="hljs-string">'RGB'</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> kolor[space](channels);
         }</pre></div></div>
             
         </li>
@@ -1850,6 +1851,27 @@ result in RGB colors, while CSS-style expressions specify the output space thems
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-64">&#182;</a>
+              </div>
+              <p>Recognize specific space with pattern mathing and return color object in corresponding space.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> SPACES) {
+            match = exp.match(SPACES[key].pattern);
+            <span class="hljs-keyword">if</span> (match) {
+                <span class="hljs-keyword">var</span> args = match.slice(<span class="hljs-number">1</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> kolor[key](args);
+            }
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-65">&#182;</a>
               </div>
               <p>Return false if fail to parse the input expression.</p>
 
@@ -1863,11 +1885,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-65">
+        <li id="section-66">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-65">&#182;</a>
+                <a class="pilcrow" href="#section-66">&#182;</a>
               </div>
               <h3 id="factory-methods-for-each-color-space">Factory methods for each color space</h3>
 
@@ -1876,11 +1898,11 @@ result in RGB colors, while CSS-style expressions specify the output space thems
         </li>
         
         
-        <li id="section-66">
+        <li id="section-67">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-66">&#182;</a>
+                <a class="pilcrow" href="#section-67">&#182;</a>
               </div>
               <h4 id="kolor-space-values-">kolor.<em>space</em>(<em>values</em>)</h4>
 <p>Creates a color object using a space name defined in <code>SPACES</code>.</p>
@@ -1901,8 +1923,8 @@ an array or an object containing specific key-value pairs.</p>
             
             <div class="content"><div class='highlight'><pre>        kolor[key.toLowerCase()] = (<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(key)</span> </span>{
             <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-                <span class="hljs-keyword">var</span> args = util.slice(<span class="hljs-built_in">arguments</span>, <span class="hljs-number">0</span>),
-                    type = util.typeOf(args[<span class="hljs-number">0</span>]);
+                <span class="hljs-keyword">var</span> args = util.slice(<span class="hljs-built_in">arguments</span>, <span class="hljs-number">0</span>);
+                <span class="hljs-keyword">var</span> type = util.typeOf(args[<span class="hljs-number">0</span>]);
                 <span class="hljs-keyword">if</span> (type === <span class="hljs-string">'Array'</span> || type === <span class="hljs-string">'Object'</span>) {
                     args = args[<span class="hljs-number">0</span>];
                 }
@@ -1910,17 +1932,17 @@ an array or an object containing specific key-value pairs.</p>
             };
         }(key));
 
-        <span class="hljs-keyword">var</span> space = SPACES[key],
-            channels = space.channels;</pre></div></div>
+        <span class="hljs-keyword">var</span> space = SPACES[key];
+        <span class="hljs-keyword">var</span> channels = space.channels;</pre></div></div>
             
         </li>
         
         
-        <li id="section-67">
+        <li id="section-68">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-68">&#182;</a>
               </div>
               <h3 id="constructor">Constructor</h3>
 <p>When <code>kolor</code> is used as a factory method, it will call these constructors.</p>
@@ -1929,23 +1951,31 @@ an array or an object containing specific key-value pairs.</p>
             
             <div class="content"><div class='highlight'><pre>        kolor[key] = (<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(key)</span> </span>{
             <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> </span>{
-                <span class="hljs-keyword">var</span> channels = SPACES[key].channels,
-                    l = channels.length;
+                <span class="hljs-keyword">var</span> channels = SPACES[key].channels;
+                <span class="hljs-keyword">var</span> l = channels.length;
                 args = args == <span class="hljs-literal">null</span> ? [] : args;
                 <span class="hljs-keyword">this</span>._space = key;
                 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = l; i--;) {
-                    <span class="hljs-keyword">var</span> channel = channels[i],
-                        name = channel.name,
-                        alias = channel.alias,
-                        param;
+                    <span class="hljs-keyword">var</span> channel = channels[i];
+                    <span class="hljs-keyword">var</span> name = channel.name;
+                    <span class="hljs-keyword">var</span> alias = channel.alias;
+                    <span class="hljs-keyword">var</span> param;
+
                     <span class="hljs-keyword">if</span> (args[i] != <span class="hljs-literal">null</span>) {
                         param = args[i];
                     } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (util.has(args, name)) {
                         param = args[name];
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (util.has(args, alias)) {
-                        param = args[alias];
                     } <span class="hljs-keyword">else</span> {
-                        param = channel.initial;
+                        alias = util.isString(alias) ? [alias] : alias;
+                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>, k = alias.length; j &lt; k; j++) {
+                            <span class="hljs-keyword">if</span> (util.has(args, alias[j])) {
+                                param = args[alias[j]];
+                                <span class="hljs-keyword">break</span>;
+                            }
+                        }
+                        <span class="hljs-keyword">if</span> (!param) {
+                            param = channel.initial;
+                        }
                     }
                     <span class="hljs-keyword">this</span>[name](param);
                 }
@@ -1956,11 +1986,11 @@ an array or an object containing specific key-value pairs.</p>
         </li>
         
         
-        <li id="section-68">
+        <li id="section-69">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-68">&#182;</a>
+                <a class="pilcrow" href="#section-69">&#182;</a>
               </div>
               <h3 id="accessors">Accessors</h3>
 <h4 id="-accessor-value-">.<em>accessor</em>([<em>value</em>])</h4>
@@ -1983,12 +2013,12 @@ getter.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = channels.length; i--;) {
-            <span class="hljs-keyword">var</span> channel = channels[i],
-                alias = channel.alias;
+            <span class="hljs-keyword">var</span> channel = channels[i];
+            <span class="hljs-keyword">var</span> alias = channel.alias;
 
             kolor[key].prototype[channel.name] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(i)</span> </span>{
-                <span class="hljs-keyword">var</span> channel = channels[i],
-                    prop = <span class="hljs-string">'_'</span> + channel.alias;
+                <span class="hljs-keyword">var</span> channel = channels[i];
+                <span class="hljs-keyword">var</span> prop = <span class="hljs-string">'_'</span> + channel.alias;
                 <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(value)</span> </span>{
                     <span class="hljs-keyword">if</span> (value != <span class="hljs-literal">null</span>) {
                         <span class="hljs-keyword">this</span>[prop] = <span class="hljs-keyword">this</span>[i] = filterValue(value, channel);
@@ -2010,11 +2040,11 @@ getter.</p>
         </li>
         
         
-        <li id="section-69">
+        <li id="section-70">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-69">&#182;</a>
+                <a class="pilcrow" href="#section-70">&#182;</a>
               </div>
               <h4 id="-space-">.space()</h4>
 <p>A getter for the space of the color object.</p>
@@ -2030,11 +2060,11 @@ getter.</p>
         </li>
         
         
-        <li id="section-70">
+        <li id="section-71">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-70">&#182;</a>
+                <a class="pilcrow" href="#section-71">&#182;</a>
               </div>
               <h4 id="-format-">.format()</h4>
 <p>Deprecated. Same as <code>.space()</code> and preserved just for backward compatibility.</p>
@@ -2050,11 +2080,11 @@ getter.</p>
         </li>
         
         
-        <li id="section-71">
+        <li id="section-72">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-71">&#182;</a>
+                <a class="pilcrow" href="#section-72">&#182;</a>
               </div>
               <h3 id="converters">Converters</h3>
 <h4 id="-converter-">.<em>converter</em>()</h4>
@@ -2073,11 +2103,11 @@ one, a new color object will be cloned and returned.</p>
         </li>
         
         
-        <li id="section-72">
+        <li id="section-73">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-72">&#182;</a>
+                <a class="pilcrow" href="#section-73">&#182;</a>
               </div>
               <p>array or null</p>
 
@@ -2107,11 +2137,11 @@ one, a new color object will be cloned and returned.</p>
         </li>
         
         
-        <li id="section-73">
+        <li id="section-74">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-73">&#182;</a>
+                <a class="pilcrow" href="#section-74">&#182;</a>
               </div>
               <h3 id="common-methods">Common methods</h3>
 
@@ -2120,11 +2150,11 @@ one, a new color object will be cloned and returned.</p>
         </li>
         
         
-        <li id="section-74">
+        <li id="section-75">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-74">&#182;</a>
+                <a class="pilcrow" href="#section-75">&#182;</a>
               </div>
               <h4 id="-toarray-">.toArray()</h4>
 <p>Produces an array carrying channel values. Because the channel values are stored both in
@@ -2143,11 +2173,11 @@ objects can use some array methods like <code>slice</code>.</p>
         </li>
         
         
-        <li id="section-75">
+        <li id="section-76">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-75">&#182;</a>
+                <a class="pilcrow" href="#section-76">&#182;</a>
               </div>
               <h4 id="-css-tostring-">.css(), .toString()</h4>
 <p>Outputs color channel values as a CSS-style string.</p>
@@ -2158,13 +2188,18 @@ objects can use some array methods like <code>slice</code>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>        kolor[key].prototype.css = kolor[key].prototype.toString = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-            <span class="hljs-keyword">var</span> channels = SPACES[<span class="hljs-keyword">this</span>.space()].channels,
-                l = channels.length,
-                channel,
-                values = [];
+            <span class="hljs-keyword">var</span> channels = SPACES[<span class="hljs-keyword">this</span>.space()].channels;
+            <span class="hljs-keyword">var</span> l = channels.length;
+            <span class="hljs-keyword">var</span> channel;
+            <span class="hljs-keyword">var</span> value;
+            <span class="hljs-keyword">var</span> values = [];
             <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; l; i++) {
                 channel = channels[i];
-                values.push(DATATYPES[channel.cssType].stringify(<span class="hljs-keyword">this</span>[channel.name]()));
+                value = <span class="hljs-keyword">this</span>[channel.name]();
+                <span class="hljs-keyword">if</span> (value === channel.initial &amp;&amp; channel.optional) {
+                    <span class="hljs-keyword">continue</span>;
+                }
+                values.push(DATATYPES[channel.cssType].stringify(value));
             }
             <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.space().toLowerCase() + <span class="hljs-string">'('</span> + values.join(<span class="hljs-string">', '</span>) + <span class="hljs-string">')'</span>;
         };</pre></div></div>
@@ -2172,11 +2207,11 @@ objects can use some array methods like <code>slice</code>.</p>
         </li>
         
         
-        <li id="section-76">
+        <li id="section-77">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-76">&#182;</a>
+                <a class="pilcrow" href="#section-77">&#182;</a>
               </div>
               <h4 id="-hex-">.hex()</h4>
 <p>Outputs color channels as a hex string.</p>
@@ -2201,11 +2236,11 @@ by its RGB channels.</p>
         </li>
         
         
-        <li id="section-77">
+        <li id="section-78">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-77">&#182;</a>
+                <a class="pilcrow" href="#section-78">&#182;</a>
               </div>
               <h4 id="-copyfrom-color-">.copyFrom(<em>color</em>)</h4>
 <p>Converts channel values of another color to the same space as the current one and
@@ -2218,30 +2253,17 @@ copies them to the current color.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>        kolor[key].prototype.copyFrom = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(color)</span> </span>{
-            <span class="hljs-keyword">var</span> space = <span class="hljs-keyword">this</span>.space(),
-                channels = SPACES[space].channels,
-                i, accessor;
+            <span class="hljs-keyword">var</span> space = <span class="hljs-keyword">this</span>.space();
+            <span class="hljs-keyword">var</span> channels = SPACES[space].channels;
             <span class="hljs-keyword">if</span> (color.space() !== space) {
                 color = color[space.toLowerCase()]();
             }
-            <span class="hljs-keyword">for</span> (i = channels.length; i--;) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = channels.length; i--;) {
+                <span class="hljs-keyword">var</span> accessor;
                 accessor = channels[i].name;
                 <span class="hljs-keyword">this</span>[accessor](color[accessor]());
             }
         };</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-78">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-78">&#182;</a>
-              </div>
-              <h3 id="less-sass-like-apis">LESS/SASS-like APIs</h3>
-
-            </div>
             
         </li>
         
@@ -2251,6 +2273,19 @@ copies them to the current color.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-79">&#182;</a>
+              </div>
+              <h3 id="less-sass-like-apis">LESS/SASS-like APIs</h3>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-80">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-80">&#182;</a>
               </div>
               <h4 id="-mix-color-proportion-0-5-">.mix(<em>color</em> [, <em>proportion</em> = 0.5])</h4>
 <p>Mixes with another color using additive mixing.</p>
@@ -2267,13 +2302,13 @@ copies them to the current color.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>        kolor[key].prototype.mix = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(color, proportion)</span> </span>{
-            <span class="hljs-keyword">var</span> dest = <span class="hljs-keyword">this</span>.rgba(),
-                src = color.rgba(),
-                p = proportion == <span class="hljs-literal">null</span> ? <span class="hljs-number">0.5</span> : proportion,
-                w = p * <span class="hljs-number">2</span> - <span class="hljs-number">1</span>,
-                a = dest.a() - src.a(),
-                w1 = (((w * a === -<span class="hljs-number">1</span>) ? w : (w + a)/(<span class="hljs-number">1</span> + w * a)) + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>,
-                w2 = <span class="hljs-number">1</span> - w1;
+            <span class="hljs-keyword">var</span> dest = <span class="hljs-keyword">this</span>.rgba();
+            <span class="hljs-keyword">var</span> src = color.rgba();
+            <span class="hljs-keyword">var</span> p = proportion == <span class="hljs-literal">null</span> ? <span class="hljs-number">0.5</span> : proportion;
+            <span class="hljs-keyword">var</span> w = p * <span class="hljs-number">2</span> - <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">var</span> a = dest.a() - src.a();
+            <span class="hljs-keyword">var</span> w1 = (((w * a === -<span class="hljs-number">1</span>) ? w : (w + a) / (<span class="hljs-number">1</span> + w * a)) + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;
+            <span class="hljs-keyword">var</span> w2 = <span class="hljs-number">1</span> - w1;
             dest.r(dest.r() * w1 + src.r() * w2);
             dest.g(dest.g() * w1 + src.g() * w2);
             dest.b(dest.b() * w1 + src.b() * w2);
@@ -2284,11 +2319,11 @@ copies them to the current color.</p>
         </li>
         
         
-        <li id="section-80">
+        <li id="section-81">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-80">&#182;</a>
+                <a class="pilcrow" href="#section-81">&#182;</a>
               </div>
               <h4 id="-spin-value-">.spin(<em>value</em>)</h4>
 <p>Increases hue value (decreases if value is less than zero) or say spins the color wheel
@@ -2311,11 +2346,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-81">
+        <li id="section-82">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-81">&#182;</a>
+                <a class="pilcrow" href="#section-82">&#182;</a>
               </div>
               <h4 id="-saturate-value-">.saturate(<em>value</em>)</h4>
 <p>Increases saturation value. Saturation channel here defined by HSL model, not HSV.</p>
@@ -2337,11 +2372,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-82">
+        <li id="section-83">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-82">&#182;</a>
+                <a class="pilcrow" href="#section-83">&#182;</a>
               </div>
               <h4 id="-desaturate-value-">.desaturate(<em>value</em>)</h4>
 <p>Decreases saturation value. Saturation channel here defined by HSL model, not HSV.</p>
@@ -2361,11 +2396,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-83">
+        <li id="section-84">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-83">&#182;</a>
+                <a class="pilcrow" href="#section-84">&#182;</a>
               </div>
               <h4 id="-lighten-value-">.lighten(<em>value</em>)</h4>
 <p>Increases lightness value.</p>
@@ -2387,11 +2422,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-84">
+        <li id="section-85">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-84">&#182;</a>
+                <a class="pilcrow" href="#section-85">&#182;</a>
               </div>
               <h4 id="-darken-value-">.darken(<em>value</em>)</h4>
 <p>Decreases lightness value.</p>
@@ -2411,11 +2446,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-85">
+        <li id="section-86">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-85">&#182;</a>
+                <a class="pilcrow" href="#section-86">&#182;</a>
               </div>
               <h4 id="-fadein-value-">.fadeIn(<em>value</em>)</h4>
 <p>Increases alpha value, will add alpha channel to those don’t have it.</p>
@@ -2424,24 +2459,33 @@ clockwise by a given degree.</p>
 <li><em>value</em> - the amount that the alpha value will the increase.</li>
 </ul>
 <h5 id="return-values">Return values</h5>
-<p>Returns a new color object after increasing alpha in the original space.</p>
+<p>Returns a new color object after increasing alpha in the original space adding
+an alpha channel.
+If the original space dosen’t have an alpha version, the color will be converted
+into RGBA.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>        kolor[key].prototype.fadeIn = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(value)</span> </span>{
-            <span class="hljs-keyword">var</span> space = <span class="hljs-keyword">this</span>.a ? <span class="hljs-keyword">this</span>.space() : <span class="hljs-keyword">this</span>.space() + <span class="hljs-string">'A'</span>,
+            <span class="hljs-keyword">var</span> space = <span class="hljs-keyword">this</span>.a ? <span class="hljs-keyword">this</span>.space() : <span class="hljs-keyword">this</span>.space() + <span class="hljs-string">'A'</span>;
+            <span class="hljs-keyword">var</span> color;
+
+            <span class="hljs-keyword">if</span> (util.has(SPACES, space)) {
                 color = <span class="hljs-keyword">this</span>[space.toLowerCase()]();
+            } <span class="hljs-keyword">else</span> {
+                color = <span class="hljs-keyword">this</span>.rgba();
+            }
             <span class="hljs-keyword">return</span> color.a(color.a() + value);
         };</pre></div></div>
             
         </li>
         
         
-        <li id="section-86">
+        <li id="section-87">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-86">&#182;</a>
+                <a class="pilcrow" href="#section-87">&#182;</a>
               </div>
               <h4 id="-fadeout-value-">.fadeOut(<em>value</em>)</h4>
 <p>Decreases alpha value, will add alpha channel to those don’t have it.</p>
@@ -2461,11 +2505,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-87">
+        <li id="section-88">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-87">&#182;</a>
+                <a class="pilcrow" href="#section-88">&#182;</a>
               </div>
               <h4 id="-grayscale-">.grayscale()</h4>
 <p>Returns the grayscale color by decreasing saturation(HSL) of the current color to 0.</p>
@@ -2481,11 +2525,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-88">
+        <li id="section-89">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-88">&#182;</a>
+                <a class="pilcrow" href="#section-89">&#182;</a>
               </div>
               <h4 id="-complement-">.complement()</h4>
 <p>Returns the complement of the current color by spinning the color wheel for 180 degrees.</p>
@@ -2501,11 +2545,11 @@ clockwise by a given degree.</p>
         </li>
         
         
-        <li id="section-89">
+        <li id="section-90">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-89">&#182;</a>
+                <a class="pilcrow" href="#section-90">&#182;</a>
               </div>
               <h4 id="-luminance-">.luminance()</h4>
 <p>Returns the luminance of a color which indicates how bright the reflecting surface will
@@ -2521,22 +2565,22 @@ appear. See <a href="http://www.w3.org/TR/WCAG20/#relativeluminancedef">relative
                 <span class="hljs-keyword">return</span> value &lt;= <span class="hljs-number">0.03928</span> ? value / <span class="hljs-number">12.92</span> : <span class="hljs-built_in">Math</span>.pow((value + <span class="hljs-number">0.055</span>) / <span class="hljs-number">1.055</span>, <span class="hljs-number">2.4</span>);
             }
 
-            <span class="hljs-keyword">var</span> color = <span class="hljs-keyword">this</span>.rgb(),
-                R = convert(color.r()),
-                G = convert(color.g()),
-                B = convert(color.b());
+            <span class="hljs-keyword">var</span> color = <span class="hljs-keyword">this</span>.rgb();
+            <span class="hljs-keyword">var</span> r = convert(color.r());
+            <span class="hljs-keyword">var</span> g = convert(color.g());
+            <span class="hljs-keyword">var</span> b = convert(color.b());
 
-            <span class="hljs-keyword">return</span> <span class="hljs-number">0.2126</span> * R + <span class="hljs-number">0.7152</span> * G + <span class="hljs-number">0.0722</span> * B;
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0.2126</span> * r + <span class="hljs-number">0.7152</span> * g + <span class="hljs-number">0.0722</span> * b;
         };</pre></div></div>
             
         </li>
         
         
-        <li id="section-90">
+        <li id="section-91">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-90">&#182;</a>
+                <a class="pilcrow" href="#section-91">&#182;</a>
               </div>
               <h4 id="-contrastratio-">.contrastRatio()</h4>
 <p>Returns the contrast ratio of two colors.
@@ -2551,8 +2595,8 @@ See <a href="http://dev.w3.org/csswg/css-color/#contrast-ratio">Contrast ratio, 
             </div>
             
             <div class="content"><div class='highlight'><pre>        kolor[key].prototype.contrastRatio = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(color)</span> </span>{
-            <span class="hljs-keyword">var</span> l1 = <span class="hljs-keyword">this</span>.luminance(),
-                l2 = color.luminance();
+            <span class="hljs-keyword">var</span> l1 = <span class="hljs-keyword">this</span>.luminance();
+            <span class="hljs-keyword">var</span> l2 = color.luminance();
             <span class="hljs-keyword">return</span> (<span class="hljs-built_in">Math</span>.max(l1, l2) + <span class="hljs-number">0.05</span>) / (<span class="hljs-built_in">Math</span>.min(l1, l2) + <span class="hljs-number">0.05</span>);
         };
     }</pre></div></div>
@@ -2560,11 +2604,11 @@ See <a href="http://dev.w3.org/csswg/css-color/#contrast-ratio">Contrast ratio, 
         </li>
         
         
-        <li id="section-91">
+        <li id="section-92">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-91">&#182;</a>
+                <a class="pilcrow" href="#section-92">&#182;</a>
               </div>
               <h3 id="kolor-utilities">kolor utilities</h3>
 <h4 id="kolor-config-key-value-">kolor.config(<em>key</em>, <em>value</em>)</h4>
@@ -2584,16 +2628,16 @@ when making the output.</li>
             
             <div class="content"><div class='highlight'><pre>    kolor.config = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(key, value)</span> </span>{
         config[key] = value;
-    }</pre></div></div>
+    };</pre></div></div>
             
         </li>
         
         
-        <li id="section-92">
+        <li id="section-93">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-92">&#182;</a>
+                <a class="pilcrow" href="#section-93">&#182;</a>
               </div>
               <h4 id="kolor-random-options-unstable-api-">kolor.random(<em>options</em>) [unstable API]</h4>
 <p>Generates a random color or color set. Colors are generated in HSL space
@@ -2636,32 +2680,31 @@ Otherwise, returns an array such colors.</p>
             <span class="hljs-keyword">return</span> value != <span class="hljs-literal">null</span> ? value : defaultValue;
         }
 
-        <span class="hljs-keyword">var</span> size = options.size || <span class="hljs-number">1</span>,
-            h = getValue(options.h, [<span class="hljs-number">0</span>, <span class="hljs-number">360</span>]),
-            interval = <span class="hljs-built_in">Math</span>.floor(((<span class="hljs-number">360</span> + (h[<span class="hljs-number">1</span>] - h[<span class="hljs-number">0</span>])) % <span class="hljs-number">360</span> || <span class="hljs-number">360</span>) / size),
-            offset = <span class="hljs-built_in">Math</span>.random() * interval,
-            s = getValue(options.s, [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]),
-            l = getValue(options.l, [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]),
-            a = getValue(options.a, <span class="hljs-number">1</span>),
-            shuffle = getValue(options.shuffle, <span class="hljs-literal">true</span>),
-            space = (options.space || <span class="hljs-string">'hex'</span>).toLowerCase(),
-            colors = [],
-            color, i;
+        <span class="hljs-keyword">var</span> size = options.size || <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">var</span> h = getValue(options.h, [<span class="hljs-number">0</span>, <span class="hljs-number">360</span>]);
+        <span class="hljs-keyword">var</span> interval = <span class="hljs-built_in">Math</span>.floor(((<span class="hljs-number">360</span> + (h[<span class="hljs-number">1</span>] - h[<span class="hljs-number">0</span>])) % <span class="hljs-number">360</span> || <span class="hljs-number">360</span>) / size);
+        <span class="hljs-keyword">var</span> offset = <span class="hljs-built_in">Math</span>.random() * interval;
+        <span class="hljs-keyword">var</span> s = getValue(options.s, [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]);
+        <span class="hljs-keyword">var</span> l = getValue(options.l, [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]);
+        <span class="hljs-keyword">var</span> a = getValue(options.a, <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">var</span> shuffle = getValue(options.shuffle, <span class="hljs-literal">true</span>);
+        <span class="hljs-keyword">var</span> space = (options.space || <span class="hljs-string">'hex'</span>).toLowerCase();
+        <span class="hljs-keyword">var</span> colors = [];
 
         <span class="hljs-keyword">if</span> (interval === <span class="hljs-number">0</span>) {
             <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'To many colors for this hue range!'</span>);
         }
 
-        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; size; i++) {
-            color = kolor.hsla(
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) {
+            <span class="hljs-keyword">var</span> color = kolor.hsla(
                 (<span class="hljs-number">360</span> + h[<span class="hljs-number">0</span>] + interval * i + offset) % <span class="hljs-number">360</span>,
                 s.length ? util.random(s[<span class="hljs-number">0</span>], s[<span class="hljs-number">1</span>]) : s,
                 l.length ? util.random(l[<span class="hljs-number">0</span>], l[<span class="hljs-number">1</span>]) : l,
                 a.length ? util.random(a[<span class="hljs-number">0</span>], a[<span class="hljs-number">1</span>]) : a
             );
-            <span class="hljs-keyword">if</span> (space == <span class="hljs-string">'hex'</span>) {
+            <span class="hljs-keyword">if</span> (space === <span class="hljs-string">'hex'</span>) {
                 color = color.hex();
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (space == <span class="hljs-string">'css'</span>) {
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (space === <span class="hljs-string">'css'</span>) {
                 color = color.css();
             } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (util.has(SPACES, space.toUpperCase())) {
                 color = color[space]();
@@ -2680,17 +2723,17 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-93">
+        <li id="section-94">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-93">&#182;</a>
+                <a class="pilcrow" href="#section-94">&#182;</a>
               </div>
               <p>Everything is ready, export the whole module</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    define(<span class="hljs-string">"kolor"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(require, exports, module)</span> </span>{
+            <div class="content"><div class='highlight'><pre>    define(<span class="hljs-string">'kolor'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(require, exports, module)</span> </span>{
         <span class="hljs-built_in">module</span>.exports = kolor;
     });
 
@@ -2699,11 +2742,11 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-94">
+        <li id="section-95">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-94">&#182;</a>
+                <a class="pilcrow" href="#section-95">&#182;</a>
               </div>
               <p>Define it the UMD way</p>
 
@@ -2725,11 +2768,11 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-95">
+        <li id="section-96">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-95">&#182;</a>
+                <a class="pilcrow" href="#section-96">&#182;</a>
               </div>
               <p>Defining output using <code>module.exports</code></p>
 
@@ -2741,11 +2784,11 @@ Otherwise, returns an array such colors.</p>
         </li>
         
         
-        <li id="section-96">
+        <li id="section-97">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-96">&#182;</a>
+                <a class="pilcrow" href="#section-97">&#182;</a>
               </div>
               <p>Defining output using <code>exports.*</code></p>
 

@@ -1,4 +1,11 @@
+/**
+ * @file Kolor.js
+ * @author Justineo(justice360@gmail.com)
+ */
 (function (define) {
+
+    // Global namespace
+    var kolor;
 
     // ## Config
     //
@@ -15,12 +22,12 @@
 
         // Checks if the given value is a number.
         isNumber: function (value) {
-            return '[object Number]' == Object.prototype.toString.call(value) && isFinite(value);
+            return '[object Number]' === Object.prototype.toString.call(value) && isFinite(value);
         },
 
         // Checks if the given value is a string.
         isString: function (value) {
-            return '[object String]' == Object.prototype.toString.call(value);
+            return '[object String]' === Object.prototype.toString.call(value);
         },
 
         // Retrieves the type of the given value.
@@ -55,22 +62,19 @@
         // Shuffles the given array using
         // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle).
         shuffle: function (items) {
-            var i, j, l = items.length;
-
-            for (i = l - 1; i > 0; i --) {
-                j = Math.floor(Math.random() * (i + 1));
+            for (var i = items.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
                 util.swap(items, i, j);
             }
         },
 
         // Iterates through the given array and produces a new array by mapping each value through
         // a given function.
-        map: function (source, callback, opt_this) {
-            var results = [],
-                l = source.length,
-                i = l;
+        map: function (source, callback, context) {
+            var results = [];
+            var i = source.length;
             while (i--) {
-                results[i] = callback.call(opt_this || source, source[i], i);
+                results[i] = callback.call(context || source, source[i], i);
             }
             return results;
         },
@@ -341,8 +345,8 @@
 
     // Parses simple named hues
     function parseNamedHues(value) {
-        var tokens = value.split(/\s+/),
-            l = tokens.length;
+        var tokens = value.split(/\s+/);
+        var l = tokens.length;
 
         if (l < 1 || l > 2) {
             return false;
@@ -362,9 +366,9 @@
         }
 
         // double-value syntax
-        var h2,
-            t2 = tokens[0].toLowerCase(),
-            hues;
+        var h2;
+        var t2 = tokens[0].toLowerCase();
+        var hues;
         if (t2 in BASE_HUE) {
             h2 = BASE_HUE[t2];
             hues = fixHues(h1, h2);
@@ -400,10 +404,10 @@
     // * INTEGER: 0, 128, 255, ...
     // * NUMBER: 0, 0.5, 0.75, ...
     // * PERCENT: 10%, 87.53%, ...
-    var INTEGER = 1,
-        NUMBER = 2,
-        PERCENT = 4,
-        HUE = 8;
+    var INTEGER = 1;
+    var NUMBER = 2;
+    var PERCENT = 4;
+    var HUE = 8;
 
     // ### Utils for each data type
     //
@@ -547,7 +551,7 @@
     // Constructor for 0~255 integer or percentage.
     function Octet() {
         Channel.apply(this, arguments);
-        this.dataType = INTEGER|PERCENT;
+        this.dataType = INTEGER | PERCENT;
         this.cssType = INTEGER;
         this.range = [0, 255];
         this.filter = CLAMP;
@@ -559,7 +563,7 @@
     // Constructor for channel can be number from 0~1 or percentage.
     function Ratio() {
         Channel.apply(this, arguments);
-        this.dataType = NUMBER|PERCENT;
+        this.dataType = NUMBER | PERCENT;
         this.cssType = NUMBER;
         this.range = [0, 1];
         this.filter = CLAMP;
@@ -579,7 +583,7 @@
     // Constructor for those channel can be .
     function Hue() {
         Channel.apply(this, arguments);
-        this.dataType = NUMBER|HUE;
+        this.dataType = NUMBER | HUE;
         this.cssType = NUMBER;
         this.range = [0, 360];
         this.filter = MOD;
@@ -628,7 +632,7 @@
             channels: [
                 Channel.create(Hue, 'hue', 'h'),
                 Channel.create(Percent, 'saturation', 's'),
-                Channel.create(Percent, 'value', 'v'),
+                Channel.create(Percent, 'value', 'v')
             ],
             pattern: /hsv\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^\)]+?)\s*\)/i
         },
@@ -646,7 +650,7 @@
                 Channel.create(Hue, 'hue', 'h'),
                 Channel.create(Percent, 'whiteness', 'w'),
                 Channel.create(Percent, 'blackness', 'b'),
-                Channel.create(Ratio, 'alpha', 'a', { optional: true })
+                Channel.create(Ratio, 'alpha', 'a', {optional: true})
             ],
             pattern: /hwb\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,\)]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
         },
@@ -663,7 +667,7 @@
                 Channel.create(Ratio, 'magenta', 'm'),
                 Channel.create(Ratio, 'yellow', 'y'),
                 Channel.create(Ratio, 'black', ['b', 'k']),
-                Channel.create(Ratio, 'alpha', 'a', { optional: true })
+                Channel.create(Ratio, 'alpha', 'a', {optional: true})
             ],
             pattern: /(?:device-)?cmyk\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)(?:\s*,\s*([^\)]+?))?\s*\)/i
         }
@@ -678,11 +682,11 @@
 
     // Produces a new color object by adding alpha channel to the old one.
     function ADD_ALPHA() {
-        var space = this.space(),
-            channels = SPACES[space].channels,
-            l = channels.length,
-            result = [];
+        var space = this.space();
+        var channels = SPACES[space].channels;
+        var result = [];
 
+        var l = channels.length;
         for (var i = 0; i < l; i++) {
             result.push(this[channels[i].name]());
         }
@@ -692,11 +696,11 @@
 
     // Produces a new color object by removing alpha channel from the old one.
     function REMOVE_ALPHA() {
-        var space = this.space(),
-            channels = SPACES[space].channels,
-            l = channels.length,
-            result = [];
+        var space = this.space();
+        var channels = SPACES[space].channels;
+        var result = [];
 
+        var l = channels.length;
         for (var i = 0; i < l - 1; i++) {
             result.push(this[channels[i].name]());
         }
@@ -705,32 +709,34 @@
 
     // Naively converts RGBA color to CMYK
     function RGBA_TO_CMYK() {
-        var r = this.r() / 255,
-            g = this.g() / 255,
-            b = this.b() / 255,
-            black = 1 - Math.max(r, g, b);
+        var r = this.r() / 255;
+        var g = this.g() / 255;
+        var b = this.b() / 255;
+        var black = 1 - Math.max(r, g, b);
 
         if (black === 0) {
             return kolor.cmyk(0, 0, 0, 0);
         }
 
-        var c = (1 - r - black) / (1 - black),
-            m = (1 - g - black) / (1 - black),
-            y = (1 - b - black) / (1 - black);
+        var c = (1 - r - black) / (1 - black);
+        var m = (1 - g - black) / (1 - black);
+        var y = (1 - b - black) / (1 - black);
         return kolor.cmyk(c, m, y, black, this.a());
     }
 
     // Converts RGBA color to HSLA.
     function RGBA_TO_HSLA() {
-        var r = this.r() / 255,
-            g = this.g() / 255,
-            b = this.b() / 255,
-            a = this.a(),
-            max = Math.max(r, g, b),
-            min = Math.min(r, g, b),
-            diff = max - min,
-            sum = max + min,
-            h, s, l;
+        var r = this.r() / 255;
+        var g = this.g() / 255;
+        var b = this.b() / 255;
+        var a = this.a();
+        var max = Math.max(r, g, b);
+        var min = Math.min(r, g, b);
+        var diff = max - min;
+        var sum = max + min;
+        var h;
+        var s;
+        var l;
 
         if (max === min) {
             h = 0;
@@ -740,7 +746,7 @@
             h = 60 * (g - b) / diff + 360;
         } else if (max === g) {
             h = 60 * (b - r) / diff + 120;
-        } else { //max === b
+        } else { // max === b
             h = 60 * (r - g) / diff + 240;
         }
 
@@ -750,7 +756,7 @@
             s = 0;
         } else if (0 < l && l <= 0.5) {
             s = diff / sum;
-        } else { //l > 0.5
+        } else { // l > 0.5
             s = diff / (2 - sum);
         }
 
@@ -759,14 +765,15 @@
 
     // Converts RGBA color to HSVA.
     function RGBA_TO_HSVA() {
-        var r = this.r() / 255,
-            g = this.g() / 255,
-            b = this.b() / 255,
-            a = this.a(),
-            max = Math.max(r, g, b),
-            min = Math.min(r, g, b),
-            diff = max - min,
-            h, s, l;
+        var r = this.r() / 255;
+        var g = this.g() / 255;
+        var b = this.b() / 255;
+        var a = this.a();
+        var max = Math.max(r, g, b);
+        var min = Math.min(r, g, b);
+        var diff = max - min;
+        var h;
+        var s;
 
         if (max === min) {
             h = 0;
@@ -776,7 +783,7 @@
             h = 60 * (g - b) / diff + 360;
         } else if (max === g) {
             h = 60 * (b - r) / diff + 120;
-        } else { //max === b
+        } else { // max === b
             h = 60 * (r - g) / diff + 240;
         }
 
@@ -786,8 +793,7 @@
             s = diff / max;
         }
 
-        v = max;
-
+        var v = max;
         return kolor.hsva(h, s, v, a);
     }
 
@@ -798,15 +804,15 @@
 
     // Converts HSLA color to RGBA.
     function HSLA_TO_RGBA() {
-        var h = this.h(),
-            s = this.s(),
-            l = this.l(),
-            a = this.a(),
-            q = l < 0.5 ? l * (1 + s) : l + s - l * s,
-            p = 2 * l - q,
-            hk = h / 360,
-            t = {},
-            rgb = {};
+        var h = this.h();
+        var s = this.s();
+        var l = this.l();
+        var a = this.a();
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+        var hk = h / 360;
+        var t = {};
+        var rgb = {};
 
         t.r = hk + 1 / 3;
         t.g = hk;
@@ -826,7 +832,7 @@
                 rgb[c] = q;
             } else if (0.5 <= t[c] && t[c] < 2 / 3) {
                 rgb[c] = p + ((q - p) * 6 * (2 / 3 - t[c]));
-            } else { //t[c] >= 2 / 3
+            } else { // t[c] >= 2 / 3
                 rgb[c] = p;
             }
             rgb[c] *= 255;
@@ -837,34 +843,32 @@
 
     // Converts HSLA color to HSVA.
     function HSLA_TO_HSVA() {
-        var h = this.h(),
-            s = this.s(),
-            l = this.l(),
-            a = this.a(),
-            sv,
-            v;
+        var h = this.h();
+        var s = this.s();
+        var l = this.l();
+        var a = this.a();
 
         l *= 2;
         s *= (l <= 1) ? l : 2 - l;
-        v = (l + s) / 2;
-        sv = (2 * s) / (l + s);
+        var v = (l + s) / 2;
+        var sv = (2 * s) / (l + s);
         return kolor.hsva(h, sv, v, a);
     }
 
     // Converts HSVA color to RGBA.
     function HSVA_TO_RGBA() {
-        var h = this.h(),
-            s = this.s(),
-            v = this.v(),
-            a = this.a(),
-            hi = Math.floor(h / 60),
-            f = h / 60 - hi,
-            p = v * (1 - s),
-            q = v * (1 - f * s),
-            t = v * (1 - (1 - f) * s),
-            rgba;
+        var h = this.h();
+        var s = this.s();
+        var v = this.v();
+        var a = this.a();
+        var hi = Math.floor(h / 60);
+        var f = h / 60 - hi;
+        var p = v * (1 - s);
+        var q = v * (1 - f * s);
+        var t = v * (1 - (1 - f) * s);
+        var rgba;
 
-        switch(hi) {
+        switch (hi) {
             case 0:
                 rgba = [v, t, p, a]; break;
             case 1:
@@ -890,15 +894,13 @@
 
     // Converts HSVA color to HSLA.
     function HSVA_TO_HSLA() {
-        var h = this.h(),
-            s = this.s(),
-            v = this.v(),
-            a = this.a(),
-            sl,
-            l;
+        var h = this.h();
+        var s = this.s();
+        var v = this.v();
+        var a = this.a();
 
-        l = (2 - s) * v;
-        sl = s * v;
+        var l = (2 - s) * v;
+        var sl = s * v;
         sl /= (l <= 1) ? l : 2 - l;
         sl = sl || 0;
         l /= 2;
@@ -907,40 +909,40 @@
 
     // Converts HSVA color to HWB.
     function HSVA_TO_HWB() {
-        var h = this.h(),
-            s = this.s(),
-            v = this.v(),
-            a = this.a();
+        var h = this.h();
+        var s = this.s();
+        var v = this.v();
+        var a = this.a();
         return kolor.hwb(h, (1 - s) * v, 1 - v, a);
     }
 
     // Converts HWB color to HSVA.
     function HWB_TO_HSVA() {
-        var h = this.h(),
-            w = this.w(),
-            b = this.b(),
-            a = this.a();
+        var h = this.h();
+        var w = this.w();
+        var b = this.b();
+        var a = this.a();
         return kolor.hsva(h, 1 - w / (1 - b), 1 - b, a);
     }
 
     // Converts GRAY color to RGBA.
     function GRAY_TO_RGBA() {
-        var s = this.s(),
-            a = this.a();
+        var s = this.s();
+        var a = this.a();
 
         return kolor.rgba(s, s, s, a);
     }
 
     // Naively converts CMYK color to RGBA.
     function CMYK_TO_RGBA() {
-        var c = this.c(),
-            m = this.m(),
-            y = this.y(),
-            black = this.b();
+        var c = this.c();
+        var m = this.m();
+        var y = this.y();
+        var black = this.b();
 
         var r = 1 - Math.min(1, c * (1 - black) + black);
-            g = 1 - Math.min(1, m * (1 - black) + black);
-            b = 1 - Math.min(1, y * (1 - black) + black);
+        var g = 1 - Math.min(1, m * (1 - black) + black);
+        var b = 1 - Math.min(1, y * (1 - black) + black);
         return kolor.rgba(r * 255, g * 255, b * 255, this.a());
     }
 
@@ -961,7 +963,7 @@
         HSLA: {
             HSL: REMOVE_ALPHA,
             HSVA: HSLA_TO_HSVA,
-            RGBA: HSLA_TO_RGBA,
+            RGBA: HSLA_TO_RGBA
         },
         HSV: {
             HSVA: ADD_ALPHA
@@ -970,7 +972,7 @@
             HSV: REMOVE_ALPHA,
             RGBA: HSVA_TO_RGBA,
             HSLA: HSVA_TO_HSLA,
-            HWB: HSVA_TO_HWB,
+            HWB: HSVA_TO_HWB
         },
         HWB: {
             HSVA: HWB_TO_HSVA
@@ -996,7 +998,6 @@
         var queue = [from];
         var path = {};
         path[from] = [];
-        var chain = [];
 
         while (queue.length) {
             var v = queue.shift();
@@ -1052,7 +1053,7 @@
     //
     // Returns a color object in a certain space decided by the given expression. Color names and hex values
     // result in RGB colors, while CSS-style expressions specify the output space themselves.
-    var kolor = function (exp) {
+    kolor = function (exp) {
 
         // Check if the input is another color object by checking the private attribute `_space`.
         if (exp._space && util.has(kolor, exp._space)) {
@@ -1064,25 +1065,32 @@
             return kolor(NAMED_COLORS[exp.toLowerCase()]);
         }
 
-        // Try to match hex values, return RGB color on success.
-        var found = /^\s*#?([0-9a-f]{3}|[0-9a-f]{6})\s*$/i.exec(exp),
-            hex, rgb = [];
-        if (found) {
-            hex = found[1];
-            if (hex.length === 3) {
-                hex = [hex.charAt(0), hex.charAt(0), hex.charAt(1), hex.charAt(1), hex.charAt(2), hex.charAt(2)].join('');
+        // Try to match hex values, return RGB/RGBA color on success.
+        var pattern = /^\s*#?([0-9a-f]{3}[0-9a-f]?|[0-9a-f]{6}(?:[0-9a-f]{2})?)\s*$/i;
+        var match;
+        if (match = exp.match(pattern)) {
+            var hex = match[1];
+
+            if (hex.length <= 4) {
+                hex = util.map(hex.split(''), function (ch) {
+                    return ch + ch;
+                }).join('');
             }
-            for (var i = 0; i < 3; i++) {
-                rgb.push(parseInt(hex.substring(i * 2, i * 2 + 2), 16));
-            }
-            return new kolor.RGB(rgb);
+
+            var channels = util.map(hex.match(/\w{2}/g), function (val, i) {
+                var decimal = parseInt(val, 16);
+                return i === 3 ? decimal * 100 / 255 + '%' : decimal;
+            });
+
+            var space = channels.length === 4 ? 'RGBA' : 'RGB';
+            return new kolor[space](channels);
         }
 
         // Recognize specific space with pattern mathing and return color object in corresponding space.
         for (var key in SPACES) {
-            found = SPACES[key].pattern.exec(exp);
-            if (found) {
-                var args = found.slice(1);
+            match = exp.match(SPACES[key].pattern);
+            if (match) {
+                var args = match.slice(1);
                 return new kolor[key](args);
             }
         }
@@ -1111,8 +1119,8 @@
         //    * kolor.rgb({ r: 255, g: 0, b: 0 })
         kolor[key.toLowerCase()] = (function (key) {
             return function () {
-                var args = util.slice(arguments, 0),
-                    type = util.typeOf(args[0]);
+                var args = util.slice(arguments, 0);
+                var type = util.typeOf(args[0]);
                 if (type === 'Array' || type === 'Object') {
                     args = args[0];
                 }
@@ -1120,23 +1128,23 @@
             };
         }(key));
 
-        var space = SPACES[key],
-            channels = space.channels;
+        var space = SPACES[key];
+        var channels = space.channels;
 
         // ### Constructor
         //
         // When `kolor` is used as a factory method, it will call these constructors.
         kolor[key] = (function (key) {
             return function (args) {
-                var channels = SPACES[key].channels,
-                    l = channels.length;
+                var channels = SPACES[key].channels;
+                var l = channels.length;
                 args = args == null ? [] : args;
                 this._space = key;
                 for (var i = l; i--;) {
-                    var channel = channels[i],
-                        name = channel.name,
-                        alias = channel.alias,
-                        param;
+                    var channel = channels[i];
+                    var name = channel.name;
+                    var alias = channel.alias;
+                    var param;
 
                     if (args[i] != null) {
                         param = args[i];
@@ -1183,12 +1191,12 @@
         // Returns the channel value when used as a getter, or the color object itself when used as a
         // getter.
         for (var i = channels.length; i--;) {
-            var channel = channels[i],
-                alias = channel.alias;
+            var channel = channels[i];
+            var alias = channel.alias;
 
             kolor[key].prototype[channel.name] = function (i) {
-                var channel = channels[i],
-                    prop = '_' + channel.alias;
+                var channel = channels[i];
+                var prop = '_' + channel.alias;
                 return function (value) {
                     if (value != null) {
                         this[prop] = this[i] = filterValue(value, channel);
@@ -1289,11 +1297,11 @@
         //
         // By CSS-style string we mean something like `rgba(255, 0, 0, 0.5)`, `hsl(30, 80%, 100%)`, etc.
         kolor[key].prototype.css = kolor[key].prototype.toString = function () {
-            var channels = SPACES[this.space()].channels,
-                l = channels.length,
-                channel,
-                value,
-                values = [];
+            var channels = SPACES[this.space()].channels;
+            var l = channels.length;
+            var channel;
+            var value;
+            var values = [];
             for (var i = 0; i < l; i++) {
                 channel = channels[i];
                 value = this[channel.name]();
@@ -1330,13 +1338,13 @@
         // ##### Parameters
         // * *color* - the color to be copied from.
         kolor[key].prototype.copyFrom = function (color) {
-            var space = this.space(),
-                channels = SPACES[space].channels,
-                i, accessor;
+            var space = this.space();
+            var channels = SPACES[space].channels;
             if (color.space() !== space) {
                 color = color[space.toLowerCase()]();
             }
-            for (i = channels.length; i--;) {
+            for (var i = channels.length; i--;) {
+                var accessor;
                 accessor = channels[i].name;
                 this[accessor](color[accessor]());
             }
@@ -1357,13 +1365,13 @@
         // ##### Return values
         // Returns a new color object in the same space as the original one.
         kolor[key].prototype.mix = function (color, proportion) {
-            var dest = this.rgba(),
-                src = color.rgba(),
-                p = proportion == null ? 0.5 : proportion,
-                w = p * 2 - 1,
-                a = dest.a() - src.a(),
-                w1 = (((w * a === -1) ? w : (w + a)/(1 + w * a)) + 1) / 2,
-                w2 = 1 - w1;
+            var dest = this.rgba();
+            var src = color.rgba();
+            var p = proportion == null ? 0.5 : proportion;
+            var w = p * 2 - 1;
+            var a = dest.a() - src.a();
+            var w1 = (((w * a === -1) ? w : (w + a) / (1 + w * a)) + 1) / 2;
+            var w2 = 1 - w1;
             dest.r(dest.r() * w1 + src.r() * w2);
             dest.g(dest.g() * w1 + src.g() * w2);
             dest.b(dest.b() * w1 + src.b() * w2);
@@ -1456,8 +1464,8 @@
         // If the original space dosen't have an alpha version, the color will be converted
         // into RGBA.
         kolor[key].prototype.fadeIn = function (value) {
-            var space = this.a ? this.space() : this.space() + 'A',
-                color;
+            var space = this.a ? this.space() : this.space() + 'A';
+            var color;
 
             if (util.has(SPACES, space)) {
                 color = this[space.toLowerCase()]();
@@ -1513,12 +1521,12 @@
                 return value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
             }
 
-            var color = this.rgb(),
-                R = convert(color.r()),
-                G = convert(color.g()),
-                B = convert(color.b());
+            var color = this.rgb();
+            var r = convert(color.r());
+            var g = convert(color.g());
+            var b = convert(color.b());
 
-            return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b;
         };
 
         // #### .contrastRatio()
@@ -1532,8 +1540,8 @@
         // ##### Return values
         // The calculated contrast ratio.
         kolor[key].prototype.contrastRatio = function (color) {
-            var l1 = this.luminance(),
-                l2 = color.luminance();
+            var l1 = this.luminance();
+            var l2 = color.luminance();
             return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
         };
     }
@@ -1555,7 +1563,7 @@
     //   when making the output.
     kolor.config = function (key, value) {
         config[key] = value;
-    }
+    };
 
     // #### kolor.random(*options*) [unstable API]
     //
@@ -1603,32 +1611,31 @@
             return value != null ? value : defaultValue;
         }
 
-        var size = options.size || 1,
-            h = getValue(options.h, [0, 360]),
-            interval = Math.floor(((360 + (h[1] - h[0])) % 360 || 360) / size),
-            offset = Math.random() * interval,
-            s = getValue(options.s, [0, 1]),
-            l = getValue(options.l, [0, 1]),
-            a = getValue(options.a, 1),
-            shuffle = getValue(options.shuffle, true),
-            space = (options.space || 'hex').toLowerCase(),
-            colors = [],
-            color, i;
+        var size = options.size || 1;
+        var h = getValue(options.h, [0, 360]);
+        var interval = Math.floor(((360 + (h[1] - h[0])) % 360 || 360) / size);
+        var offset = Math.random() * interval;
+        var s = getValue(options.s, [0, 1]);
+        var l = getValue(options.l, [0, 1]);
+        var a = getValue(options.a, 1);
+        var shuffle = getValue(options.shuffle, true);
+        var space = (options.space || 'hex').toLowerCase();
+        var colors = [];
 
         if (interval === 0) {
             throw new Error('To many colors for this hue range!');
         }
 
-        for (i = 0; i < size; i++) {
-            color = kolor.hsla(
+        for (var i = 0; i < size; i++) {
+            var color = kolor.hsla(
                 (360 + h[0] + interval * i + offset) % 360,
                 s.length ? util.random(s[0], s[1]) : s,
                 l.length ? util.random(l[0], l[1]) : l,
                 a.length ? util.random(a[0], a[1]) : a
             );
-            if (space == 'hex') {
+            if (space === 'hex') {
                 color = color.hex();
-            } else if (space == 'css') {
+            } else if (space === 'css') {
                 color = color.css();
             } else if (util.has(SPACES, space.toUpperCase())) {
                 color = color[space]();
@@ -1645,7 +1652,7 @@
     };
 
     // Everything is ready, export the whole module
-    define("kolor", function (require, exports, module) {
+    define('kolor', function (require, exports, module) {
         module.exports = kolor;
     });
 

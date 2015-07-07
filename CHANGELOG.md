@@ -1,4 +1,8 @@
 # Changelog
+* 1.1.7
+    - add support for 4 or 8 digits hex notations
+    - fix code styles
+
 * 1.1.6
     - fix HSVA_TO_HWB
 
