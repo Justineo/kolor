@@ -1335,7 +1335,9 @@
             }
 
             var parts = ['#', toHex(rgb.r()), toHex(rgb.g()), toHex(rgb.b())];
-            if (typeof this.a() !== 'undefined') {
+
+            // has alpha channel
+            if (this.a) {
                 parts.push(toHex(this.a()));
             }
             return ['#', ].join('');
