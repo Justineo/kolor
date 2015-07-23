@@ -1337,10 +1337,10 @@
             var parts = ['#', toHex(rgb.r()), toHex(rgb.g()), toHex(rgb.b())];
 
             // has alpha channel
-            if (this.a) {
+            if (keepAlpha && this.a) {
                 parts.push(toHex(this.a()));
             }
-            return ['#', ].join('');
+            return parts.join('');
         };
 
         // #### .copyFrom(*color*)
