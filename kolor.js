@@ -1316,19 +1316,29 @@
         // #### .hex()
         // Outputs color channels as a hex string.
         //
+        // #### Parameters
+        // * *keepAlpha* a boolean value that determines if the result should keep the possible
+        // alpha channel. `false` by default.
+        //
         // ##### Return values
         // Returns a hex string corresponds to the RGB space of the color,
         // which means the color is converted to RGB first and the hex value is produced
         // by its RGB channels.
-        kolor[key].prototype.hex = function () {
-            var color = this;
-            if (this.space() !== 'RGB') {
-                color = this.rgb();
-            }
+        kolor[key].prototype.hex = function (keepAlpha) {
             function toHex(n) {
                 return util.zeroFill(Math.round(n).toString(16), 2);
             }
-            return ['#', toHex(color.r()), toHex(color.g()), toHex(color.b())].join('');
+
+            var rgb;
+            if (this.space() !== 'RGB') {
+                rgb = this.rgb();
+            }
+
+            var parts = ['#', toHex(rgb.r()), toHex(rgb.g()), toHex(rgb.b())];
+            if (typeof this.a() !== 'undefined') {
+                parts.push(toHex(this.a()));
+            }
+            return ['#', ].join('');
         };
 
         // #### .copyFrom(*color*)
