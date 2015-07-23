@@ -1,4 +1,7 @@
 # Changelog
+* 1.1.8
+    - add `keepAlpha` option to enhance `.hex()` output
+
 * 1.1.7
     - add support for 4 or 8 digits hex notations
     - fix code styles
