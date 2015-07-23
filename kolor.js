@@ -1329,7 +1329,7 @@
                 return util.zeroFill(Math.round(n).toString(16), 2);
             }
 
-            var rgb;
+            var rgb = this;
             if (this.space() !== 'RGB') {
                 rgb = this.rgb();
             }
