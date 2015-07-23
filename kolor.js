@@ -1338,7 +1338,7 @@
 
             // has alpha channel
             if (keepAlpha && this.a) {
-                parts.push(toHex(this.a()));
+                parts.push(toHex(this.a() * 255));
             }
             return parts.join('');
         };
