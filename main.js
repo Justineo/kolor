@@ -7,7 +7,11 @@ function sync(color) {
     color = color || kolor(input.value);
 
     formats.forEach(function(format) {
-        outputs[format].value = color ? color[format]() : '-';
+        if (format !== 'hex') {
+            outputs[format].value = color ? color[format]() : '-';
+        } else {
+            outputs[format].value = color ? color.hex(true) : '-';
+        }
     });
     if (color) {
         bg.style.backgroundColor = color.rgba().css();
