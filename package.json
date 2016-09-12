@@ -1,21 +1,24 @@
 {
-    "name": "kolor",
-    "version": "1.1.8",
-    "contributors": [
-        {
-            "name": "justineo",
-            "email": "justice360@gmail.com"
-        }
-    ],
-    "repository": {
-        "type" : "git",
-        "url" : "https://github.com/Justineo/kolor.git"
-    },
-    "main": "./kolor.js",
-    "description": "Color manipulation in sexy syntax.",
-    "keywords": [
-        "color",
-        "color manipulation"
-    ],
-    "homepage": "http://justineo.github.io/kolor/"
+  "name": "kolor",
+  "version": "1.1.8",
+  "contributors": [
+    {
+      "name": "justineo",
+      "email": "justice360@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Justineo/kolor.git"
+  },
+  "main": "./kolor.js",
+  "description": "Color manipulation in sexy syntax.",
+  "keywords": [
+    "color",
+    "color manipulation"
+  ],
+  "homepage": "http://justineo.github.io/kolor/",
+  "devDependencies": {
+    "tape": "^4.0.1"
+  }
 }
