@@ -1158,7 +1158,7 @@
                                 break;
                             }
                         }
-                        if (!param) {
+                        if (param == null) {
                             param = channel.initial;
                         }
                     }
